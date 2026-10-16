@@ -84,3 +84,8 @@ footer { margin-top: 4rem; font-size: .85rem; line-height: 1.6; }
   .state-grid { grid-template-columns: 1fr; }
   .tab-strip button { font-size: .85rem; padding-inline: .5rem; }
 }
+
+.source-inspector { margin-top: 1.5rem; border: 1px solid var(--lm-border); border-radius: .55rem; background: #fffdf5; }
+.source-inspector__header { display: flex; align-items: center; justify-content: space-between; gap: .7rem; border-bottom: 1px solid var(--lm-border); padding: .7rem 1rem; flex-wrap: wrap; }
+.source-inspector__content { padding: .75rem 1rem; }
+.source-inspector__content p { margin: 0; }
