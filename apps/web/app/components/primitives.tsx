@@ -89,6 +89,15 @@ export function ExplainDialog({ title, trigger, children }: { title: string; tri
   </>;
 }
 
+
+/** A reusable inspector boundary; source availability is explicit. */
+export function SourceInspector({ label, children }: { label: string; children: ReactNode }) {
+  return <aside className="source-inspector" aria-label={label}>
+    <div className="source-inspector__header"><strong>{label}</strong><StatusLabel tone="unverified" /></div>
+    <div className="source-inspector__content">{children}</div>
+  </aside>;
+}
+
 export function LoadingNotice({ label }: { label: string }) {
   return <p role="status" className="status-notice"><span className="notice-mark" aria-hidden="true">…</span>{label}</p>;
 }
