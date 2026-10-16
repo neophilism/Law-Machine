@@ -11,7 +11,7 @@ jobs:
   foundation:
     name: foundation
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -19,5 +19,17 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version-file: .node-version
-      - name: Validate contracts, source preservation and security status
-        run: npm run check
+      - name: Install pinned package manager
+        run: npm install --global pnpm@11.25.0 --ignore-scripts
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Validate foundation, boundaries, types, lint, tests and source security
+        run: pnpm check
+      - name: Build the public app
+        run: pnpm build
+      - name: Install browser test runtime
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Test desktop and mobile browser journeys
+        run: pnpm test:browser
+      - name: Audit locked dependencies
+        run: pnpm scan:dependencies

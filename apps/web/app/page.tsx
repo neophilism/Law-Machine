@@ -1,0 +1,3 @@
+export default function Home() {
+  return <main id="main"><header><span className="wordmark">LAW MACHINE</span><span className="badge">Development preview</span></header><section><p className="eyebrow">A FIELD GUIDE TO HOW LAW WORKS</p><h1>Follow the rule.<br/>See what happens.</h1><p className="intro">Explore the institutions, decisions, and deadlines behind a legal process. Every explanation will connect to its source.</p><div className="note"><strong>The foundation is taking shape.</strong><p>Source exploration and hypothetical scenarios are in development. This preview does not calculate legal outcomes.</p></div></section><footer>Proposed laws will be labeled clearly. Examples will use hypothetical facts.</footer></main>;
+}

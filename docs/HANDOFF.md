@@ -6,7 +6,11 @@ The owner selected `neophilism/Law-Machine` and directed development beginning w
 
 LM-001 preserves the complete source document, defines architecture decisions and package boundaries, imports all 60 units without reducing scope, tests both consumer parsers and registers the owner's execution/security policy. It includes minimal credential-free CI needed to check its own work. No application runtime, database, cloud resource, legislative pack or public deployment is claimed.
 
-## Next unit: LM-002
+## Active unit: LM-002 (PR #3)
+
+LM-001 is merged in PR #1. A concurrent duplicate foundation PR #2 was closed without merge; it is historical evidence only. LM-002 is active on `work/lm-002-workspace`, tracked by PR #3. Read `docs/evidence/LM-002.md` for executed and pending checks. The owner requested continued development through at least 15/60 units, preferably 30/60, and frequent GitHub checkpoints before usage expires. Preserve working code in scoped PR branches and merge tested increments; do not inflate completion counts or bypass real failing checks.
+
+Bill character delivery guidance: prefer a rigged GLB (glTF 2.0) with named animation clips and facial morph targets/visemes, plus the editable Blender source. VRM 1.0 is optional for a humanoid rig. Voice/lip-sync/behavior require runtime integration later; no character work is required by current Law Machine units.
 
 After LM-001's actual PR is merged, implement the pnpm workspace and TypeScript application scaffold described in the plan. Pin mutually compatible maintained dependencies after checking their current documentation. Commit the lockfile; provide a clean-checkout local development command requiring no credentials.
 

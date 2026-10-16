@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-16T18:02:10.663Z",
+  "observedAt": "2026-10-16T18:11:08.127Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -25,13 +25,18 @@
       "source": {
         "path": "docs/source/ORIGINAL_SPECIFICATION.md",
         "heading": "LM 001 Architecture decisions and roadmap registration"
-      }
+      },
+      "priorEvidencePrs": [
+        2
+      ]
     },
     {
       "id": "LM-002",
       "title": "Workspace and continuous integration",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        3
+      ],
       "dependsOn": [
         "LM-001"
       ],
@@ -1127,18 +1132,56 @@
   ],
   "pullRequests": [
     {
-      "id": 4892330118,
-      "number": 1,
-      "title": "LM-001: Architecture decisions and roadmap registration",
+      "id": 4892435514,
+      "number": 4,
+      "title": "LM-002: Workspace and continuous integration",
       "state": "open",
-      "url": "https://github.com/neophilism/Law-Machine/pull/1",
-      "createdAt": "2026-10-16T18:01:23Z",
-      "updatedAt": "2026-10-16T18:01:23Z",
+      "url": "https://github.com/neophilism/Law-Machine/pull/4",
+      "createdAt": "2026-10-16T18:10:16Z",
+      "updatedAt": "2026-10-16T18:10:16Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": false,
-      "headSha": "16d98075d12cd940c437e3309b7f54712dbac926",
-      "baseRef": "main"
+      "headSha": "6278b5778b60f165996ce777e71b8d224dab0a5e"
+    },
+    {
+      "id": 4892379039,
+      "number": 3,
+      "title": "LM-002: build the TypeScript workspace and continuous integration",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/3",
+      "createdAt": "2026-10-16T18:05:20Z",
+      "updatedAt": "2026-10-16T18:05:20Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "cb961636d51e93f70e2ca8f323dec79170c5381b"
+    },
+    {
+      "id": 4892337892,
+      "number": 2,
+      "title": "LM-001: establish Law Machine architecture, roadmap, and development policies",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/2",
+      "createdAt": "2026-10-16T18:02:00Z",
+      "updatedAt": "2026-10-16T18:03:14Z",
+      "closedAt": "2026-10-16T18:03:13Z",
+      "mergedAt": null,
+      "draft": false,
+      "headSha": "388a8c4fdecaefdcd977015a6c9af9344b76c3ba"
+    },
+    {
+      "id": 4892330118,
+      "number": 1,
+      "title": "LM-001: Architecture decisions and roadmap registration",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/1",
+      "createdAt": "2026-10-16T18:01:23Z",
+      "updatedAt": "2026-10-16T18:03:50Z",
+      "closedAt": "2026-10-16T18:03:49Z",
+      "mergedAt": "2026-10-16T18:03:49Z",
+      "draft": false,
+      "headSha": "bb2c1d2711e88aef0c887d0d11477fd309dc5de5"
     }
   ]
 }
