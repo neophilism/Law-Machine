@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-16T21:40:06.764Z",
+  "observedAt": "2026-10-16T22:34:46Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -146,7 +146,9 @@
       "id": "LM-008",
       "title": "Reference fixtures and independent test oracle",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        11
+      ],
       "dependsOn": [
         "LM-003",
         "LM-004",
@@ -1138,6 +1140,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4895048986,
+      "number": 11,
+      "title": "LM-008: Independent toy-law oracle and parity fixtures",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/11",
+      "createdAt": "2026-10-16T22:34:46Z",
+      "updatedAt": "2026-10-16T22:34:46Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "290d62171a920c34ead6f23ebbdc08c15ce85998",
+      "baseRef": "main"
+    },
     {
       "id": 4894565768,
       "number": 9,

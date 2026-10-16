@@ -1,0 +1,77 @@
+{
+  "kind": "fictional-test-oracle",
+  "version": 1,
+  "description": "Entirely invented toy filing system, not current or proposed real law",
+  "sources": [
+    {
+      "id": "toy:s1",
+      "version": "toy-v1",
+      "citation": "Toy §1",
+      "text": "A request received by Desk A is forwarded to Desk B on the next tick."
+    },
+    {
+      "id": "toy:s2",
+      "version": "toy-v1",
+      "citation": "Toy §2",
+      "text": "If the destination is unknown, no delivery outcome is asserted."
+    }
+  ],
+  "cases": [
+    {
+      "id": "route",
+      "facts": {
+        "received": true,
+        "destination": "desk-b"
+      },
+      "expected": [
+        {
+          "tick": 0,
+          "kind": "received",
+          "actor": "desk-a",
+          "source": "toy:s1"
+        },
+        {
+          "tick": 1,
+          "kind": "forwarded",
+          "actor": "desk-a",
+          "source": "toy:s1"
+        },
+        {
+          "tick": 2,
+          "kind": "received",
+          "actor": "desk-b",
+          "source": "toy:s1"
+        }
+      ]
+    },
+    {
+      "id": "unknown",
+      "facts": {
+        "received": true,
+        "destination": null
+      },
+      "expected": [
+        {
+          "tick": 0,
+          "kind": "received",
+          "actor": "desk-a",
+          "source": "toy:s1"
+        },
+        {
+          "tick": 1,
+          "kind": "unresolved",
+          "actor": "desk-a",
+          "source": "toy:s2"
+        }
+      ]
+    },
+    {
+      "id": "not-received",
+      "facts": {
+        "received": false,
+        "destination": "desk-b"
+      },
+      "expected": []
+    }
+  ]
+}
