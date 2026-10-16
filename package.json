@@ -1,0 +1,14 @@
+{
+  "name": "law-machine",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Law Machine foundation and approved implementation registry",
+  "engines": { "node": ">=24 <25" },
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "validate:registry": "node scripts/validate-pr-registry.mjs",
+    "validate:security": "python3 scripts/validate_e2eesa_status.py"
+  }
+}
