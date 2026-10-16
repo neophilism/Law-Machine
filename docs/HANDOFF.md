@@ -6,7 +6,15 @@ The owner selected `neophilism/Law-Machine` and directed development beginning w
 
 LM-001 preserves the complete source document, defines architecture decisions and package boundaries, imports all 60 units without reducing scope, tests both consumer parsers and registers the owner's execution/security policy. It includes minimal credential-free CI needed to check its own work. No application runtime, database, cloud resource, legislative pack or public deployment is claimed.
 
-## Next unit: LM-002
+## Workspace checkpoint and next unit
+
+LM-001 is merged as PR #1. The implemented workspace is PR #4, `lm-002-workspace`; inspect its current GitHub CI/merge status. PR #3 was observed to contain only an in-progress evidence note for the same unit; preserve that branch and reconcile its actual latest contents before treating it as an implementation follow-up. No unseen work is assumed complete.
+
+PR #4 includes strict TypeScript, seven domain packages, a Next.js shell, import boundary checks, source-pattern scanning, dependency auditing, production build and browser/axe tests. Local checks and browser execution pass; the initial complete GitHub workflow passed. Exact current-head checks govern merging.
+
+The next implementation is LM-003 (domain schemas/identity), with LM-005 (design primitives) also dependency-ready after LM-002. All changes are saved through small PRs because the owner requested frequent repository checkpoints and continuation toward at least 15 of 60 units.
+
+## LM-002 acceptance retained for reference
 
 After LM-001's actual PR is merged, implement the pnpm workspace and TypeScript application scaffold described in the plan. Pin mutually compatible maintained dependencies after checking their current documentation. Commit the lockfile; provide a clean-checkout local development command requiring no credentials.
 
