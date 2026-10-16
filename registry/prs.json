@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-16T17:54:58.768Z",
+  "observedAt": "2026-10-16T18:02:10.663Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -14,7 +14,9 @@
       "id": "LM-001",
       "title": "Architecture decisions and roadmap registration",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        1
+      ],
       "dependsOn": [],
       "externalDependencies": [],
       "externalPrerequisites": [],
@@ -1123,5 +1125,20 @@
       }
     }
   ],
-  "pullRequests": []
+  "pullRequests": [
+    {
+      "id": 4892330118,
+      "number": 1,
+      "title": "LM-001: Architecture decisions and roadmap registration",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/1",
+      "createdAt": "2026-10-16T18:01:23Z",
+      "updatedAt": "2026-10-16T18:01:23Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": false,
+      "headSha": "16d98075d12cd940c437e3309b7f54712dbac926",
+      "baseRef": "main"
+    }
+  ]
 }
