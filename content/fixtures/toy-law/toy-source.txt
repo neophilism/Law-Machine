@@ -1,0 +1,4 @@
+FICTIONAL TOY LAW - TRAINING ONLY; NOT ENACTED OR APPLICABLE LAW.
+Section T-1. A toy request received by the toy intake office is routed to the toy review office.
+Section T-2. If the classification is unknown, the toy review must stop and record an unresolved result.
+Section T-3. A completed toy request requires an explicit toy review confirmation.
