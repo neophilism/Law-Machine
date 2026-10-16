@@ -2,7 +2,7 @@
 
 Follow a hypothetical claim, application, decision, document or resource through a source-linked model of law. Compare a dated baseline with a proposed bill, change circumstances, and inspect the rules and assumptions behind each outcome.
 
-This repository begins with **LM-001: Architecture decisions and roadmap registration**. It contains the original specification, all 60 approved work units, architectural decisions, agent policies, and executable foundation validation. The simulator and public application are planned work, not yet implemented or deployed.
+This repository contains the original specification, all 60 approved work units, architectural decisions, agent policies, and a runnable TypeScript/Next.js development workspace. The legal simulator and production experience are planned work; the current shell explicitly reports its fixture-only scope.
 
 ## Start here
 
@@ -22,6 +22,6 @@ Use Node **24.19.0** and Python **3.11 or later**, then run:
 npm run check
 ```
 
-No package installation, provider credentials, database or network access is needed for these checks. They validate all 60 units against both pinned consumer implementations, preserve the original scope, exercise malformed inputs and PR mappings, and validate honest security status. LM-002 adds the pnpm/TypeScript application workspace and application checks.
+For a fresh checkout, first run `pnpm install --frozen-lockfile`. Then `pnpm dev` runs the application locally without provider credentials or a database. See [development commands](docs/DEVELOPMENT.md) for builds, browser tests and dependency auditing. The original offline contract checks remain available through `npm run check:foundation`.
 
 Public reading and simulation will require no account. The first model concerns a proposed electronic-filing bill; the service will not accept real filings, issue government receipts or calculate authoritative deadlines for a person's case. Ask Bill's character, conversation and voice remain separate product work consuming a future headless SDK.
