@@ -88,8 +88,16 @@ test('exact ID mapping works for both consumers; ordinal and fuzzy titles do not
   }
 });
 test('Boardroom includes an open follow-up instead of retaining false completion', () => {
-  const d = copy(); d.units[0].prs = [7];
-  assert.deepEqual(attachObservedWorkIds(parse(d).items, [{ number: 8, title: 'LM-001: correction', state: 'open' }])[0].numbers, [7, 8]);
+  const d = copy();
+  // Use synthetic IDs that cannot collide with real PR observations as this project grows.
+  const occupied = [...d.pullRequests.map(pr => pr.number), ...d.units.flatMap(unit => unit.prs)];
+  const original = Math.max(1000, ...occupied) + 10;
+  const followup = original + 1;
+  d.units[0].prs = [original];
+  assert.deepEqual(
+    attachObservedWorkIds(parse(d).items, [{ number: followup, title: 'LM-001: correction', state: 'open' }])[0].numbers,
+    [original, followup]
+  );
 });
 test('bounded deterministic mutation corpus rejects 128 unknown dependencies', () => {
   for (let i = 0; i < 128; i++) {

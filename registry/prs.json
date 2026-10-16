@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-16T21:31:43.115Z",
+  "observedAt": "2026-10-16T21:35:23.705Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -125,7 +125,9 @@
       "id": "LM-007",
       "title": "Coverage and capability declarations",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        8
+      ],
       "dependsOn": [
         "LM-003"
       ],
@@ -1135,17 +1137,31 @@
   ],
   "pullRequests": [
     {
-      "id": 4894495285,
-      "number": 7,
-      "title": "LM-004: Canonical serialization and content integrity",
+      "id": 4894534299,
+      "number": 8,
+      "title": "LM-007: Explicit coverage and capability declarations",
       "state": "open",
-      "url": "https://github.com/neophilism/Law-Machine/pull/7",
-      "createdAt": "2026-10-16T21:29:50Z",
-      "updatedAt": "2026-10-16T21:31:35Z",
+      "url": "https://github.com/neophilism/Law-Machine/pull/8",
+      "createdAt": "2026-10-16T21:33:54Z",
+      "updatedAt": "2026-10-16T21:35:18Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": true,
-      "headSha": "80629d32447a7958d44635f233b4f36a2c8b7e1a",
+      "headSha": "144b21f483d67e9d4ad9f3ce35e09c42df7699dd",
+      "baseRef": "main"
+    },
+    {
+      "id": 4894495285,
+      "number": 7,
+      "title": "LM-004: Canonical serialization and content integrity",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/7",
+      "createdAt": "2026-10-16T21:29:50Z",
+      "updatedAt": "2026-10-16T21:34:25Z",
+      "closedAt": "2026-10-16T21:34:25Z",
+      "mergedAt": "2026-10-16T21:34:25Z",
+      "draft": false,
+      "headSha": "e4762f92bca2567eeacd00d9ff273d1ae700ca2a",
       "baseRef": "main"
     },
     {
