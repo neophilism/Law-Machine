@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-16T21:19:57.929Z",
+  "observedAt": "2026-10-16T21:28:29.276Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -86,7 +86,9 @@
       "id": "LM-005",
       "title": "Design system and accessible interaction primitives",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        6
+      ],
       "dependsOn": [
         "LM-002"
       ],
@@ -1131,17 +1133,31 @@
   ],
   "pullRequests": [
     {
-      "id": 4894245465,
-      "number": 5,
-      "title": "LM-003: Domain contracts and identity",
+      "id": 4894458470,
+      "number": 6,
+      "title": "LM-005: Accessible design system and interaction preview",
       "state": "open",
-      "url": "https://github.com/neophilism/Law-Machine/pull/5",
-      "createdAt": "2026-10-16T21:03:11Z",
-      "updatedAt": "2026-10-16T21:19:35Z",
+      "url": "https://github.com/neophilism/Law-Machine/pull/6",
+      "createdAt": "2026-10-16T21:26:03Z",
+      "updatedAt": "2026-10-16T21:28:21Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": true,
-      "headSha": "b12b6222045a52efeb17574d61451de0a7da80ec",
+      "headSha": "804709ce3159655c62cd0b7643ce0dc56298948e",
+      "baseRef": "main"
+    },
+    {
+      "id": 4894245465,
+      "number": 5,
+      "title": "LM-003: Domain contracts and identity",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/5",
+      "createdAt": "2026-10-16T21:03:11Z",
+      "updatedAt": "2026-10-16T21:26:40Z",
+      "closedAt": "2026-10-16T21:26:40Z",
+      "mergedAt": "2026-10-16T21:26:40Z",
+      "draft": false,
+      "headSha": "e436d0a637f609ac9d6662da380515250649bf58",
       "baseRef": "main"
     },
     {
