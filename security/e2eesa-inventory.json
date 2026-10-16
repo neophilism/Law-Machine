@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "repository": "neophilism/Law-Machine",
+  "classificationStatus": "unverified",
+  "coverageComplete": false,
+  "components": [],
+  "dataFlows": [],
+  "sourceObservations": [
+    {"path": "README.md", "observation": "LM-001 repository tooling; no application runtime deployed."},
+    {"path": "docs/ARCHITECTURE.md", "observation": "Target components and planned flows; not a statement of implemented controls."}
+  ],
+  "limitations": [
+    "Discovery record only; empty arrays do not mean that protected flows are absent or exempt.",
+    "Expand using the pinned upstream component-inventory and scoped-assessment contracts as each runtime component is implemented.",
+    "Planned private authoring/server processing and intentional public release require separate explicit classifications."
+  ]
+}

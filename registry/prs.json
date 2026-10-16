@@ -1,0 +1,1310 @@
+{
+  "schemaVersion": 1,
+  "repository": "neophilism/Law-Machine",
+  "title": "Law Machine",
+  "roadmapVersion": 1,
+  "planVerified": true,
+  "plannedPrCount": 60,
+  "observedAt": "2026-10-16T17:59:54.919Z",
+  "sourceFiles": [
+    "docs/ARCHITECTURE.md",
+    "docs/DEVELOPMENT_PLAN.md",
+    "docs/reference/APPROVED_PLAN_2026-10-16.md",
+    "AGENTS.md"
+  ],
+  "units": [
+    {
+      "id": "LM-001",
+      "title": "Architecture decisions and roadmap registration",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Deliver the architecture records, package boundaries, scope, public-product boundaries, implementation milestones, and the adopted canonical roadmap. Inspect the current source contract used by Boardroom and Engine Room before producing its machine-readable representation. Preserve plan IDs and original plan text."
+      ],
+      "acceptanceCriteria": "schema validation confirms 60 unique work units; both consumer contract fixtures import the same denominator and IDs; empty PR links remain unstarted. The PR title and actual GitHub number are distinct. No portfolio repository is modified as a side effect.",
+      "verification": [
+        "schema validation confirms 60 unique work units; both consumer contract fixtures import the same denominator and IDs; empty PR links remain unstarted. The PR title and actual GitHub number are distinct. No portfolio repository is modified as a side effect."
+      ]
+    },
+    {
+      "id": "LM-002",
+      "title": "Workspace and continuous integration",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-001"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Create the pnpm workspace, TypeScript configuration, application scaffold, dependency lockfile, linting, type checks, CI, and source-security checks. Set package import restrictions and a provider-free development command. Document the owner's AI review policy without imposing an external-auditor gate."
+      ],
+      "acceptanceCriteria": "a clean checkout builds and runs tests without cloud credentials. A deliberately prohibited browser-to-database import fails CI. Secret scanning and dependency findings produce actionable results; real findings are resolved or the affected feature is disabled.",
+      "verification": [
+        "a clean checkout builds and runs tests without cloud credentials. A deliberately prohibited browser-to-database import fails CI. Secret scanning and dependency findings produce actionable results; real findings are resolved or the affected feature is disabled."
+      ]
+    },
+    {
+      "id": "LM-003",
+      "title": "Domain contracts and identity",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-002"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Define schemas for bill versions, provisions, actors, source anchors, rules, assumptions, scenarios, releases, and traces. Establish identifier scopes, version references, typed quantities, unknown values, and compatibility policy. Generate shared TypeScript boundary types."
+      ],
+      "acceptanceCriteria": "positive and negative fixtures validate deterministically. Cross-version references, invalid quantities, duplicate IDs, and unsupported schema versions fail with precise diagnostics. A schema compatibility test protects retained public examples.",
+      "verification": [
+        "positive and negative fixtures validate deterministically. Cross-version references, invalid quantities, duplicate IDs, and unsupported schema versions fail with precise diagnostics. A schema compatibility test protects retained public examples."
+      ]
+    },
+    {
+      "id": "LM-004",
+      "title": "Canonical serialization and integrity",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-003"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement raw source digests, canonical JSON serialization, manifest hashing, content-addressed asset names, and release verification. Exclude volatile metadata from content identity only by an explicit documented rule."
+      ],
+      "acceptanceCriteria": "reordered JSON keys produce the same canonical digest; changed source bytes produce a different source digest; tampered, missing, or mismatched assets fail verification. Node and browser implementations agree on fixtures.",
+      "verification": [
+        "reordered JSON keys produce the same canonical digest; changed source bytes produce a different source digest; tampered, missing, or mismatched assets fail verification. Node and browser implementations agree on fixtures."
+      ]
+    },
+    {
+      "id": "LM-005",
+      "title": "Design system and accessible interaction primitives",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-002"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Create typography, color and shape semantics, buttons, dialogs, tabs, inspectors, focus management, motion preferences, responsive layout primitives, and loading and error states. Establish the public visual direction with institution and document illustrations."
+      ],
+      "acceptanceCriteria": "components support keyboard navigation and documented contrast targets. Reduced motion and touch layouts work. Static previews show readable hierarchy on phone and desktop without reliance on color alone.",
+      "verification": [
+        "components support keyboard navigation and documented contrast targets. Reduced motion and touch layouts work. Static previews show readable hierarchy on phone and desktop without reliance on color alone."
+      ]
+    },
+    {
+      "id": "LM-006",
+      "title": "Headless SDK boundaries",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-003",
+        "LM-004"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Create the public package interfaces, manifest loader, schema negotiation, error vocabulary, and contract tests for a non-React consumer. Stub later simulation methods with explicit unsupported responses until their implementations land."
+      ],
+      "acceptanceCriteria": "a command-line fixture loads a release and resolves a provision without importing the web application. An incompatible engine or schema fails explicitly. Package exports do not expose private provider or authoring code.",
+      "verification": [
+        "a command-line fixture loads a release and resolves a provision without importing the web application. An incompatible engine or schema fails explicitly. Package exports do not expose private provider or authoring code."
+      ]
+    },
+    {
+      "id": "LM-007",
+      "title": "Coverage and capability declarations",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-003"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Represent modeled, explanatory-only, ambiguous, and unsupported provisions. Declare which rule operations, calendars, and domain capabilities a pack requires. Create visible status labels for draft law, baseline date, hypothetical scenario, and partial coverage."
+      ],
+      "acceptanceCriteria": "a pack requiring an unsupported operation cannot execute as complete. Coverage counts derive from explicit provision mappings. Public fixtures cannot lose their legislative-status label through a scene change.",
+      "verification": [
+        "a pack requiring an unsupported operation cannot execute as complete. Coverage counts derive from explicit provision mappings. Public fixtures cannot lose their legislative-status label through a scene change."
+      ]
+    },
+    {
+      "id": "LM-008",
+      "title": "Reference fixtures and independent test oracle",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-003",
+        "LM-004",
+        "LM-007"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Create a tiny toy law, source anchors, independently specified expected event traces, malformed examples, and a browser/server parity harness. Document the reasoning behind each expected result so tests do not merely reproduce implementation output."
+      ],
+      "acceptanceCriteria": "altered routing, unknown handling, and source mappings are caught. The fixtures run without network access. Test data clearly separates invented toy law from real legislative text.",
+      "verification": [
+        "altered routing, unknown handling, and source mappings are caught. The fixtures run without network access. Test data clearly separates invented toy law from real legislative text."
+      ]
+    },
+    {
+      "id": "LM-009",
+      "title": "Text Markdown and DOCX ingestion",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-003",
+        "LM-008"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement original-byte preservation, basic source metadata, text and Markdown import, and bounded DOCX extraction with hierarchy and tables. Create import diagnostics and explicit source numbering records."
+      ],
+      "acceptanceCriteria": "nested provisions and table text survive round trips; unsupported active content is never executed. Oversized or highly expanded archives are rejected. The original file and extracted text remain distinguishable.",
+      "verification": [
+        "nested provisions and table text survive round trips; unsupported active content is never executed. Oversized or highly expanded archives are rejected. The original file and extracted text remain distinguishable."
+      ]
+    },
+    {
+      "id": "LM-010",
+      "title": "Official XML and metadata adapters",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-009"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Add separate USLM and House Bill DTD parsers with namespace and schema detection. Add optional Congress.gov and GovInfo metadata adapters with fixture caching, timeouts, and source version capture."
+      ],
+      "acceptanceCriteria": "one fixture from each supported XML family parses correctly; unsupported schemas fail clearly. External entities cannot read files or initiate network calls. Unpublished local drafts work without an official-source API key.",
+      "verification": [
+        "one fixture from each supported XML family parses correctly; unsupported schemas fail clearly. External entities cannot read files or initiate network calls. Unpublished local drafts work without an official-source API key."
+      ]
+    },
+    {
+      "id": "LM-011",
+      "title": "PDF extraction and correction workflow",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-009"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Add bounded text-PDF extraction with page anchors, extraction-quality diagnostics, and an optional isolated OCR interface. Provide correction records for low-confidence text and retain the original bytes."
+      ],
+      "acceptanceCriteria": "columns, page breaks, scanned pages, and malformed files have explicit outcomes. A low-confidence passage cannot silently support an operative rule. OCR absence leaves the source readable and correctable rather than blocking unrelated imports.",
+      "verification": [
+        "columns, page breaks, scanned pages, and malformed files have explicit outcomes. A low-confidence passage cannot silently support an operative rule. OCR absence leaves the source readable and correctable rather than blocking unrelated imports."
+      ]
+    },
+    {
+      "id": "LM-012",
+      "title": "Canonical provision tree and version persistence format",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-009",
+        "LM-010",
+        "LM-011"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Normalize supported inputs into the provision tree. Preserve displayed numbering, parent relationships, definitions, cross-references, original spans, and version-local identities. Build exportable source-explorer data."
+      ],
+      "acceptanceCriteria": "renumbering does not overwrite prior versions. Duplicate section labels and missing parents yield diagnostics. Each rendered provision can recover its exact source version and text.",
+      "verification": [
+        "renumbering does not overwrite prior versions. Duplicate section labels and missing parents yield diagnostics. Each rendered provision can recover its exact source version and text."
+      ]
+    },
+    {
+      "id": "LM-013",
+      "title": "Citation resolver and source inspector data",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-012",
+        "LM-004"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement composite anchors, exact quote resolution, page links, version-aware cross-references, public source excerpts, and citation metadata for downstream consumers."
+      ],
+      "acceptanceCriteria": "moved or edited text is marked stale rather than linked silently. All first-pack rule references resolve against their pinned source. Private source paths are excluded from public metadata.",
+      "verification": [
+        "moved or edited text is marked stale rather than linked silently. All first-pack rule references resolve against their pinned source. Private source paths are excluded from public metadata."
+      ]
+    },
+    {
+      "id": "LM-014",
+      "title": "Baseline snapshots and temporal applicability",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-012",
+        "LM-007"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Define dated baselines, jurisdiction and agency variants, effective-date expressions, enactment assumptions, transition periods, and unresolved interpretations. Add official-source snapshots for the first comparison area."
+      ],
+      "acceptanceCriteria": "a proposal cannot load as enacted law by default. Runs before and after a staged effective date select different applicable provisions. A baseline gap is visible and cannot be filled with an invented rule.",
+      "verification": [
+        "a proposal cannot load as enacted law by default. Runs before and after a staged effective date select different applicable provisions. A baseline gap is visible and cannot be filled with an invented rule."
+      ]
+    },
+    {
+      "id": "LM-015",
+      "title": "Amendatory instructions and consolidated projections",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-014",
+        "LM-013"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement typed insert, replace, repeal, and renumber operations against exact baseline versions. Preserve the instruction and its projected result as different artifacts. Allow an unresolved patch to remain inspectable."
+      ],
+      "acceptanceCriteria": "ambiguous or absent targets fail safely; old baseline bytes remain unchanged. A generated consolidation is labeled. Tests cover multiple amendments touching the same provision and declared precedence.",
+      "verification": [
+        "ambiguous or absent targets fail safely; old baseline bytes remain unchanged. A generated consolidation is labeled. Tests cover multiple amendments touching the same provision and declared precedence."
+      ]
+    },
+    {
+      "id": "LM-016",
+      "title": "Version diff and dependency invalidation",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-015"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Add text and structural diff, provisional provision correspondence, and the dependency index from source spans to rules, scenarios, scenes, and translations. Mark affected derivatives stale when source content changes."
+      ],
+      "acceptanceCriteria": "editing an operative exception invalidates its dependent scenarios. Renumbering alone does not falsely assert unchanged meaning without checking text. Prior releases and citations remain reproducible.",
+      "verification": [
+        "editing an operative exception invalidates its dependent scenarios. Renumbering alone does not falsely assert unchanged meaning without checking text. Prior releases and citations remain reproducible."
+      ]
+    },
+    {
+      "id": "LM-017",
+      "title": "Evidence assumptions and interpretation records",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-013",
+        "LM-014"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement source-language, interpretation, empirical-evidence, assumption, and unknown classifications. Add units, ranges, evidence limitations, conflict records, and review disposition."
+      ],
+      "acceptanceCriteria": "an empirical delay cannot masquerade as statutory time. Every operative rule has provenance; every numerical forecast input has evidence or an assumption label. Alternative interpretations can coexist without one silently replacing another.",
+      "verification": [
+        "an empirical delay cannot masquerade as statutory time. Every operative rule has provenance; every numerical forecast input has evidence or an assumption label. Alternative interpretations can coexist without one silently replacing another."
+      ]
+    },
+    {
+      "id": "LM-018",
+      "title": "Electronic filing source and content pack",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-013",
+        "LM-014",
+        "LM-017"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Create the initial bill version, provision mappings, glossary, institutions, baseline source inventory, coverage report, and scenario specifications. Preserve the supplied wording and identify missing front matter for later attachment."
+      ],
+      "acceptanceCriteria": "each of the 14 required scenario specifications identifies sources, expected checkpoints, assumptions, and unresolved points. The draft is labeled throughout. Current-law assertions cite dated official material and declared jurisdictional scope.",
+      "verification": [
+        "each of the 14 required scenario specifications identifies sources, expected checkpoints, assumptions, and unresolved points. The draft is labeled throughout. Current-law assertions cite dated official material and declared jurisdictional scope."
+      ]
+    },
+    {
+      "id": "LM-019",
+      "title": "Rule language parser and validator",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-003",
+        "LM-008",
+        "LM-017"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement the typed allowlisted expression language, triggers, guards, effects, modal force, exceptions, and diagnostics. Establish static validation and operator capability negotiation."
+      ],
+      "acceptanceCriteria": "type errors and arbitrary code payloads are rejected. Unknown predicates retain unknown semantics. Unsupported legal concepts generate diagnostics rather than falling back to a plausible-looking result.",
+      "verification": [
+        "type errors and arbitrary code payloads are rejected. Unknown predicates retain unknown semantics. Unsupported legal concepts generate diagnostics rather than falling back to a plausible-looking result."
+      ]
+    },
+    {
+      "id": "LM-020",
+      "title": "Rule compiler and provenance graph",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-019",
+        "LM-013",
+        "LM-007"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Compile validated rules to immutable execution data and build source-to-effect dependencies. Check reachability, missing actors, explicit precedence, unresolved conflicts, and public explanation keys."
+      ],
+      "acceptanceCriteria": "a transition without provenance fails validation. Conflicting rules cannot produce a single definitive branch without a recorded resolution. Compiled data is executable by both browser and server interpreters.",
+      "verification": [
+        "a transition without provenance fails validation. Conflicting rules cannot produce a single definitive branch without a recorded resolution. Compiled data is executable by both browser and server interpreters."
+      ]
+    },
+    {
+      "id": "LM-021",
+      "title": "Simulation state and deterministic scheduler",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-020",
+        "LM-008"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement event queues, causal event IDs, typed state, stable ordering, scheduled actions, stop conditions, cancellation checkpoints, and event budgets. Separate simulated time from wall-clock animation."
+      ],
+      "acceptanceCriteria": "the same release and inputs produce the same ordered trace. Zero-time loops and event storms terminate with a diagnostic. Pause and step do not change the final result.",
+      "verification": [
+        "the same release and inputs produce the same ordered trace. Zero-time loops and event storms terminate with a diagnostic. Pause and step do not change the final result."
+      ]
+    },
+    {
+      "id": "LM-022",
+      "title": "Calendar and deadline engine",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-019",
+        "LM-014"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement versioned calendars, timezones, observed holidays, business days, calendar months, counting conventions, cutoff rules, and deadline extensions. Preserve the source of each legal counting choice."
+      ],
+      "acceptanceCriteria": "independent fixtures cover leap days, daylight saving changes, month-end arithmetic, weekends, and holidays. Six months is not computed as 180 days. Missing counting rules create a visible interpretation requirement.",
+      "verification": [
+        "independent fixtures cover leap days, daylight saving changes, month-end arithmetic, weekends, and holidays. Six months is not computed as 180 days. Missing counting rules create a visible interpretation requirement."
+      ]
+    },
+    {
+      "id": "LM-023",
+      "title": "Duties rights permissions and breach",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-021",
+        "LM-022"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement obligation creation, satisfaction, breach, rights preservation, permissions, prohibitions, and source-supported remedies. Keep actor behavior separate from legal force."
+      ],
+      "acceptanceCriteria": "a two-day duty with five-day performance records a breach. A permission does not automatically trigger action. A receipt does not create a merits judgment. Remedy events require their own applicable rule and conditions.",
+      "verification": [
+        "a two-day duty with five-day performance records a breach. A permission does not automatically trigger action. A receipt does not create a merits judgment. Remedy events require their own applicable rule and conditions."
+      ]
+    },
+    {
+      "id": "LM-024",
+      "title": "Exceptions discretion and alternative branches",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-023"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement nested exceptions, qualifying conditions, explicit discretionary choices, unknown facts, and supported alternative interpretations. Add branch labels and branch explosion limits."
+      ],
+      "acceptanceCriteria": "an exception explains which duty it modifies. Missing facts never silently become false. An unresolved source conflict produces a limited result or explicit alternatives, and the branch limit is disclosed.",
+      "verification": [
+        "an exception explains which duty it modifies. Missing facts never silently become false. An unresolved source conflict produces a limited result or explicit alternatives, and the branch limit is disclosed."
+      ]
+    },
+    {
+      "id": "LM-025",
+      "title": "Operational queues resources and compliance behavior",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-021",
+        "LM-023"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Add arrivals, queues, service capacity, failure and retry behavior, operational interventions, and compliance models. Separate legally specified timing from modeled processing time."
+      ],
+      "acceptanceCriteria": "higher workload can cause missed duties without changing their legal existence. Conserved resource examples balance exactly under fixed precision. Every processing-time distribution is labeled and traceable to evidence or an assumption.",
+      "verification": [
+        "higher workload can cause missed duties without changing their legal existence. Conserved resource examples balance exactly under fixed precision. Every processing-time distribution is labeled and traceable to evidence or an assumption."
+      ]
+    },
+    {
+      "id": "LM-026",
+      "title": "Random streams replay and browser parity",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-021",
+        "LM-022",
+        "LM-025"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement specified pseudorandom streams, canonical inputs, engine retention metadata, deterministic rounding, checkpoints, and replay import and export. Expose the full run identity."
+      ],
+      "acceptanceCriteria": "browser and Node replay agree on reference traces. Comparison inputs remain aligned despite different numbers of internal events. Changing engine or calendar version changes run identity and never silently claims exact replay.",
+      "verification": [
+        "browser and Node replay agree on reference traces. Comparison inputs remain aligned despite different numbers of internal events. Changing engine or calendar version changes run identity and never silently claims exact replay."
+      ]
+    },
+    {
+      "id": "LM-027",
+      "title": "Before and after comparison engine",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-024",
+        "LM-026"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Run pinned baseline and bill models under shared circumstances. Align semantic checkpoints and derive changes in legal status, obligations, timing, operational load, and unresolved results."
+      ],
+      "acceptanceCriteria": "only declared framework changes occur in default comparison. A disappeared step is explained rather than matched to an unrelated event. Mixed baseline dates and incompatible scenario inputs are rejected or explicitly disclosed.",
+      "verification": [
+        "only declared framework changes occur in default comparison. A disappeared step is explained rather than matched to an unrelated event. Mixed baseline dates and incompatible scenario inputs are rejected or explicitly disclosed."
+      ]
+    },
+    {
+      "id": "LM-028",
+      "title": "Explanation trace and causal inspection",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-020",
+        "LM-027"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Generate structured explanations with applied rules, predicates, exceptions, assumptions, source excerpts, causal parents, and unresolved alternatives. Use authored templates for public text."
+      ],
+      "acceptanceCriteria": "every substantive outcome can be traced backward to its rules and inputs. An unknown outcome remains unknown in prose. No uncited generative sentence becomes part of the official trace.",
+      "verification": [
+        "every substantive outcome can be traced backward to its rules and inputs. An unknown outcome remains unknown in prose. No uncited generative sentence becomes part of the official trace."
+      ]
+    },
+    {
+      "id": "LM-029",
+      "title": "Worker execution and responsiveness controls",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-026",
+        "LM-028"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Move simulation and layout work behind a typed Web Worker protocol with progress messages, cancellation, payload limits, and safe worker restart. Retain a constrained fallback path for environments that cannot use the worker."
+      ],
+      "acceptanceCriteria": "a long bounded run does not freeze scenario navigation. Cancellation releases resources and cannot append events to a newer run. The fallback reports its limits and produces the same results on supported fixtures.",
+      "verification": [
+        "a long bounded run does not freeze scenario navigation. Cancellation releases resources and cannot append events to a newer run. The fallback reports its limits and produces the same results on supported fixtures."
+      ]
+    },
+    {
+      "id": "LM-030",
+      "title": "Complete electronic filing executable pack",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-018",
+        "LM-024",
+        "LM-027",
+        "LM-028",
+        "LM-029"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement the 14 scenario specifications, staged implementation, compliance failures, exact source mappings, and unresolved-interpretation branches. Add independently specified golden traces, AI-assisted source review, and pack coverage output."
+      ],
+      "acceptanceCriteria": "missing amount, wrong agency, relation back, delivery failure, outages, and protected material all retain their qualifications. No branch invents enactment or a real filing receipt. All modeled deadlines have explicit calendar semantics.",
+      "verification": [
+        "missing amount, wrong agency, relation back, delivery failure, outages, and protected material all retain their qualifications. No branch invents enactment or a real filing receipt. All modeled deadlines have explicit calendar semantics."
+      ]
+    },
+    {
+      "id": "LM-031",
+      "title": "Public shell catalog and first scene",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-005",
+        "LM-006",
+        "LM-018"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Build the homepage, pack landing page, legislative status, version selector, short introduction, scenario chooser, empty states, and source-explorer route. Deliver a useful public reading experience before the full animation lands."
+      ],
+      "acceptanceCriteria": "a new visitor can choose the wrong-agency example and inspect the bill without an account. Deep links pin a version. Phone and desktop layouts remain readable with JavaScript loading or a model unavailable.",
+      "verification": [
+        "a new visitor can choose the wrong-agency example and inspect the bill without an account. Deep links pin a version. Phone and desktop layouts remain readable with JavaScript loading or a model unavailable."
+      ]
+    },
+    {
+      "id": "LM-032",
+      "title": "Systems map and semantic scene projection",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-031",
+        "LM-028",
+        "LM-030"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Render institutions, routes, decisions, selected objects, grouped subflows, custom illustrations, and stable layouts. Build semantic focus targets and a local-view navigation model."
+      ],
+      "acceptanceCriteria": "selected actor, provision, and trace event remain synchronized. Large groups collapse without losing state. Moving a visual node cannot alter a rule, actor identity, or simulation outcome.",
+      "verification": [
+        "selected actor, provision, and trace event remain synchronized. Large groups collapse without losing state. Moving a visual node cannot alter a rule, actor identity, or simulation outcome."
+      ]
+    },
+    {
+      "id": "LM-033",
+      "title": "Playback timeline and animated journeys",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-032",
+        "LM-029"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Add play, pause, step, speed, scrub, reset, event checkpoints, animated document travel, waiting indicators, and missed-duty states. Bind animation to the completed or streamed trace."
+      ],
+      "acceptanceCriteria": "scrubbing reconstructs the correct state at each checkpoint. Reduced motion replaces movement with clear state updates. The first complete claim journey can be experienced from start to outcome.",
+      "verification": [
+        "scrubbing reconstructs the correct state at each checkpoint. Reduced motion replaces movement with clear state updates. The first complete claim journey can be experienced from start to outcome."
+      ]
+    },
+    {
+      "id": "LM-034",
+      "title": "Inspector and guided explanation journey",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-033",
+        "LM-013"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Build rule, actor, exception, and source inspectors plus a short guided wrong-agency tour. Link each explanation to exact text and allow visitors to expand into detail and return to their position."
+      ],
+      "acceptanceCriteria": "the demonstration works through mouse, touch, keyboard, and the initial sequence view. Visitors can answer why a date changed and identify its source. This is the first demonstration milestone, with remaining features clearly absent.",
+      "verification": [
+        "the demonstration works through mouse, touch, keyboard, and the initial sequence view. Visitors can answer why a date changed and identify its source. This is the first demonstration milestone, with remaining features clearly absent."
+      ]
+    },
+    {
+      "id": "LM-035",
+      "title": "Synchronized comparison experience",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-034",
+        "LM-027"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Build baseline and bill comparison with matched scenario inputs, semantic timeline alignment, changed-step highlighting, and a concise outcome difference view. Provide a single-column mobile comparison."
+      ],
+      "acceptanceCriteria": "changing the selected legal framework never silently changes staffing or compliance. Baseline source dates are visible. A difference that depends on an assumption exposes that assumption beside the outcome.",
+      "verification": [
+        "changing the selected legal framework never silently changes staffing or compliance. Baseline source dates are visible. A difference that depends on an assumption exposes that assumption beside the outcome."
+      ]
+    },
+    {
+      "id": "LM-036",
+      "title": "Scenario controls and labeled sandbox forks",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-035",
+        "LM-024"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Add schema-driven parameter controls, scenario validation, reset, local forks, modified-rule labels, and comparison against the published pack. Keep custom legal experiments separate from the official draft model."
+      ],
+      "acceptanceCriteria": "invalid inputs explain their limits. A shared sandbox cannot appear as the published model. Reset restores the exact pinned scenario, seed, and assumptions.",
+      "verification": [
+        "invalid inputs explain their limits. A shared sandbox cannot appear as the published model. Reset restores the exact pinned scenario, seed, and assumptions."
+      ]
+    },
+    {
+      "id": "LM-037",
+      "title": "Stress testing and sensitivity view",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-036",
+        "LM-025"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Expose bounded workload, capacity, outage, compliance, and service-time controls. Add parameter sweeps, repeated runs, distributions, and methodology summaries for advanced users."
+      ],
+      "acceptanceCriteria": "results distinguish statutory duties from predicted performance. Charts identify sample count, units, and assumptions. Excessive runs are bounded and cancelable; unsupported probability claims cannot be published.",
+      "verification": [
+        "results distinguish statutory duties from predicted performance. Charts identify sample count, units, and assumptions. Excessive runs are bounded and cancelable; unsupported probability claims cannot be published."
+      ]
+    },
+    {
+      "id": "LM-038",
+      "title": "Complete accessible sequence and mobile navigation",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-034",
+        "LM-035",
+        "LM-036"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Complete parity between graph and sequence views, keyboard map navigation, focus restoration, announcements, zoom and reflow, touch controls, motion preferences, and mobile inspectors."
+      ],
+      "acceptanceCriteria": "keyboard and screen-reader users can finish the same journey, change circumstances, compare results, and inspect a citation. Automated checks and documented assistive-technology journeys pass. No essential action requires dragging or hover.",
+      "verification": [
+        "keyboard and screen-reader users can finish the same journey, change circumstances, compare results, and inspect a citation. Automated checks and documented assistive-technology journeys pass. No essential action requires dragging or hover."
+      ]
+    },
+    {
+      "id": "LM-039",
+      "title": "Share links and reproducible exports",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-036",
+        "LM-026"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Add pinned public scenario links, parameter allowlists, local JSON export, printable explanation reports, and version-aware import. Preserve run identity and distinguish local exports from server-verified results."
+      ],
+      "acceptanceCriteria": "a shared link recreates the same supported run. Sensitive free text and private previews cannot leak into URLs or public exports. A withdrawn or incompatible release produces an explicit status rather than a substituted current model.",
+      "verification": [
+        "a shared link recreates the same supported run. Sensitive free text and private previews cannot leak into URLs or public exports. A withdrawn or incompatible release produces an explicit status rather than a substituted current model."
+      ]
+    },
+    {
+      "id": "LM-040",
+      "title": "Search glossary and learning depth",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-031",
+        "LM-034"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Add public pack and provision search, glossary links, related rules, basic and detailed explanation depth, and stable multilingual content keys. Provide source and status information in search results."
+      ],
+      "acceptanceCriteria": "a visitor can find routing, presentment, and denial without knowing section numbers. Simplified wording keeps the same legal qualifications. Search indexes contain only published content.",
+      "verification": [
+        "a visitor can find routing, presentment, and denial without knowing section numbers. Simplified wording keeps the same legal qualifications. Search indexes contain only published content."
+      ]
+    },
+    {
+      "id": "LM-041",
+      "title": "Public explorer acceptance and static distribution",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-035",
+        "LM-036",
+        "LM-037",
+        "LM-038",
+        "LM-039",
+        "LM-040"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Integrate all public journeys, complete first-pack editorial checks, measure reference performance, create a reproducible static public build, and document how to host it without consuming a new backend service slot."
+      ],
+      "acceptanceCriteria": "the 14 scenarios, mobile and accessible journeys, source inspection, comparison, sandbox, stress view, and sharing pass. The public build runs without database or AI credentials. Report actual performance, unresolved coverage, and hosting limitations.",
+      "verification": [
+        "the 14 scenarios, mobile and accessible journeys, source inspection, comparison, sandbox, stress view, and sharing pass. The public build runs without database or AI credentials. Report actual performance, unresolved coverage, and hosting limitations."
+      ]
+    },
+    {
+      "id": "LM-042",
+      "title": "Database persistence and durable editorial records",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-003",
+        "LM-016",
+        "LM-017"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement SQL migrations, repositories, revision guards, tenant keys, release tables, audit events, and the durable job store. Add isolated local development data and a no-credentials fixture mode."
+      ],
+      "acceptanceCriteria": "stale edits return conflicts; transactions prevent partial metadata writes; cross-organization references fail. Migration rollback or a forward recovery procedure is tested against representative data.",
+      "verification": [
+        "stale edits return conflicts; transactions prevent partial metadata writes; cross-organization references fail. Migration rollback or a forward recovery procedure is tested against representative data."
+      ]
+    },
+    {
+      "id": "LM-043",
+      "title": "Author authentication and authorization",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-042",
+        "LM-005"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Integrate the selected maintained identity provider, memberships, contributor/editor/publisher roles, secure sessions, reauthentication, server authorization, and scoped preview access. Provide a local test identity adapter."
+      ],
+      "acceptanceCriteria": "unauthenticated and wrong-organization requests fail across every author route. Revoking membership invalidates effective access. One owner can hold the necessary publishing roles without external-review requirements.",
+      "verification": [
+        "unauthenticated and wrong-organization requests fail across every author route. Revoking membership invalidates effective access. One owner can hold the necessary publishing roles without external-review requirements."
+      ]
+    },
+    {
+      "id": "LM-044",
+      "title": "Secure source storage and import endpoints",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-043",
+        "LM-009",
+        "LM-010",
+        "LM-011"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Add private object storage, bounded upload and fetch endpoints, source deduplication, quarantine state, signed access, and network restrictions for import URLs. Enqueue imports rather than parsing in requests."
+      ],
+      "acceptanceCriteria": "private files cannot be fetched through public keys or predictable IDs. Tests block metadata endpoints, private addresses, redirect bypasses, archive bombs, and oversized files. Source bytes survive service restarts.",
+      "verification": [
+        "private files cannot be fetched through public keys or predictable IDs. Tests block metadata endpoints, private addresses, redirect bypasses, archive bombs, and oversized files. Source bytes survive service restarts."
+      ]
+    },
+    {
+      "id": "LM-045",
+      "title": "Authoring workbench and model editor",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-044",
+        "LM-020",
+        "LM-028",
+        "LM-016"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Build the integrated source, rule, institution, assumption, scenario, and trace editor. Add draft validation, revision conflicts, change impact, preview, and manual correction paths."
+      ],
+      "acceptanceCriteria": "an author creates a supported rule and scenario without editing application source. Invalid models cannot be previewed as valid. Saving one panel cannot overwrite a concurrent revision from another editor silently.",
+      "verification": [
+        "an author creates a supported rule and scenario without editing application source. Invalid models cannot be previewed as valid. Saving one panel cannot overwrite a concurrent revision from another editor silently."
+      ]
+    },
+    {
+      "id": "LM-046",
+      "title": "Durable import and compilation runner",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-042",
+        "LM-044"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement lease-based job claiming, checkpoints, heartbeat, backoff, retries, cancellation, idempotency, dead-letter handling, and an independent worker entry point. Run bounded work within the initial service footprint."
+      ],
+      "acceptanceCriteria": "killing the process during import or compilation allows safe resumption. Duplicate jobs do not duplicate versions or releases. Long jobs never keep an HTTP request open, and expired leases recover correctly.",
+      "verification": [
+        "killing the process during import or compilation allows safe resumption. Duplicate jobs do not duplicate versions or releases. Long jobs never keep an HTTP request open, and expired leases recover correctly."
+      ]
+    },
+    {
+      "id": "LM-047",
+      "title": "Validation reports editorial review and publication",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-045",
+        "LM-046",
+        "LM-004",
+        "LM-030"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement publication validation, scoped editorial attestation, immutable asset assembly, atomic release pointers, release manifests, and correction or withdrawal status. Connect the public runtime to published releases."
+      ],
+      "acceptanceCriteria": "a failed upload cannot activate a partial release; stale validation cannot publish a newer revision. Missing provenance and unresolved critical dependencies fail appropriately. Rolling back a pointer restores the prior complete release.",
+      "verification": [
+        "a failed upload cannot activate a partial release; stale validation cannot publish a newer revision. Missing provenance and unresolved critical dependencies fail appropriately. Rolling back a pointer restores the prior complete release."
+      ]
+    },
+    {
+      "id": "LM-048",
+      "title": "Optional AI extraction adapter",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-045",
+        "LM-046"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Add provider-neutral candidate extraction with schema validation, exact source spans, generation metadata, job budgets, cancellation, and a kill switch. Keep manual authoring fully supported."
+      ],
+      "acceptanceCriteria": "malicious source instructions cannot invoke tools, alter permissions, or publish content. Candidates require editorial disposition. Missing credentials or a provider outage leaves manual authoring and all public simulations operational.",
+      "verification": [
+        "malicious source instructions cannot invoke tools, alter permissions, or publish content. Candidates require editorial disposition. Missing credentials or a provider outage leaves manual authoring and all public simulations operational."
+      ]
+    },
+    {
+      "id": "LM-049",
+      "title": "Revision maintenance and official source refresh",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-047",
+        "LM-016",
+        "LM-010"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Add explicit refresh jobs, source change detection, impact reports, stale-content warnings, correction notes, and revision comparison. Use cached metadata and bounded fetches; support manually triggered refresh without a recurring service."
+      ],
+      "acceptanceCriteria": "a changed official document creates a new candidate version and never overwrites a release. Rate limits and source failures retain the last valid snapshot with its original date. No automatic update publishes unreviewed rules.",
+      "verification": [
+        "a changed official document creates a new candidate version and never overwrites a release. Rate limits and source failures retain the last valid snapshot with its original date. No automatic update publishes unreviewed rules."
+      ]
+    },
+    {
+      "id": "LM-050",
+      "title": "Authoring API contracts and integration documentation",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-047",
+        "LM-048",
+        "LM-049"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Finish OpenAPI, SDK examples, errors, pagination, idempotency, import/export schemas, author workflows, and operator documentation. Add organization export and safe import for moving supported packs."
+      ],
+      "acceptanceCriteria": "a contract test client imports a fixture, checks a job, validates a model, publishes, and reads the release. Export contains no credentials or unintended private material. The full workflow works with AI disabled.",
+      "verification": [
+        "a contract test client imports a fixture, checks a job, validates a model, publishes, and reads the release. Export contains no credentials or unintended private material. The full workflow works with AI disabled."
+      ]
+    },
+    {
+      "id": "LM-051",
+      "title": "Server verification and optional saved scenarios",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-039",
+        "LM-043",
+        "LM-046",
+        "LM-047"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Add bounded server replay, verification records, explicit saved-scenario retention, access control, deletion, and unguessable sharing identifiers where server saves are enabled. Default anonymous use remains local."
+      ],
+      "acceptanceCriteria": "a forged client outcome fails recomputation. Private records cannot be read or enumerated by other users. Expired or deleted saves cease to resolve while immutable public model sources remain intact.",
+      "verification": [
+        "a forged client outcome fails recomputation. Private records cannot be read or enumerated by other users. Expired or deleted saves cease to resolve while immutable public model sources remain intact."
+      ]
+    },
+    {
+      "id": "LM-052",
+      "title": "Telemetry privacy and operating diagnostics",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-041",
+        "LM-050"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Implement structured operational logs, validation metrics, queue lag, execution budget reports, optional aggregate product events, redaction, retention, and diagnostics pages. Separate service health from optional provider health."
+      ],
+      "acceptanceCriteria": "logs and analytics contain no scenario facts or source contents by default. Correlation IDs connect a failed job to its diagnostics. Provider failure does not make already published models unreadable.",
+      "verification": [
+        "logs and analytics contain no scenario facts or source contents by default. Correlation IDs connect a failed job to its diagnostics. Provider failure does not make already published models unreadable."
+      ]
+    },
+    {
+      "id": "LM-053",
+      "title": "Backups restore and audit integrity",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-047",
+        "LM-052"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Configure verified backup procedures for database records, private sources, released assets, publication pointers, and signing material as applicable. Add integrity checkpoints and an isolated restore runbook."
+      ],
+      "acceptanceCriteria": "restore a representative pack into an isolated environment and replay its pinned scenario. Measure recovery point and recovery time against the declared targets. A cache or local disk is never counted as the only backup.",
+      "verification": [
+        "restore a representative pack into an isolated environment and replay its pinned scenario. Measure recovery point and recovery time against the declared targets. A cache or local disk is never counted as the only backup."
+      ]
+    },
+    {
+      "id": "LM-054",
+      "title": "Deployment migrations and rollback",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-041",
+        "LM-050",
+        "LM-052",
+        "LM-053"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Provide Render deployment configuration, environment variable inventory, migration command, health endpoints, static-mode alternative, deployment verification, and rollback procedures. Keep worker separation optional."
+      ],
+      "acceptanceCriteria": "stage a deployment using authorized resources, verify the deployed commit and release digest, restart during a job, and roll back safely. The setup documents current account constraints instead of provisioning paid resources or deleting another service automatically.",
+      "verification": [
+        "stage a deployment using authorized resources, verify the deployed commit and release digest, restart during a job, and roll back safely. The setup documents current account constraints instead of provisioning paid resources or deleting another service automatically."
+      ]
+    },
+    {
+      "id": "LM-055",
+      "title": "Performance budgets and large model behavior",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-037",
+        "LM-038",
+        "LM-047",
+        "LM-052"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Profile the stated browser and model budgets. Add grouping, lazy loading, viewport-aware rendering, precomputed layouts, worker message optimization, cache limits, and bounded large-run handling where measurements justify them."
+      ],
+      "acceptanceCriteria": "report the actual reference measurements and their environment. A large model remains navigable or gives a clear supported limit. Optimization preserves trace parity and accessibility; it cannot change legal results.",
+      "verification": [
+        "report the actual reference measurements and their environment. A large model remains navigable or gives a clear supported limit. Optimization preserves trace parity and accessibility; it cannot change legal results."
+      ]
+    },
+    {
+      "id": "LM-056",
+      "title": "Adversarial review and security fixes",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-050",
+        "LM-051",
+        "LM-054",
+        "LM-055"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Perform substantive AI-assisted source review and adversarial integration tests across imports, authorization, previews, caches, publication, job recovery, and executable models. Fix concrete findings and retain evidence tied to the reviewed commit."
+      ],
+      "acceptanceCriteria": "parser abuse, tenant escape, SSRF, stored injection, CSRF where applicable, public-cache leakage, and resource exhaustion regressions pass. No actual critical or high-risk unresolved exploit is hidden by a checklist. An external-audit placeholder cannot block release by itself.",
+      "verification": [
+        "parser abuse, tenant escape, SSRF, stored injection, CSRF where applicable, public-cache leakage, and resource exhaustion regressions pass. No actual critical or high-risk unresolved exploit is hidden by a checklist. An external-audit placeholder cannot block release by itself."
+      ]
+    },
+    {
+      "id": "LM-057",
+      "title": "Release signing verification and key rotation",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-004",
+        "LM-047",
+        "LM-053",
+        "LM-056"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Add publisher release signatures, public verification keys, key IDs, rotation, revocation metadata, secure signing credentials, and verification in browser and SDK. Keep content hashes and signature trust as separate concepts."
+      ],
+      "acceptanceCriteria": "tampering and untrusted signatures fail; old authorized releases verify under the documented key policy; a compromised key can be revoked without silently trusting replacement content. Restore procedures include signing recovery or deliberate reissuance.",
+      "verification": [
+        "tampering and untrusted signatures fail; old authorized releases verify under the documented key policy; a compromised key can be revoked without silently trusting replacement content. Restore procedures include signing recovery or deliberate reissuance."
+      ]
+    },
+    {
+      "id": "LM-058",
+      "title": "Second domain pack and domain reuse proof",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-041",
+        "LM-047",
+        "LM-055"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Build the hypothetical permit and simple resource-allocation examples using published contracts. Demonstrate eligibility, exceptions, capacity, and resource accounting without electronic-filing-specific branches in engine code."
+      ],
+      "acceptanceCriteria": "both examples run through the same compiler, simulator, source inspector, graph, and accessible sequence. No scenario claims macroeconomic or ecological forecasting capability. Required domain additions are explicit operators with tests and versioned capability declarations.",
+      "verification": [
+        "both examples run through the same compiler, simulator, source inspector, graph, and accessible sequence. No scenario claims macroeconomic or ecological forecasting capability. Required domain additions are explicit operators with tests and versioned capability declarations."
+      ]
+    },
+    {
+      "id": "LM-059",
+      "title": "Shared SDK release and Ask Bill handoff",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-050",
+        "LM-057",
+        "LM-058"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Publish or package the reusable SDK, schema documentation, semantic focus contract, compatibility fixtures, glossary access, and trace explanation examples. Provide a small headless consumer demonstration for a future Ask Bill application."
+      ],
+      "acceptanceCriteria": "a separate consumer loads a signed release, resolves a citation, runs a scenario, and requests a semantic focus target without importing the Law Machine UI. No character, chat, voice, or 3D work is required for this unit.",
+      "verification": [
+        "a separate consumer loads a signed release, resolves a citation, runs a scenario, and requests a semantic focus target without importing the Law Machine UI. No character, chat, voice, or 3D work is required for this unit."
+      ]
+    },
+    {
+      "id": "LM-060",
+      "title": "Production acceptance and operational handoff",
+      "origin": "original",
+      "prs": [],
+      "contributingPrs": [],
+      "priorEvidencePrs": [],
+      "dependsOn": [
+        "LM-051",
+        "LM-052",
+        "LM-053",
+        "LM-054",
+        "LM-055",
+        "LM-056",
+        "LM-057",
+        "LM-058",
+        "LM-059"
+      ],
+      "externalDependencies": [],
+      "externalPrerequisites": [],
+      "scope": [
+        "Run the complete product acceptance matrix, source and model checks, deployment verification, recovery evidence, accessibility journeys, performance checks, and public content review. Publish the operational manual, coverage statement, known limitations, and actual launch evidence."
+      ],
+      "acceptanceCriteria": "both legislative domains, all electronic-filing scenarios, anonymous exploration, secure authoring, correction and withdrawal, deterministic replay, signing, restore, and rollback work on the release commit. Report merge, deployment, content coverage, and operational acceptance separately. Required checks pass and actual vulnerabilities are resolved; outside certification remains a separate optional status.",
+      "verification": [
+        "both legislative domains, all electronic-filing scenarios, anonymous exploration, secure authoring, correction and withdrawal, deterministic replay, signing, restore, and rollback work on the release commit. Report merge, deployment, content coverage, and operational acceptance separately. Required checks pass and actual vulnerabilities are resolved; outside certification remains a separate optional status."
+      ]
+    }
+  ],
+  "pullRequests": []
+}
