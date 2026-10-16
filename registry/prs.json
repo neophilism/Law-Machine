@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-16T18:11:26.523Z",
+  "observedAt": "2026-10-16T21:19:57.929Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -50,7 +50,9 @@
       "id": "LM-003",
       "title": "Domain contracts and identity",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        5
+      ],
       "dependsOn": [
         "LM-002"
       ],
@@ -1129,31 +1131,45 @@
   ],
   "pullRequests": [
     {
+      "id": 4894245465,
+      "number": 5,
+      "title": "LM-003: Domain contracts and identity",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/5",
+      "createdAt": "2026-10-16T21:03:11Z",
+      "updatedAt": "2026-10-16T21:19:35Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "b12b6222045a52efeb17574d61451de0a7da80ec",
+      "baseRef": "main"
+    },
+    {
       "id": 4892435514,
       "number": 4,
       "title": "LM-002: Workspace and continuous integration",
-      "state": "open",
+      "state": "closed",
       "url": "https://github.com/neophilism/Law-Machine/pull/4",
       "createdAt": "2026-10-16T18:10:16Z",
-      "updatedAt": "2026-10-16T18:10:16Z",
-      "closedAt": null,
-      "mergedAt": null,
+      "updatedAt": "2026-10-16T21:02:02Z",
+      "closedAt": "2026-10-16T21:02:02Z",
+      "mergedAt": "2026-10-16T21:02:02Z",
       "draft": false,
-      "headSha": "6278b5778b60f165996ce777e71b8d224dab0a5e",
+      "headSha": "5365232aad8e6c70f29479545953aaf2de32f174",
       "baseRef": "main"
     },
     {
       "id": 4892379039,
       "number": 3,
       "title": "LM-002: build the TypeScript workspace and continuous integration",
-      "state": "open",
+      "state": "closed",
       "url": "https://github.com/neophilism/Law-Machine/pull/3",
       "createdAt": "2026-10-16T18:05:20Z",
-      "updatedAt": "2026-10-16T18:05:20Z",
-      "closedAt": null,
+      "updatedAt": "2026-10-16T21:04:02Z",
+      "closedAt": "2026-10-16T21:04:02Z",
       "mergedAt": null,
       "draft": true,
-      "headSha": "cb961636d51e93f70e2ca8f323dec79170c5381b",
+      "headSha": "33d4f1037c7b76d7a331d540229e006d1cc2039d",
       "baseRef": "main"
     },
     {
