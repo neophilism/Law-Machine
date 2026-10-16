@@ -6,7 +6,7 @@ const source = readFileSync(new URL('../../packages/contracts/src/toy-oracle.ts'
 const oracle = JSON.parse(readFileSync(new URL('../../packages/contracts/fixtures/toy-law-oracle.json',import.meta.url),'utf8')) as {cases:{id:string;facts:{received:boolean;destination:'desk-b'|null};expected:unknown[]}[]};
 test('browser and server agree on independently specified toy traces', async ({ page }) => {
   await page.goto('/');
-  const compiled = ts.transpileModule(source, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None } }).outputText
+  const compiled = ts.transpileModule(source, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext } }).outputText
     .replace(/^export /gm,'');
   for(const item of oracle.cases){
     const browser = await page.evaluate(({code, facts}) => {
