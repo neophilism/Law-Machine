@@ -1,0 +1,14 @@
+:root { color-scheme: light; font-family: system-ui, sans-serif; color: #17302c; background: #f4f3ec; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 76rem; margin: auto; padding: clamp(1.25rem, 5vw, 5rem); }
+h1 { font-size: clamp(2.6rem, 7vw, 6rem); line-height: 1.03; letter-spacing: -.045em; max-width: 11ch; margin-block: 2rem; }
+.eyebrow { font-size: .75rem; letter-spacing: .12em; font-weight: 700; }
+.intro { font-size: clamp(1.15rem, 2vw, 1.6rem); max-width: 38rem; line-height: 1.55; }
+section { border-top: 1px solid #9daaa3; margin-top: 3rem; padding-top: 1.5rem; max-width: 44rem; line-height: 1.6; }
+a { color: #17524c; text-underline-offset: .2em; }
+:focus-visible { outline: 3px solid #a14e08; outline-offset: 4px; }
+footer { margin-top: 4rem; font-size: .85rem; line-height: 1.6; }
+.skip-link { position: absolute; top: -5rem; left: 1rem; padding: 1rem; background: white; z-index: 10; }
+.skip-link:focus { top: 1rem; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }

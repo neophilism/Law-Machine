@@ -21,7 +21,7 @@ Keep implementation, automated testing, external review, certification, merge, d
 - GitHub's live API owns PR status. Dated registry observations are historical evidence. Update `observedAt` only when refreshing actual observations; open follow-ups prevent declaring the unit complete.
 - Store implementation/test/review/rollback evidence in `docs/evidence/LM-XXX.md`. Keep task-specific code and its relevant tests together.
 - Run `npm run check` plus all relevant application checks. Add new checks when new surfaces land; foundation-only checks cannot certify later application behavior.
-- Before a direct GitHub PR merge, use `docs/GITHUB_MERGE_PREFLIGHT.md` and `scripts/verify-pr-merge.mjs` with required check `foundation` and the exact current PR head SHA. Add applicable named checks as the workspace grows. Missing, failed, pending, skipped, unstarted or incomplete checks are not passed. Fix/retry; keep the affected PR open and progress safe independent work if CI capacity is unavailable.
+- Before a direct GitHub PR merge, use `docs/GITHUB_MERGE_PREFLIGHT.md` and `scripts/verify-pr-merge.mjs` with required checks `foundation` and `workspace` and the exact current PR head SHA. Add applicable named checks as the workspace grows. Missing, failed, pending, skipped, unstarted or incomplete checks are not passed. Fix/retry; keep the affected PR open and progress safe independent work if CI capacity is unavailable.
 - Continue dependency-ready work without repeated permission questions. Do not mutate Boardroom or Engine Room merely to copy this repository's plan. Do not spawn additional agents without user or applicable instruction authorization.
 
 ## Product and engineering invariants
