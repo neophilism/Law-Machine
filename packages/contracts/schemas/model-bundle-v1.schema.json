@@ -1,0 +1,482 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:law-machine:model-bundle:1.0.0",
+  "title": "Law Machine public model bundle (schema 1.0.0)",
+  "description": "Structural JSON Schema. The provider-free TypeScript validator also checks scoped identities, pinned source digests, exact quotes, cycles, references and special numeric bounds.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "billVersions",
+    "provisions",
+    "actors",
+    "assumptions",
+    "rules",
+    "scenarios",
+    "releases",
+    "traces"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "billVersions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/billVersion"
+      },
+      "minItems": 0,
+      "maxItems": 10000
+    },
+    "provisions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/provision"
+      },
+      "minItems": 0,
+      "maxItems": 10000
+    },
+    "actors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/actor"
+      },
+      "minItems": 0,
+      "maxItems": 10000
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/assumption"
+      },
+      "minItems": 0,
+      "maxItems": 10000
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/rule"
+      },
+      "minItems": 0,
+      "maxItems": 10000
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/scenario"
+      },
+      "minItems": 0,
+      "maxItems": 10000
+    },
+    "releases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/release"
+      },
+      "minItems": 0,
+      "maxItems": 10000
+    },
+    "traces": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/trace"
+      },
+      "minItems": 0,
+      "maxItems": 10000
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8192
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "versionId",
+        "provisionId",
+        "sourceDigest",
+        "quote"
+      ],
+      "properties": {
+        "versionId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "provisionId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "sourceDigest": {
+          "$ref": "#/$defs/digest"
+        },
+        "quote": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "additionalProperties": true
+    },
+    "quantity": {
+      "type": "object",
+      "required": [
+        "value",
+        "unit"
+      ],
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "enum": [
+            "day",
+            "businessDay",
+            "hour",
+            "usd",
+            "count",
+            "percent"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "known": {
+      "type": "object",
+      "required": [
+        "kind",
+        "value"
+      ],
+      "properties": {
+        "kind": {
+          "const": "known"
+        },
+        "value": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8192
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "#/$defs/quantity"
+            }
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "unknown": {
+      "type": "object",
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "properties": {
+        "kind": {
+          "const": "unknown"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192
+        }
+      },
+      "additionalProperties": true
+    },
+    "billVersion": {
+      "type": "object",
+      "required": [
+        "id",
+        "billId",
+        "version",
+        "status",
+        "jurisdiction",
+        "sourceDigest"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "billId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "introduced",
+            "enacted",
+            "repealed"
+          ]
+        },
+        "jurisdiction": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192
+        },
+        "sourceDigest": {
+          "$ref": "#/$defs/digest"
+        }
+      },
+      "additionalProperties": true
+    },
+    "provision": {
+      "type": "object",
+      "required": [
+        "id",
+        "versionId",
+        "citation",
+        "text",
+        "source"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "versionId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "citation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192
+        },
+        "parentId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        }
+      },
+      "additionalProperties": true
+    },
+    "actor": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "kind"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192
+        },
+        "kind": {
+          "enum": [
+            "agency",
+            "court",
+            "person",
+            "organization",
+            "other"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "assumption": {
+      "type": "object",
+      "required": [
+        "id",
+        "description",
+        "classification",
+        "value"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192
+        },
+        "classification": {
+          "enum": [
+            "interpretation",
+            "empirical",
+            "hypothetical",
+            "unknown"
+          ]
+        },
+        "value": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/known"
+            },
+            {
+              "$ref": "#/$defs/unknown"
+            }
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "rule": {
+      "type": "object",
+      "required": [
+        "id",
+        "versionId",
+        "sourceRefs",
+        "modal",
+        "operation"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "versionId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          },
+          "minItems": 1,
+          "maxItems": 100
+        },
+        "modal": {
+          "enum": [
+            "obligation",
+            "permission",
+            "prohibition",
+            "right",
+            "power"
+          ]
+        },
+        "operation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192
+        }
+      },
+      "additionalProperties": true
+    },
+    "scenario": {
+      "type": "object",
+      "required": [
+        "id",
+        "versionId",
+        "title",
+        "hypothetical",
+        "assumptions"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "versionId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192
+        },
+        "hypothetical": {
+          "const": true
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "minItems": 0,
+          "maxItems": 1000
+        }
+      },
+      "additionalProperties": true
+    },
+    "release": {
+      "type": "object",
+      "required": [
+        "id",
+        "schemaVersion",
+        "billVersionId",
+        "sourceDigest",
+        "createdAt"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "billVersionId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "sourceDigest": {
+          "$ref": "#/$defs/digest"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": true
+    },
+    "trace": {
+      "type": "object",
+      "required": [
+        "id",
+        "scenarioId",
+        "tick",
+        "actorId",
+        "ruleId",
+        "sourceRefs"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "scenarioId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "actorId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "ruleId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          },
+          "minItems": 1,
+          "maxItems": 100
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

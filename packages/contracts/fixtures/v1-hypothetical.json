@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "1.0.0",
+  "billVersions": [
+    {
+      "id": "v1",
+      "billId": "toy",
+      "version": "draft A",
+      "status": "draft",
+      "jurisdiction": "fictional",
+      "sourceDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "v2",
+      "billId": "toy",
+      "version": "draft B",
+      "status": "introduced",
+      "jurisdiction": "fictional",
+      "sourceDigest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  ],
+  "provisions": [
+    {
+      "id": "p1",
+      "versionId": "v1",
+      "citation": "1(a)",
+      "text": "Toy requirement",
+      "source": {
+        "versionId": "v1",
+        "provisionId": "p1",
+        "sourceDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "quote": "Toy requirement"
+      }
+    },
+    {
+      "id": "p1",
+      "versionId": "v2",
+      "citation": "1(a)",
+      "text": "Toy requirement, revised",
+      "source": {
+        "versionId": "v2",
+        "provisionId": "p1",
+        "sourceDigest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "quote": "Toy requirement, revised"
+      }
+    }
+  ],
+  "actors": [
+    {
+      "id": "a1",
+      "name": "Fictional clerk",
+      "kind": "agency"
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "x1",
+      "description": "Toy fact unavailable",
+      "classification": "unknown",
+      "value": {
+        "kind": "unknown",
+        "reason": "not specified"
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r1",
+      "versionId": "v1",
+      "sourceRefs": [
+        {
+          "versionId": "v1",
+          "provisionId": "p1",
+          "sourceDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "quote": "Toy requirement"
+        }
+      ],
+      "modal": "obligation",
+      "operation": "toy-opaque-operation"
+    },
+    {
+      "id": "r1",
+      "versionId": "v2",
+      "sourceRefs": [
+        {
+          "versionId": "v2",
+          "provisionId": "p1",
+          "sourceDigest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "quote": "Toy requirement, revised"
+        }
+      ],
+      "modal": "obligation",
+      "operation": "toy-opaque-operation"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "s1",
+      "versionId": "v1",
+      "title": "Toy scenario",
+      "hypothetical": true,
+      "assumptions": [
+        "x1"
+      ]
+    }
+  ],
+  "releases": [
+    {
+      "id": "rel1",
+      "schemaVersion": "1.0.0",
+      "billVersionId": "v1",
+      "sourceDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "createdAt": "2026-01-01T00:00:00Z"
+    }
+  ],
+  "traces": [
+    {
+      "id": "e1",
+      "scenarioId": "s1",
+      "tick": 0,
+      "actorId": "a1",
+      "ruleId": "r1",
+      "sourceRefs": [
+        {
+          "versionId": "v1",
+          "provisionId": "p1",
+          "sourceDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "quote": "Toy requirement"
+        }
+      ]
+    }
+  ]
+}
