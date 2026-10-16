@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "repository": "neophilism/Law-Machine",
+  "status": "planning-discovery",
+  "complete": false,
+  "upstreamConformanceInventory": false,
+  "note": "Foundation tooling only is implemented. Planned runtime components and flows require source/build evidence and exact profile assessment before claiming complete scope.",
+  "components": [
+    {
+      "id": "foundation",
+      "state": "implemented",
+      "data": [
+        "public specification",
+        "public registry"
+      ],
+      "role": "Offline validation and read-only CI"
+    },
+    {
+      "id": "public-browser",
+      "state": "planned",
+      "data": [
+        "public packs",
+        "local hypothetical inputs"
+      ],
+      "role": "Local deterministic simulation and presentation"
+    },
+    {
+      "id": "authoring-api",
+      "state": "planned",
+      "data": [
+        "private drafts",
+        "session and membership metadata"
+      ],
+      "role": "Authorized server-side editorial processing"
+    },
+    {
+      "id": "job-runner",
+      "state": "planned",
+      "data": [
+        "untrusted source bytes",
+        "compiled candidate models"
+      ],
+      "role": "Bounded import, validation and publication jobs"
+    },
+    {
+      "id": "postgres",
+      "state": "planned",
+      "data": [
+        "editorial records",
+        "jobs",
+        "audit events"
+      ],
+      "role": "Tenant-scoped durable state"
+    },
+    {
+      "id": "object-store",
+      "state": "planned",
+      "data": [
+        "private sources",
+        "public immutable releases"
+      ],
+      "role": "Separate private and public storage"
+    },
+    {
+      "id": "identity-provider",
+      "state": "planned",
+      "data": [
+        "authentication metadata"
+      ],
+      "role": "Maintained identity/session integration"
+    },
+    {
+      "id": "optional-ai",
+      "state": "planned-disabled",
+      "data": [
+        "explicitly authorized draft excerpts"
+      ],
+      "role": "Candidate extraction only"
+    }
+  ],
+  "flows": [
+    {
+      "id": "public-source-to-ci",
+      "from": "foundation",
+      "to": "foundation",
+      "classification": "public",
+      "processing": "Repository files validated in isolated CI",
+      "units": [
+        "LM-001",
+        "LM-002"
+      ]
+    },
+    {
+      "id": "release-to-browser",
+      "from": "object-store",
+      "to": "public-browser",
+      "classification": "public",
+      "processing": "Integrity-verified public release download",
+      "units": [
+        "LM-004",
+        "LM-041",
+        "LM-047",
+        "LM-057"
+      ]
+    },
+    {
+      "id": "local-scenario",
+      "from": "public-browser",
+      "to": "public-browser",
+      "classification": "local-hypothetical",
+      "processing": "Memory/local storage; no default server disclosure",
+      "units": [
+        "LM-026",
+        "LM-039"
+      ]
+    },
+    {
+      "id": "private-draft-import",
+      "from": "authoring-api",
+      "to": "job-runner",
+      "classification": "protected-authorized-server-processing",
+      "processing": "Explicit editorial import; no private E2EE claim",
+      "units": [
+        "LM-043",
+        "LM-044",
+        "LM-046"
+      ]
+    },
+    {
+      "id": "private-record-storage",
+      "from": "authoring-api",
+      "to": "postgres",
+      "classification": "protected-authorized-server-processing",
+      "processing": "Tenant-scoped records, revision guard, access controls",
+      "units": [
+        "LM-042",
+        "LM-043"
+      ]
+    },
+    {
+      "id": "source-storage",
+      "from": "job-runner",
+      "to": "object-store",
+      "classification": "protected-authorized-server-processing",
+      "processing": "Private source prefix, quarantine and scoped access",
+      "units": [
+        "LM-044"
+      ]
+    },
+    {
+      "id": "publication",
+      "from": "job-runner",
+      "to": "object-store",
+      "classification": "intentionally-disclosed",
+      "processing": "Authorized validated revision to immutable public package",
+      "units": [
+        "LM-047",
+        "LM-057"
+      ]
+    },
+    {
+      "id": "authentication",
+      "from": "authoring-api",
+      "to": "identity-provider",
+      "classification": "protected-authentication-metadata",
+      "processing": "Maintained session protocol; secrets server-only",
+      "units": [
+        "LM-043"
+      ]
+    },
+    {
+      "id": "ai-extraction",
+      "from": "job-runner",
+      "to": "optional-ai",
+      "classification": "intentionally-disclosed",
+      "processing": "Disabled by default, authorized excerpts only, budgeted candidate output",
+      "units": [
+        "LM-048"
+      ]
+    }
+  ],
+  "unresolved": [
+    "Runtime source/build artifacts do not exist at LM-001.",
+    "Exact applicable profiles and host obligations must be assessed as components land.",
+    "No private E2EE or production certification claim."
+  ]
+}

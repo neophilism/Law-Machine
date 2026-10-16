@@ -1,0 +1,40 @@
+{
+  "verifiedOn": "2026-10-16",
+  "sources": [
+    {
+      "repo": "neophilism/Boardroom",
+      "commit": "148ab531b994bf06c0bf3a7e82a2c1079b773920",
+      "path": "registry/pr-contract.mjs",
+      "localPath": "registry/pr-contract.mjs",
+      "blobSha": "d06a9b2962c9f98cdd57078dfbc1aed4896759cd"
+    },
+    {
+      "repo": "neophilism/Engine-Room",
+      "commit": "dcf58dda45ce20176bbed8d437a6f20c7929a40a",
+      "path": "lib/sync/structured-pr-registry.mjs",
+      "localPath": "tests/fixtures/consumers/engine-room-structured-pr-registry.mjs",
+      "blobSha": "183301be63d512556a7fa01a8d14520c01beaa87"
+    },
+    {
+      "repo": "neophilism/Boardroom",
+      "commit": "148ab531b994bf06c0bf3a7e82a2c1079b773920",
+      "path": "scripts/verify-pr-merge.mjs",
+      "localPath": "scripts/verify-pr-merge.mjs",
+      "blobSha": "b8ad6b8d33edee9a0a9335b848a893069717a359"
+    },
+    {
+      "repo": "neophilism/Engine-Room",
+      "commit": "dcf58dda45ce20176bbed8d437a6f20c7929a40a",
+      "path": "scripts/validate_e2eesa_status.py",
+      "localPath": "scripts/validate_e2eesa_status.py",
+      "blobSha": "42057c0eaa93ca40f945aa46f7c7c0bf85932ca9"
+    },
+    {
+      "repo": "neophilism/Engine-Room",
+      "commit": "dcf58dda45ce20176bbed8d437a6f20c7929a40a",
+      "path": "security/e2eesa-status.schema.json",
+      "localPath": "security/e2eesa-status.schema.json",
+      "blobSha": "231b4b1df96dd12306f2e8eff93ed298cd66bad5"
+    }
+  ]
+}

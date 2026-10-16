@@ -1,0 +1,8 @@
+{
+  "title": "Law-Machine-Architecture-and-PR-Plan.docx",
+  "date": "2026-10-16",
+  "sha256": "28945ae6ac804426050c4d583a19277d27956de8bdeb8681e8d5ca96c7071db7",
+  "textPath": "docs/source/ORIGINAL_SPECIFICATION.md",
+  "textSha256": "8f5c57dfe3ab490aa1a628d4de3ce4b8f4bd4607f133fdd47fa09ad20eeb2202",
+  "importNotes": "Original DOCX bytes retained; Markdown preserves paragraph text and table cells in document order. The active documents apply the registry-path correction in ADR-0001. Source references are historical; implementation must revalidate time-sensitive facts."
+}
