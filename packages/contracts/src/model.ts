@@ -1,6 +1,8 @@
 /**
- * LM-003 public, provider-free model primitives. Identifiers are scoped to an immutable bill version.
- * No law is inferred from these records and unknown is not treated as false.
+ * LM-003. Data-only public contracts; importing this module requires no provider or UI.
+ * BillVersion IDs are unique in a bundle. Provision and rule IDs are scoped by
+ * versionId; actor, assumption, scenario, release, and event IDs are bundle-unique.
+ * A source anchor always pins its version, original-document digest and quote.
  */
 export const SCHEMA_VERSION = '1.0.0' as const;
 export type UnknownValue = { readonly kind: 'unknown'; readonly reason: string };
@@ -15,6 +17,7 @@ export type Assumption = { readonly id: string; readonly description: string; re
 export type Rule = { readonly id: string; readonly versionId: string; readonly sourceRefs: readonly SourceRef[]; readonly modal: 'obligation' | 'permission' | 'prohibition' | 'right' | 'power'; readonly operation: string };
 export type Scenario = { readonly id: string; readonly versionId: string; readonly title: string; readonly hypothetical: true; readonly assumptions: readonly string[] };
 export type ModelRelease = { readonly id: string; readonly schemaVersion: typeof SCHEMA_VERSION; readonly billVersionId: string; readonly sourceDigest: string; readonly createdAt: string };
+/** The scenario supplies the immutable version scope of ruleId and every sourceRef. */
 export type TraceEvent = { readonly id: string; readonly scenarioId: string; readonly tick: number; readonly actorId: string; readonly ruleId: string; readonly sourceRefs: readonly SourceRef[] };
 export type ModelBundle = { readonly schemaVersion: typeof SCHEMA_VERSION; readonly billVersions: readonly BillVersion[]; readonly provisions: readonly Provision[]; readonly actors: readonly Actor[]; readonly assumptions: readonly Assumption[]; readonly rules: readonly Rule[]; readonly scenarios: readonly Scenario[]; readonly releases: readonly ModelRelease[]; readonly traces: readonly TraceEvent[] };
 export type Diagnostic = { readonly code: string; readonly path: string; readonly message: string };
