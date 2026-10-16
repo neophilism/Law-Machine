@@ -5,9 +5,11 @@
   "packageManager": "pnpm@11.25.0",
   "type": "module",
   "description": "Law Machine foundation and approved implementation registry",
-  "engines": { "node": ">=24 <25" },
+  "engines": {
+    "node": ">=24 <25"
+  },
   "scripts": {
-    "check": "node scripts/check.mjs && pnpm boundaries && pnpm lint && pnpm typecheck && pnpm test:unit && pnpm scan:secrets",
+    "check": "node scripts/check.mjs && pnpm boundaries && pnpm lint && pnpm typecheck && pnpm test:unit && pnpm scan:secrets && pnpm smoke:sdk",
     "check:foundation": "node scripts/check.mjs",
     "dev": "pnpm --filter @law-machine/web dev",
     "build": "pnpm --filter @law-machine/web build",
@@ -21,7 +23,8 @@
     "test:browser": "playwright test",
     "audit": "pnpm audit --audit-level=high",
     "validate:registry": "node scripts/validate-pr-registry.mjs",
-    "validate:security": "python3 scripts/validate_e2eesa_status.py"
+    "validate:security": "python3 scripts/validate_e2eesa_status.py",
+    "smoke:sdk": "node --import tsx scripts/sdk-smoke.ts"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
