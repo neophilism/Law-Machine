@@ -76,7 +76,7 @@ test('synthetic observed PR records reject foreign URLs and contradictory states
   d.pullRequests[0] = { ...record, mergedAt: '2026-10-16T00:00:00Z' }; assert.throws(() => parse(d));
 });
 test('exact ID mapping works for both consumers; ordinal and fuzzy titles do not', () => {
-  const d = copy(); d.units.forEach(u => { u.prs = []; });
+  const d = copy(); d.units.forEach(u => { u.prs = []; u.priorEvidencePrs = []; u.contributingPrs = []; });
   for (const [parseFn, attach] of [
     [s => parsePrRegistry(s, REPOSITORY), attachObservedWorkIds],
     [s => parseStructuredPrRegistry(s, 'Law-Machine'), attachEngine]
