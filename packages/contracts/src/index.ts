@@ -1,2 +1,2 @@
-// Implementation belongs to the corresponding approved LM work unit.
-export {};
+export * from './model.ts';
+export { validateBundle } from './validate.ts';
