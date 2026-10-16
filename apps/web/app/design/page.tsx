@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionButton, ErrorNotice, ExplainDialog, LoadingNotice, ModelTabs, StatusLabel } from '../components/primitives';
+import { ActionButton, ErrorNotice, ExplainDialog, LoadingNotice, ModelTabs, SourceInspector, StatusLabel } from '../components/primitives';
 
 const views = [
   {
@@ -32,7 +32,7 @@ const views = [
       <p className="eyebrow">03 / SOURCE INSPECTION</p>
       <h2>Never lose the distinction between text and interpretation.</h2>
       <p>Future source inspectors will show an exact bill version, quoted provision, model assumption, and unresolved question side by side.</p>
-      <p className="source-unavailable"><strong>Source unavailable:</strong> This design preview has no official legislative text attached.</p>
+      <SourceInspector label="Source details"><p className="source-unavailable"><strong>Source unavailable:</strong> This design preview has no official legislative text attached.</p></SourceInspector>
     </div>
   }
 ] as const;
