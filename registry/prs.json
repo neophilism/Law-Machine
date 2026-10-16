@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-16T21:28:29.276Z",
+  "observedAt": "2026-10-16T21:31:43.115Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -69,7 +69,9 @@
       "id": "LM-004",
       "title": "Canonical serialization and integrity",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        7
+      ],
       "dependsOn": [
         "LM-003"
       ],
@@ -1133,17 +1135,31 @@
   ],
   "pullRequests": [
     {
-      "id": 4894458470,
-      "number": 6,
-      "title": "LM-005: Accessible design system and interaction preview",
+      "id": 4894495285,
+      "number": 7,
+      "title": "LM-004: Canonical serialization and content integrity",
       "state": "open",
-      "url": "https://github.com/neophilism/Law-Machine/pull/6",
-      "createdAt": "2026-10-16T21:26:03Z",
-      "updatedAt": "2026-10-16T21:28:21Z",
+      "url": "https://github.com/neophilism/Law-Machine/pull/7",
+      "createdAt": "2026-10-16T21:29:50Z",
+      "updatedAt": "2026-10-16T21:31:35Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": true,
-      "headSha": "804709ce3159655c62cd0b7643ce0dc56298948e",
+      "headSha": "80629d32447a7958d44635f233b4f36a2c8b7e1a",
+      "baseRef": "main"
+    },
+    {
+      "id": 4894458470,
+      "number": 6,
+      "title": "LM-005: Accessible design system and interaction preview",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/6",
+      "createdAt": "2026-10-16T21:26:03Z",
+      "updatedAt": "2026-10-16T21:31:11Z",
+      "closedAt": "2026-10-16T21:31:11Z",
+      "mergedAt": "2026-10-16T21:31:11Z",
+      "draft": false,
+      "headSha": "1379450986c7427bff544f2ff41593ec662cae70",
       "baseRef": "main"
     },
     {
