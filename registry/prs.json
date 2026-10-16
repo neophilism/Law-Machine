@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-16T21:35:23.705Z",
+  "observedAt": "2026-10-16T21:40:06.764Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -107,7 +107,9 @@
       "id": "LM-006",
       "title": "Headless SDK boundaries",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        9
+      ],
       "dependsOn": [
         "LM-003",
         "LM-004"
@@ -1137,17 +1139,31 @@
   ],
   "pullRequests": [
     {
-      "id": 4894534299,
-      "number": 8,
-      "title": "LM-007: Explicit coverage and capability declarations",
+      "id": 4894565768,
+      "number": 9,
+      "title": "LM-006: Provider-free headless public SDK",
       "state": "open",
-      "url": "https://github.com/neophilism/Law-Machine/pull/8",
-      "createdAt": "2026-10-16T21:33:54Z",
-      "updatedAt": "2026-10-16T21:35:18Z",
+      "url": "https://github.com/neophilism/Law-Machine/pull/9",
+      "createdAt": "2026-10-16T21:37:28Z",
+      "updatedAt": "2026-10-16T21:40:00Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": true,
-      "headSha": "144b21f483d67e9d4ad9f3ce35e09c42df7699dd",
+      "headSha": "c896ca72649174609f96bb8cba5969c49aeeb3e7",
+      "baseRef": "main"
+    },
+    {
+      "id": 4894534299,
+      "number": 8,
+      "title": "LM-007: Explicit coverage and capability declarations",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/8",
+      "createdAt": "2026-10-16T21:33:54Z",
+      "updatedAt": "2026-10-16T21:39:41Z",
+      "closedAt": "2026-10-16T21:39:41Z",
+      "mergedAt": "2026-10-16T21:39:41Z",
+      "draft": false,
+      "headSha": "694f5859cf075d837f1704becda148ab6952c8c9",
       "baseRef": "main"
     },
     {
