@@ -1,0 +1,477 @@
+{
+  "schemaVersion": "law-machine-scenario-inventory-v1",
+  "packId": "electronic-filing-planned",
+  "description": "Non-executable planning inventory from the approved Law Machine architecture, NOT verified legislative or legal-source text",
+  "status": "not-publishable",
+  "sourceStatus": "original-bill-not-available",
+  "baselineStatus": "official-snapshots-not-collected",
+  "sourceInventory": [
+    {
+      "id": "proposed-bill",
+      "origin": "historical-user-excerpt",
+      "retrievedAt": null,
+      "digest": null,
+      "availability": "missing",
+      "publicationStatus": "not-confirmed"
+    },
+    {
+      "id": "dated-baseline",
+      "origin": "official",
+      "retrievedAt": null,
+      "digest": null,
+      "availability": "missing",
+      "publicationStatus": "not-collected"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "complete-responsible",
+      "title": "Complete claim to responsible agency",
+      "classification": "planned-only",
+      "hypothetical": true,
+      "verifiedLaw": false,
+      "legislativeStatus": "proposed-unverified",
+      "sourceRefs": [],
+      "baselineSnapshot": null,
+      "expectedCheckpoints": [
+        "receive",
+        "presentment-elements",
+        "disposition-clock",
+        "decision"
+      ],
+      "assumptions": [
+        {
+          "id": "complete-amount-assumed",
+          "classification": "hypothetical",
+          "verified": false
+        },
+        {
+          "id": "responsible-agency-assumed",
+          "classification": "hypothetical",
+          "verified": false
+        }
+      ],
+      "unresolved": [
+        "exact bill provision unavailable",
+        "dated official baseline missing"
+      ]
+    },
+    {
+      "id": "complete-wrong-agency",
+      "title": "Complete claim to wrong agency",
+      "classification": "planned-only",
+      "hypothetical": true,
+      "verifiedLaw": false,
+      "legislativeStatus": "proposed-unverified",
+      "sourceRefs": [],
+      "baselineSnapshot": null,
+      "expectedCheckpoints": [
+        "receive-wrong-agency",
+        "transfer-duty",
+        "responsible-receipt",
+        "preserved-date-interpretation"
+      ],
+      "assumptions": [
+        {
+          "id": "transfer-delay-model-assumption",
+          "classification": "hypothetical",
+          "verified": false
+        },
+        {
+          "id": "actual-routing-independent-of-duty",
+          "classification": "hypothetical",
+          "verified": false
+        }
+      ],
+      "unresolved": [
+        "exact proposed relation-back source missing",
+        "current agency-receipt source missing"
+      ]
+    },
+    {
+      "id": "missed-routing",
+      "title": "Agency misses routing duty",
+      "classification": "planned-only",
+      "hypothetical": true,
+      "verifiedLaw": false,
+      "legislativeStatus": "proposed-unverified",
+      "sourceRefs": [],
+      "baselineSnapshot": null,
+      "expectedCheckpoints": [
+        "initial-receipt",
+        "route-obligation",
+        "actual-late-transfer",
+        "breach",
+        "remedy-conditional"
+      ],
+      "assumptions": [
+        {
+          "id": "routing-compliance-false",
+          "classification": "hypothetical",
+          "verified": false
+        },
+        {
+          "id": "late-transfer-empirical-assumption",
+          "classification": "hypothetical",
+          "verified": false
+        }
+      ],
+      "unresolved": [
+        "two-business-day duty source unverified",
+        "remedy support unresolved"
+      ]
+    },
+    {
+      "id": "missing-amount",
+      "title": "Monetary amount missing",
+      "classification": "planned-only",
+      "hypothetical": true,
+      "verifiedLaw": false,
+      "legislativeStatus": "proposed-unverified",
+      "sourceRefs": [],
+      "baselineSnapshot": null,
+      "expectedCheckpoints": [
+        "receive",
+        "amount-missing",
+        "notice",
+        "cure",
+        "clock-interpretation"
+      ],
+      "assumptions": [
+        {
+          "id": "missing-sum-certain",
+          "classification": "hypothetical",
+          "verified": false
+        },
+        {
+          "id": "corrective-submission-date-assumed",
+          "classification": "hypothetical",
+          "verified": false
+        }
+      ],
+      "unresolved": [
+        "proposed cure language missing",
+        "interaction with 15-business-day notice unresolved"
+      ]
+    },
+    {
+      "id": "late-deficiency-notice",
+      "title": "Agency misses deficiency notice period",
+      "classification": "planned-only",
+      "hypothetical": true,
+      "verifiedLaw": false,
+      "legislativeStatus": "proposed-unverified",
+      "sourceRefs": [],
+      "baselineSnapshot": null,
+      "expectedCheckpoints": [
+        "receive",
+        "identify-defect",
+        "notice-due",
+        "late-notice",
+        "clock-ambiguity"
+      ],
+      "assumptions": [
+        {
+          "id": "notice-delayed",
+          "classification": "hypothetical",
+          "verified": false
+        },
+        {
+          "id": "business-calendar-variant",
+          "classification": "hypothetical",
+          "verified": false
+        }
+      ],
+      "unresolved": [
+        "notice period exact section missing",
+        "consequences of missed notice unresolved"
+      ]
+    },
+    {
+      "id": "correctable-defect",
+      "title": "Correctable documentary defect",
+      "classification": "planned-only",
+      "hypothetical": true,
+      "verifiedLaw": false,
+      "legislativeStatus": "proposed-unverified",
+      "sourceRefs": [],
+      "baselineSnapshot": null,
+      "expectedCheckpoints": [
+        "receive",
+        "notice",
+        "cure",
+        "relation-back-check"
+      ],
+      "assumptions": [
+        {
+          "id": "documentary-defect-correctable",
+          "classification": "hypothetical",
+          "verified": false
+        },
+        {
+          "id": "substantive-presentment-separate",
+          "classification": "hypothetical",
+          "verified": false
+        }
+      ],
+      "unresolved": [
+        "relation-back coverage and exceptions unverified"
+      ]
+    },
+    {
+      "id": "postal-transition",
+      "title": "Postal demand during correspondence",
+      "classification": "planned-only",
+      "hypothetical": true,
+      "verifiedLaw": false,
+      "legislativeStatus": "proposed-unverified",
+      "sourceRefs": [],
+      "baselineSnapshot": null,
+      "expectedCheckpoints": [
+        "existing-correspondence",
+        "postal-demand",
+        "transition-channel",
+        "deadline-review"
+      ],
+      "assumptions": [
+        {
+          "id": "prior-correspondence-assumed",
+          "classification": "hypothetical",
+          "verified": false
+        },
+        {
+          "id": "transition-effective-date-hypothetical",
+          "classification": "hypothetical",
+          "verified": false
+        }
+      ],
+      "unresolved": [
+        "existing channel validity scope unverified",
+        "transition timing contingent on enactment"
+      ]
+    },
+    {
+      "id": "outage",
+      "title": "Primary system outage",
+      "classification": "planned-only",
+      "hypothetical": true,
+      "verifiedLaw": false,
+      "legislativeStatus": "proposed-unverified",
+      "sourceRefs": [],
+      "baselineSnapshot": null,
+      "expectedCheckpoints": [
+        "outage",
+        "alternative-channel",
+        "restoration",
+        "extension-conditions"
+      ],
+      "assumptions": [
+        {
+          "id": "outage-duration-assumption",
+          "classification": "hypothetical",
+          "verified": false
+        },
+        {
+          "id": "alternative-channel-capacity-assumption",
+          "classification": "hypothetical",
+          "verified": false
+        }
+      ],
+      "unresolved": [
+        "extension source unavailable",
+        "outage is not automatic deadline tolling"
+      ]
+    },
+    {
+      "id": "pro-se-court",
+      "title": "Pro se initial court filing",
+      "classification": "planned-only",
+      "hypothetical": true,
+      "verifiedLaw": false,
+      "legislativeStatus": "proposed-unverified",
+      "sourceRefs": [],
+      "baselineSnapshot": null,
+      "expectedCheckpoints": [
+        "initial-filing",
+        "fee-waiver-request",
+        "court-clerk-processing",
+        "filing-date"
+      ],
+      "assumptions": [
+        {
+          "id": "pro-se-status-assumed",
+          "classification": "hypothetical",
+          "verified": false
+        },
+        {
+          "id": "court-permissions-not-verified",
+          "classification": "hypothetical",
+          "verified": false
+        }
+      ],
+      "unresolved": [
+        "local court rules and effective stage missing"
+      ]
+    },
+    {
+      "id": "denial-delivery-failure",
+      "title": "Final denial fails electronic delivery",
+      "classification": "planned-only",
+      "hypothetical": true,
+      "verifiedLaw": false,
+      "legislativeStatus": "proposed-unverified",
+      "sourceRefs": [],
+      "baselineSnapshot": null,
+      "expectedCheckpoints": [
+        "denial-issued",
+        "delivery-failure",
+        "channel-election",
+        "delivery-proof",
+        "review-clock"
+      ],
+      "assumptions": [
+        {
+          "id": "delivery-failure-model-assumption",
+          "classification": "hypothetical",
+          "verified": false
+        },
+        {
+          "id": "recipient-election-unknown",
+          "classification": "hypothetical",
+          "verified": false
+        }
+      ],
+      "unresolved": [
+        "review-clock activation unverified",
+        "electronic-delivery proof criteria unverified"
+      ]
+    },
+    {
+      "id": "protected-material",
+      "title": "Protected supporting information",
+      "classification": "planned-only",
+      "hypothetical": true,
+      "verifiedLaw": false,
+      "legislativeStatus": "proposed-unverified",
+      "sourceRefs": [],
+      "baselineSnapshot": null,
+      "expectedCheckpoints": [
+        "unclassified-notice",
+        "secure-channel-instruction",
+        "authorized-transfer"
+      ],
+      "assumptions": [
+        {
+          "id": "sensitive-supporting-material",
+          "classification": "hypothetical",
+          "verified": false
+        },
+        {
+          "id": "portal-transfer-prohibited",
+          "classification": "hypothetical",
+          "verified": false
+        }
+      ],
+      "unresolved": [
+        "actual security authority missing",
+        "no classified content uploaded or simulated"
+      ]
+    },
+    {
+      "id": "urgent",
+      "title": "Urgent matter",
+      "classification": "planned-only",
+      "hypothetical": true,
+      "verifiedLaw": false,
+      "legislativeStatus": "proposed-unverified",
+      "sourceRefs": [],
+      "baselineSnapshot": null,
+      "expectedCheckpoints": [
+        "urgent-flag",
+        "triage",
+        "actor-action",
+        "no-merits-assumption"
+      ],
+      "assumptions": [
+        {
+          "id": "urgent-status-hypothetical",
+          "classification": "hypothetical",
+          "verified": false
+        },
+        {
+          "id": "response-time-empirical-assumption",
+          "classification": "hypothetical",
+          "verified": false
+        }
+      ],
+      "unresolved": [
+        "urgency standard not verified",
+        "no promise of emergency relief"
+      ]
+    },
+    {
+      "id": "foia",
+      "title": "FOIA component routing",
+      "classification": "planned-only",
+      "hypothetical": true,
+      "verifiedLaw": false,
+      "legislativeStatus": "proposed-unverified",
+      "sourceRefs": [],
+      "baselineSnapshot": null,
+      "expectedCheckpoints": [
+        "request-received",
+        "component-identification",
+        "internal-reassignment",
+        "receipt-date-interpretation"
+      ],
+      "assumptions": [
+        {
+          "id": "foia-agency-component-assumed",
+          "classification": "hypothetical",
+          "verified": false
+        },
+        {
+          "id": "recipient-variation",
+          "classification": "hypothetical",
+          "verified": false
+        }
+      ],
+      "unresolved": [
+        "agency and FOIA statutes not pinned",
+        "scope of proposed routing missing"
+      ]
+    },
+    {
+      "id": "phasing",
+      "title": "Phased implementation",
+      "classification": "planned-only",
+      "hypothetical": true,
+      "verifiedLaw": false,
+      "legislativeStatus": "proposed-unverified",
+      "sourceRefs": [],
+      "baselineSnapshot": null,
+      "expectedCheckpoints": [
+        "enactment-hypothesis",
+        "interim-intake",
+        "portal-stage",
+        "court-stage"
+      ],
+      "assumptions": [
+        {
+          "id": "stage-dates-from-unverified-plan",
+          "classification": "hypothetical",
+          "verified": false
+        },
+        {
+          "id": "implementation-delays-assumed",
+          "classification": "hypothetical",
+          "verified": false
+        }
+      ],
+      "unresolved": [
+        "exact phase dates must be confirmed against full source",
+        "staged enactment not current law"
+      ]
+    }
+  ]
+}
