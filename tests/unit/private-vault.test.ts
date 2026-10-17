@@ -28,7 +28,9 @@ describe('LM-044 private encrypted local quarantine contribution',()=>{
   expect(raw.toString()).not.toContain('Highly private fictional source');
   expect((await lstat(file)).mode&0o077).toBe(0);
   const restarted=new LocalEncryptedQuarantineVault(root,key);
-  expect(new TextDecoder().decode(await restarted.get(scope,record.digest))).toBe('Highly private fictional source');
+  const restored=await restarted.get(scope,record.digest);
+  expect(restored).not.toBeNull();
+  expect(new TextDecoder().decode(restored!)).toBe('Highly private fictional source');
  }));
  it('is idempotent only for an identical source and never overwrites ciphertext',async()=>withVault(async(root,key)=>{
   const vault=new LocalEncryptedQuarantineVault(root,key);
