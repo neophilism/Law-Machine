@@ -154,6 +154,7 @@ export function buildExplanationGraph(
     if (!rule || rule.versionId !== event.versionId) throw Error('EXPLANATION_RULE_UNRESOLVED');
     const allowed = new Set(rule.sourceRefs.map(key));
     for (const ref of event.sourceRefs) {
+      if (!refValid(ref)) throw Error('EXPLANATION_ANCHOR_INVALID');
       if (ref.versionId !== event.versionId || !allowed.has(key(ref)))
         throw Error('EXPLANATION_SOURCE_NOT_RULE_SUPPORTED');
       resolve(ref);
@@ -226,7 +227,10 @@ export function buildExplanationGraph(
       alternativeEventIds:[...event.alternativeIds],
       predicates:[...event.predicates],
       appliedExceptions:[...event.appliedExceptions],
-      evidence:event.evidenceIds.map(k=>byEvidence.get(k)!),
+      evidence:[...new Set([
+        ...event.evidenceIds,
+        ...event.predicates.flatMap(p=>p.evidenceId === null ? [] : [p.evidenceId])
+      ])].map(k=>byEvidence.get(k)!),
       sourceExcerpts:event.sourceRefs.map(ref=>{
         const entry=resolve(ref);
         return {citation:entry.citation,exactQuote:ref.quote,versionId:ref.versionId,sourceDigest:ref.sourceDigest};
