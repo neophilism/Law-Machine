@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T02:28:24Z",
+  "observedAt": "2026-10-17T02:31:24Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -323,7 +323,9 @@
       "id": "LM-017",
       "title": "Evidence assumptions and interpretation records",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        20
+      ],
       "dependsOn": [
         "LM-013",
         "LM-014"
@@ -1154,6 +1156,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4896549186,
+      "number": 20,
+      "title": "LM-017: Classified legal evidence, assumptions and interpretation conflicts",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/20",
+      "createdAt": "2026-10-17T02:31:24Z",
+      "updatedAt": "2026-10-17T02:31:24Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "4d630b400fb589653b08830075353ec07f6d4c0e",
+      "baseRef": "main"
+    },
     {
       "id": 4896448617,
       "number": 19,
