@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T02:40:13Z",
+  "observedAt": "2026-10-17T02:43:41Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -385,7 +385,9 @@
       "id": "LM-020",
       "title": "Rule compiler and provenance graph",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        23
+      ],
       "dependsOn": [
         "LM-019",
         "LM-013",
@@ -1160,6 +1162,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4896617791,
+      "number": 23,
+      "title": "LM-020: Immutable rule compiler and provenance graph",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/23",
+      "createdAt": "2026-10-17T02:43:41Z",
+      "updatedAt": "2026-10-17T02:43:41Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "eeae022d6601bf9b1cb6ebaf4969792c95542d5e",
+      "baseRef": "main"
+    },
     {
       "id": 4896581702,
       "number": 22,
