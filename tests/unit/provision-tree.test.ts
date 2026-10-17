@@ -27,7 +27,8 @@ describe('LM-012 stable provision tree and persistence',()=>{
     expect(store.versions()).toEqual(['toy-v1','toy-v2']);
     expect(store.get('toy-v1')!.provisions[2]!.citation).toBe('2');
     expect(store.get('toy-v2')!.provisions[2]!.citation).toBe('4');
-    expect(()=>store.put({...amended,versionId:'toy-v1'})).toThrow('VERSION_IMMUTABLE');
+    const conflicting=normalizeSource('toy-v1',await importText(enc.encode(source.replace('Section 2','Section 4')),{format:'text',name:'toy.txt'}));
+    expect(()=>store.put(conflicting)).toThrow('VERSION_IMMUTABLE');
     expect(parseStoredSource(serializeSource(old))).toEqual(old);
   });
   it('detects duplicate sibling numbering without silently deduplicating',async()=>{
