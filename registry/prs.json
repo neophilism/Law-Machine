@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T12:38:36Z",
+  "observedAt": "2026-10-17T12:44:25Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -845,7 +845,10 @@
       "source": {
         "path": "docs/source/ORIGINAL_SPECIFICATION.md",
         "heading": "LM 043 Author authentication and authorization"
-      }
+      },
+      "contributingPrs": [
+        36
+      ]
     },
     {
       "id": "LM-044",
@@ -1182,6 +1185,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4900148888,
+      "number": 36,
+      "title": "LM-043: Fail-closed author authorization and organization access",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/36",
+      "createdAt": "2026-10-17T12:44:25Z",
+      "updatedAt": "2026-10-17T12:44:25Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "e2d6bc14252f7a17d14d4e74d7c8ac4c8037e868",
+      "baseRef": "main"
+    },
     {
       "id": 4900093589,
       "number": 35,
