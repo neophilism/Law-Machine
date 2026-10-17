@@ -42,3 +42,42 @@ jobs:
       - run: pnpm test:browser
         env:
           NEXT_TELEMETRY_DISABLED: '1'
+
+  postgres:
+    name: postgres
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: fixture_only_password
+          POSTGRES_DB: law_machine_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d law_machine_ci"
+          --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      PGHOST: 127.0.0.1
+      PGPORT: '5432'
+      PGUSER: postgres
+      PGPASSWORD: fixture_only_password
+      PGDATABASE: law_machine_ci
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y postgresql-client
+      - name: Apply migration atomically
+        run: psql -v ON_ERROR_STOP=1 --single-transaction -f db/migrations/0001_up.sql
+      - name: Verify tenant isolation, revision conflicts, atomic writes and recovery
+        run: psql -v ON_ERROR_STOP=1 -f tests/postgres/persistence.sql
+      - name: Verify down migration in ephemeral database
+        run: |
+          psql -v ON_ERROR_STOP=1 --single-transaction -f db/migrations/0001_down.sql
+          test "$(psql -At -c "SELECT to_regclass('public.lm_documents') IS NULL")" = "t"
