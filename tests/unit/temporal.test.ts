@@ -48,7 +48,7 @@ describe('LM-014 baseline applicability',()=>{
     const paths=['USCODE-2024-title44-3506-excerpt.txt','USCODE-2024-title5-552-excerpt.txt'];
     expect(b.sources.length).toBe(paths.length);
     for(let i=0;i<paths.length;i++){
-      const content=readFileSync(new URL('../../../content/baselines/electronic-filing/'+paths[i],import.meta.url));
+      const content=readFileSync(new URL('../../content/baselines/electronic-filing/'+paths[i],import.meta.url));
       expect(await sha256Hex(content)).toBe(b.sources[i]!.digest);
       expect(new TextDecoder().decode(content)).toBe(b.sources[i]!.excerptText);
       expect(b.sources[i]!.digestScope).toBe('curated-excerpt');
