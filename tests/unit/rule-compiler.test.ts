@@ -53,7 +53,11 @@ describe('LM-020 compiler and source-effect graph',()=>{
   expect(codes(JSON.stringify(x))).toContain('COMPILE_TRIGGER_UNREACHABLE');
   x.rules[0]!.trigger.event='received';
   x.rules[0]!.versionId='toy-v2';
-  expect(codes(JSON.stringify(x))).toContain('COMPILE_VERSION_MISMATCH');
+  expect(codes(JSON.stringify(x))).toContain('RULE_SOURCE_INVALID');
+  const y=JSON.parse(raw()) as {rules:Array<{versionId:string;sourceRefs:Array<{versionId:string}>}>};
+  y.rules[0]!.versionId='toy-v2';
+  y.rules[0]!.sourceRefs[0]!.versionId='toy-v2';
+  expect(codes(JSON.stringify(y))).toContain('COMPILE_VERSION_MISMATCH');
  });
  it('requires explicit precedence for potentially conflicting same-trigger rules',()=>{
   const collision={...r1,id:'rule3',explanationKey:'rule3',effect:{operation:'record',actorId:'desk-a'}};
