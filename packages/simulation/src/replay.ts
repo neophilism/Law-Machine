@@ -16,7 +16,7 @@ export async function runIdentity(d:ReplayDescriptor):Promise<string>{
 export class ReplayStream{
  private state:number;
  constructor(seed:number,readonly namespace:string){
-  if(!Number.isSafeInteger(seed)||seed<0||seed>0xffffffff||!identifier(namespace))throw Error('INVALID_RANDOM_STREAM');
+  if(!Number.isSafeInteger(seed)||seed<0||seed>0xffffffff||!(typeof namespace==='string'&&/^[A-Za-z0-9._:-]{1,128}$/.test(namespace)))throw Error('INVALID_RANDOM_STREAM');
   this.state=(seed^0x9e3779b9)>>>0;
   if(!this.state)this.state=0x6d2b79f5;
  }
