@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T12:44:25Z",
+  "observedAt": "2026-10-17T13:03:12Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -358,7 +358,10 @@
       "source": {
         "path": "docs/source/ORIGINAL_SPECIFICATION.md",
         "heading": "LM 018 Electronic filing source and content pack"
-      }
+      },
+      "contributingPrs": [
+        37
+      ]
     },
     {
       "id": "LM-019",
@@ -847,7 +850,8 @@
         "heading": "LM 043 Author authentication and authorization"
       },
       "contributingPrs": [
-        36
+        36,
+        39
       ]
     },
     {
@@ -1186,17 +1190,45 @@
   ],
   "pullRequests": [
     {
-      "id": 4900148888,
-      "number": 36,
-      "title": "LM-043: Fail-closed author authorization and organization access",
+      "id": 4900274534,
+      "number": 39,
+      "title": "LM-043: Revocable author session and membership persistence",
       "state": "open",
-      "url": "https://github.com/neophilism/Law-Machine/pull/36",
-      "createdAt": "2026-10-17T12:44:25Z",
-      "updatedAt": "2026-10-17T12:44:25Z",
+      "url": "https://github.com/neophilism/Law-Machine/pull/39",
+      "createdAt": "2026-10-17T13:03:12Z",
+      "updatedAt": "2026-10-17T13:03:12Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": true,
-      "headSha": "e2d6bc14252f7a17d14d4e74d7c8ac4c8037e868",
+      "headSha": "d530bc15691341863dc394c671e537f130127a6b",
+      "baseRef": "main"
+    },
+    {
+      "id": 4900172567,
+      "number": 37,
+      "title": "LM-018: Fourteen electronic-filing scenarios and source-readiness gates",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/37",
+      "createdAt": "2026-10-17T12:47:35Z",
+      "updatedAt": "2026-10-17T13:02:38Z",
+      "closedAt": "2026-10-17T13:02:37Z",
+      "mergedAt": "2026-10-17T13:02:37Z",
+      "draft": false,
+      "headSha": "a82e8e5052ab5ea71359179cc33541ad11b8dcbe",
+      "baseRef": "main"
+    },
+    {
+      "id": 4900148888,
+      "number": 36,
+      "title": "LM-043: Fail-closed author authorization and organization access",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/36",
+      "createdAt": "2026-10-17T12:44:25Z",
+      "updatedAt": "2026-10-17T12:57:20Z",
+      "closedAt": "2026-10-17T12:57:19Z",
+      "mergedAt": "2026-10-17T12:57:19Z",
+      "draft": false,
+      "headSha": "12c1eee0060a1b52ed63942036936a15770081ef",
       "baseRef": "main"
     },
     {

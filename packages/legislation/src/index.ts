@@ -10,3 +10,4 @@ export * from './baselines.ts';
 export * from './official-excerpts.ts';
 export * from './amendments.ts';
 export * from './version-diff.ts';
+export * from './pack-readiness.ts';
