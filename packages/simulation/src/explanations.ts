@@ -170,7 +170,7 @@ export function buildExplanationGraph(
     byEvent.set(event.id, event);
     positions.set(event.id, i);
   }
-  for (const event of events) {
+  for (const event of events as readonly ExplanationEvent[]) {
     if (new Set(event.parentIds).size !== event.parentIds.length ||
         new Set(event.alternativeIds).size !== event.alternativeIds.length ||
         event.parentIds.includes(event.id) || event.alternativeIds.includes(event.id))
@@ -184,7 +184,7 @@ export function buildExplanationGraph(
   }
   // Bounded iterative DFS avoids recursion limits and rejects causal cycles.
   const visited = new Set<string>();
-  for (const event of events) {
+  for (const event of events as readonly ExplanationEvent[]) {
     if (visited.has(event.id)) continue;
     const active = new Set<string>();
     const stack: {id:string;exit:boolean}[] = [{id:event.id,exit:false}];
@@ -202,7 +202,7 @@ export function buildExplanationGraph(
   }
   let totalTraversal = 0;
   const views: ExplanationView[] = [];
-  for (const event of events) {
+  for (const event of events as readonly ExplanationEvent[]) {
     const ancestry = new Set<string>();
     const pending = [event.id];
     while (pending.length) {
