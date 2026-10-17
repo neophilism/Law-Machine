@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T01:25:42Z",
+  "observedAt": "2026-10-17T01:30:22Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -284,7 +284,9 @@
       "id": "LM-015",
       "title": "Amendatory instructions and consolidated projections",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        18
+      ],
       "dependsOn": [
         "LM-014",
         "LM-013"
@@ -1150,6 +1152,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4896213875,
+      "number": 18,
+      "title": "LM-015: Typed amendments and safe consolidated projections",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/18",
+      "createdAt": "2026-10-17T01:30:22Z",
+      "updatedAt": "2026-10-17T01:30:22Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "654dbf1787cdc864c0d54d1d7008523472616fd5",
+      "baseRef": "main"
+    },
     {
       "id": 4896189147,
       "number": 16,
