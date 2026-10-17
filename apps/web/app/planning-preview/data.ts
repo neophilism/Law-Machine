@@ -2,7 +2,7 @@ import rawInventory from '../../../../content/packs/electronic-filing/scenario-i
 import {inspectFirstPack, type PlannedPack} from '../../../../packages/legislation/src/pack-readiness.ts';
 
 /** Publicly inspectable planning ONLY; this is not a published or verified law pack. */
-export const plannedPack = rawInventory as PlannedPack;
+export const plannedPack = rawInventory as unknown as PlannedPack;
 export const plannedStatus = inspectFirstPack(rawInventory);
 
 /** This route MUST NOT imply completeness even if source metadata is edited. */
