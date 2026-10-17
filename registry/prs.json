@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T12:57:20Z",
+  "observedAt": "2026-10-17T13:03:12Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -850,7 +850,8 @@
         "heading": "LM 043 Author authentication and authorization"
       },
       "contributingPrs": [
-        36
+        36,
+        39
       ]
     },
     {
@@ -1189,17 +1190,31 @@
   ],
   "pullRequests": [
     {
-      "id": 4900172567,
-      "number": 37,
-      "title": "LM-018: Fourteen electronic-filing scenarios and source-readiness gates",
+      "id": 4900274534,
+      "number": 39,
+      "title": "LM-043: Revocable author session and membership persistence",
       "state": "open",
-      "url": "https://github.com/neophilism/Law-Machine/pull/37",
-      "createdAt": "2026-10-17T12:47:35Z",
-      "updatedAt": "2026-10-17T12:56:21Z",
+      "url": "https://github.com/neophilism/Law-Machine/pull/39",
+      "createdAt": "2026-10-17T13:03:12Z",
+      "updatedAt": "2026-10-17T13:03:12Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": true,
-      "headSha": "872a01053f613f974bec2d9eeabedf026df0d1d9",
+      "headSha": "d530bc15691341863dc394c671e537f130127a6b",
+      "baseRef": "main"
+    },
+    {
+      "id": 4900172567,
+      "number": 37,
+      "title": "LM-018: Fourteen electronic-filing scenarios and source-readiness gates",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/37",
+      "createdAt": "2026-10-17T12:47:35Z",
+      "updatedAt": "2026-10-17T13:02:38Z",
+      "closedAt": "2026-10-17T13:02:37Z",
+      "mergedAt": "2026-10-17T13:02:37Z",
+      "draft": false,
+      "headSha": "a82e8e5052ab5ea71359179cc33541ad11b8dcbe",
       "baseRef": "main"
     },
     {
