@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T02:43:41Z",
+  "observedAt": "2026-10-17T02:47:33Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -424,7 +424,9 @@
       "id": "LM-022",
       "title": "Calendar and deadline engine",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        24
+      ],
       "dependsOn": [
         "LM-019",
         "LM-014"
@@ -1163,17 +1165,31 @@
   ],
   "pullRequests": [
     {
+      "id": 4896628021,
+      "number": 24,
+      "title": "LM-022: Versioned calendars and source-linked deadline conventions",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/24",
+      "createdAt": "2026-10-17T02:45:40Z",
+      "updatedAt": "2026-10-17T02:47:33Z",
+      "closedAt": "2026-10-17T02:47:33Z",
+      "mergedAt": "2026-10-17T02:47:33Z",
+      "draft": false,
+      "headSha": "fd8e4d79e2f67c08f882d8104616ab1d7e8119cd",
+      "baseRef": "main"
+    },
+    {
       "id": 4896617791,
       "number": 23,
       "title": "LM-020: Immutable rule compiler and provenance graph",
       "state": "open",
       "url": "https://github.com/neophilism/Law-Machine/pull/23",
       "createdAt": "2026-10-17T02:43:41Z",
-      "updatedAt": "2026-10-17T02:43:41Z",
+      "updatedAt": "2026-10-17T02:47:00Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": true,
-      "headSha": "eeae022d6601bf9b1cb6ebaf4969792c95542d5e",
+      "headSha": "cf1b8311e7d6adcbb343ee62a2396316b79849df",
       "baseRef": "main"
     },
     {
