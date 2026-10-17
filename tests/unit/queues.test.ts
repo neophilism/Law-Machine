@@ -18,6 +18,18 @@ describe('LM-025 operational queues',()=>{
  it('labels processing rates assumptions not statutory time',()=>{
   expect(processQueue(items,config,4).records.every(x=>x.modelingSource==='assumption:hypothetical-capacity')).toBe(true);
  });
+ it('models a service outage without altering the legal deadline',()=>{
+  const r=processQueue(items,config,4,{outageTicks:[0,1]});
+  expect(r.capacityUnits).toBe(3);
+  expect(r.records[0]?.completedAt).toBe(2);
+  expect(r.records[2]?.missedLegalDue).toBe(true);
+ });
+ it('retries a failed service attempt only when explicitly configured',()=>{
+  const r=processQueue([items[0]!],config,3,{failOnceItems:['a'],retryDelay:2});
+  expect(r.failures).toEqual([{itemId:'a',atTick:0}]);
+  expect(r.records.map(x=>x.completedAt)).toEqual([2]);
+  expect(r.records[0]?.missedLegalDue).toBe(false);
+ });
  it('rejects duplicate, invalid workloads and capacities',()=>{
   expect(()=>processQueue([...items,items[0]!],config,4)).toThrow('WORK_ITEM_INVALID');
   expect(()=>processQueue(items,{...config,workers:-1},4)).toThrow('QUEUE_INPUT_INVALID');
