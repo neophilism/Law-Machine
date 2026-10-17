@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T13:13:44Z",
+  "observedAt": "2026-10-17T13:19:37Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -876,7 +876,10 @@
       "source": {
         "path": "docs/source/ORIGINAL_SPECIFICATION.md",
         "heading": "LM 044 Secure source storage and import endpoints"
-      }
+      },
+      "contributingPrs": [
+        42
+      ]
     },
     {
       "id": "LM-045",
@@ -1193,6 +1196,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4900387839,
+      "number": 42,
+      "title": "LM-044: Fail-closed source quarantine and official URL preflight",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/42",
+      "createdAt": "2026-10-17T13:19:37Z",
+      "updatedAt": "2026-10-17T13:19:37Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "9c4481d6ab3e723a6b62af1df1db3913f3ad159a",
+      "baseRef": "main"
+    },
     {
       "id": 4900344395,
       "number": 41,
