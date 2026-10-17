@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T03:14:29Z",
+  "observedAt": "2026-10-17T03:17:47Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -466,7 +466,9 @@
       "id": "LM-024",
       "title": "Exceptions discretion and alternative branches",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        28
+      ],
       "dependsOn": [
         "LM-023"
       ],
@@ -1168,6 +1170,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4896806724,
+      "number": 28,
+      "title": "LM-024: Bounded explicit exceptions and alternatives",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/28",
+      "createdAt": "2026-10-17T03:17:47Z",
+      "updatedAt": "2026-10-17T03:17:47Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "1095e939d949f67c391e5f2927c9b9fe6dae38ea",
+      "baseRef": "main"
+    },
     {
       "id": 4896789419,
       "number": 26,
