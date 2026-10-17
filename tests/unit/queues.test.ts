@@ -5,7 +5,7 @@ const config={workers:1,unitsPerTick:1,sourceKind:'assumption' as const,sourceId
 describe('LM-025 operational queues',()=>{
  it('shows congestion changes performance rather than legal deadline',()=>{
   const normal=processQueue(items,config,5);
-  const congested=processQueue([...items,...Array.from({length:4},(_,i)=>({id:'early'+i,arrivedAt:0,units:1,legalDueTick:null,assumptionId:'s1'}))],config,8);
+  const congested=processQueue([...items,...Array.from({length:4},(_,i)=>({id:'0early'+i,arrivedAt:0,units:1,legalDueTick:null,assumptionId:'s1'}))],config,8);
   expect(normal.records.find(x=>x.itemId==='c')?.missedLegalDue).toBe(false);
   expect(congested.records.find(x=>x.itemId==='c')?.missedLegalDue).toBe(true);
   expect(items[0]?.legalDueTick).toBe(2);
