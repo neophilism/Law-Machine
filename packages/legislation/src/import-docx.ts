@@ -70,7 +70,7 @@ async function inflate(entry:ZipEntry):Promise<Uint8Array>{
   }
   let reader:ReadableStreamDefaultReader<Uint8Array>;
   try{
-    const stream=new ReadableStream<Uint8Array>({start(controller){controller.enqueue(entry.compressed.slice());controller.close();}});
+    const stream=new ReadableStream<BufferSource>({start(controller){controller.enqueue(entry.compressed.slice());controller.close();}});
     reader=stream.pipeThrough(new DecompressionStream('deflate-raw')).getReader();
   }catch{throw Error('DOCX_ZIP_DECOMPRESSION');}
   const chunks:Uint8Array[]=[];let total=0;
