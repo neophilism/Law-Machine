@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T12:35:35Z",
+  "observedAt": "2026-10-17T12:38:36Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -812,7 +812,9 @@
       "id": "LM-042",
       "title": "Database persistence and durable editorial records",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        35
+      ],
       "dependsOn": [
         "LM-003",
         "LM-016",
@@ -1180,6 +1182,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4900093589,
+      "number": 35,
+      "title": "LM-042: Tenant-isolated PostgreSQL editorial persistence",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/35",
+      "createdAt": "2026-10-17T12:36:23Z",
+      "updatedAt": "2026-10-17T12:38:36Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "b9c9f7536b70aa75afca7eb0c9e94752b5f8d799",
+      "baseRef": "main"
+    },
     {
       "id": 4900088407,
       "number": 34,
