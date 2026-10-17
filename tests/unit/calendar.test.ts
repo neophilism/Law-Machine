@@ -55,7 +55,7 @@ describe('LM-022 source-linked hypothetical deadlines',()=>{
   expect(()=>calc('2026-02-30')).toThrow('TRIGGER_DATE_INVALID');
   expect(()=>calc('2026-05-22',{amount:1.5})).toThrow('COUNTING_POLICY_INVALID');
   expect(calc('2026-05-22',{unit:'elapsed-hour'})).toMatchObject({state:'unresolved',reasons:['INSTANT_REQUIRED_FOR_ELAPSED_HOURS']});
-  expect(calc('2026-05-22T21:01:00Z',{unit:'elapsed-hour',amount:2,nonBusinessDue:'extend'}))
+  expect(calc('2026-05-23T21:01:00Z',{unit:'elapsed-hour',amount:2,nonBusinessDue:'extend'}))
    .toMatchObject({state:'unresolved',reasons:['HOUR_EXTENSION_INTERPRETATION_REQUIRED']});
  });
 });
