@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T01:21:53Z",
+  "observedAt": "2026-10-17T01:25:42Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -246,7 +246,9 @@
       "id": "LM-013",
       "title": "Citation resolver and source inspector data",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        16
+      ],
       "dependsOn": [
         "LM-012",
         "LM-004"
@@ -1148,6 +1150,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4896189147,
+      "number": 16,
+      "title": "LM-013: Pinned citation resolver and source inspector",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/16",
+      "createdAt": "2026-10-17T01:25:42Z",
+      "updatedAt": "2026-10-17T01:25:42Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "fa766a62840d3c130fcf2aaf66ddb09b9fb93e3c",
+      "baseRef": "main"
+    },
     {
       "id": 4896166662,
       "number": 15,
