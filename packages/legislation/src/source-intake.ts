@@ -75,7 +75,8 @@ const OFFICIAL_HOSTS=new Set([
 ]);
 export function validateOfficialSourceUrl(candidate:unknown):string{
  if(typeof candidate!=='string'||candidate.length<12||candidate.length>2048||
-    /[\x00-\x20\x7f\\]/.test(candidate))throw Error('SOURCE_URL_UNTRUSTED');
+    /[\x00-\x20\x7f\\]/.test(candidate)||
+    /%(?:2e|2f|5c|00|25)|(?:^|\/)\.\.(?:\/|$)/i.test(candidate))throw Error('SOURCE_URL_UNTRUSTED');
  let url:URL;
  try{url=new URL(candidate);}catch{throw Error('SOURCE_URL_UNTRUSTED');}
  if(url.protocol!=='https:'||!OFFICIAL_HOSTS.has(url.hostname)||
