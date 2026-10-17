@@ -8,6 +8,9 @@ export type OfficialSourceSnapshot={
   readonly id:string;readonly title:string;readonly versionLabel:string;
   readonly jurisdiction:string;readonly asOf:string;
   readonly digest:string;readonly sourceUrl:string;readonly citation:string;
+  /** Exact bytes hashed are either a curated excerpt or an original official file, never both. */
+  readonly digestScope:'curated-excerpt'|'raw-official-file';
+  readonly excerptText:string|null;
   readonly verified:boolean;
 };
 export type BaselineSnapshot={
@@ -52,7 +55,10 @@ function validBase(base:BaselineSnapshot):void{
   for(const source of base.sources){
     if(!source||!identifier.test(source.id)||sourceIds.has(source.id)||!source.title||
       !source.versionLabel||!source.citation||source.jurisdiction!==base.jurisdiction||
-      !digest.test(source.digest)||source.verified!==true||date(source.asOf)>base.asOf)
+      !digest.test(source.digest)||source.verified!==true||date(source.asOf)>base.asOf||
+      !['curated-excerpt','raw-official-file'].includes(source.digestScope)||
+      (source.digestScope==='curated-excerpt'&&(typeof source.excerptText!=='string'||!source.excerptText||source.excerptText.length>5000))||
+      (source.digestScope==='raw-official-file'&&source.excerptText!==null))
       throw Error('BASELINE_INVALID_SOURCE');
     let url:URL;
     try{url=new URL(source.sourceUrl);}catch{throw Error('BASELINE_INVALID_SOURCE');}
@@ -116,12 +122,27 @@ export function resolveTemporalApplicability(
     ['HYPOTHETICAL ENACTMENT — not enacted law']:[]);
 }
 export function firstComparisonBaselineInventory():BaselineSnapshot{
-  // The complete proposed bill and pinned official baseline corpus have not
-  // been supplied. Return declared gaps, not invented federal statutes.
+  // Only two short excerpts from separately identified 2024 GPO publications
+  // are pinned here, NOT the whole original files, nor a complete 2026 baseline.
+  // The digests identify EXACT CURATED EXCERPT bytes stored in content/baselines.
+  const sources:OfficialSourceSnapshot[]=[
+    {id:'gpo-uscode-2024-44usc3506',title:'U.S. Code 2024 Edition, Title 44, §3506',
+      versionLabel:'2024 Edition — curated excerpt',jurisdiction:'US-federal',asOf:'2024-12-31',
+      digest:'972ee3237056092053b3e8f1d668db19e8ae0277b2bee909f109e1d5a0cc012b',
+      sourceUrl:'https://www.govinfo.gov/content/pkg/USCODE-2024-title44/html/USCODE-2024-title44-chap35-subchapI-sec3506.htm',
+      citation:'44 U.S.C. §3506(a)(1), 2024 Edition',verified:true,digestScope:'curated-excerpt',
+      excerptText:'The head of each agency shall be responsible for'},
+    {id:'gpo-uscode-2024-5usc552',title:'U.S. Code 2024 Edition, Title 5, §552',
+      versionLabel:'2024 Edition — curated excerpt',jurisdiction:'US-federal',asOf:'2024-12-31',
+      digest:'dbba02fd51861948b44d248c33f041bdcdffe1fec1df08102559b91c613b3243',
+      sourceUrl:'https://www.govinfo.gov/content/pkg/USCODE-2024-title5/pdf/USCODE-2024-title5-partI-chap5-subchapII-sec552.pdf',
+      citation:'5 U.S.C. §552(a)(3)(A), 2024 Edition',verified:true,digestScope:'curated-excerpt',
+      excerptText:'shall make the records promptly available to any person'}
+  ];
   return {id:'electronic-filing-source-gap',jurisdiction:'US-federal',agency:null,
-    asOf:'2026-10-16',sources:[],gaps:[
+    asOf:'2026-10-16',sources,gaps:[
       {id:'official-baseline',subject:'Electronic filing jurisdictional law',
-        reason:'A dated, exact official baseline source snapshot has not yet been added.'},
+        reason:'2024 official excerpts are partial, not a complete or verified as-of-2026 agency-specific procedural baseline.'},
       {id:'source-version',subject:'Underlying proposed bill text',
         reason:'Full legislative draft and version provenance have not yet been attached.'}
     ]};
