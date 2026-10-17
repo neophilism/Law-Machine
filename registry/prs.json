@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T02:47:33Z",
+  "observedAt": "2026-10-17T03:10:26Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -406,7 +406,9 @@
       "id": "LM-021",
       "title": "Simulation state and deterministic scheduler",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        25
+      ],
       "dependsOn": [
         "LM-020",
         "LM-008"
@@ -1164,6 +1166,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4896765427,
+      "number": 25,
+      "title": "LM-021: Deterministic bounded event scheduler",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/25",
+      "createdAt": "2026-10-17T03:10:26Z",
+      "updatedAt": "2026-10-17T03:10:26Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "d18bfaaec9aedfc8a48388b140e61efd9127d1d1",
+      "baseRef": "main"
+    },
     {
       "id": 4896628021,
       "number": 24,
