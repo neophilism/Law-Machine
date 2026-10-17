@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T13:47:02Z",
+  "observedAt": "2026-10-17T13:49:54Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -923,7 +923,10 @@
       "source": {
         "path": "docs/source/ORIGINAL_SPECIFICATION.md",
         "heading": "LM 046 Durable import and compilation runner"
-      }
+      },
+      "contributingPrs": [
+        49
+      ]
     },
     {
       "id": "LM-047",
@@ -1202,6 +1205,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4900598852,
+      "number": 49,
+      "title": "LM-046: Fenced lease and retry protocol fixture",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/49",
+      "createdAt": "2026-10-17T13:49:54Z",
+      "updatedAt": "2026-10-17T13:49:54Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": false,
+      "headSha": "c7e5e5292ab68925597df69eb99c6b9c7ed18899",
+      "baseRef": "lm-044-public-ipv4-ssrf-policy"
+    },
     {
       "id": 4900577580,
       "number": 48,
