@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T01:08:46Z",
+  "observedAt": "2026-10-17T01:14:09Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -187,7 +187,9 @@
       "id": "LM-010",
       "title": "Official XML and metadata adapters",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        13
+      ],
       "dependsOn": [
         "LM-009"
       ],
@@ -1142,6 +1144,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4896117355,
+      "number": 13,
+      "title": "LM-010: Separate USLM and House Bill XML adapters",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/13",
+      "createdAt": "2026-10-17T01:14:09Z",
+      "updatedAt": "2026-10-17T01:14:09Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "d1ca0f63a2604e74de90267490b3d7764ea7d1ce",
+      "baseRef": "main"
+    },
     {
       "id": 4895084638,
       "number": 12,
