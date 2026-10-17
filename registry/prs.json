@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T12:18:23Z",
+  "observedAt": "2026-10-17T12:24:27Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -546,7 +546,9 @@
       "id": "LM-028",
       "title": "Explanation trace and causal inspection",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        33
+      ],
       "dependsOn": [
         "LM-020",
         "LM-027"
@@ -1176,6 +1178,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4900020208,
+      "number": 33,
+      "title": "LM-028: Source-linked explanation traces and causal inspection",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/33",
+      "createdAt": "2026-10-17T12:24:27Z",
+      "updatedAt": "2026-10-17T12:24:27Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "88d9a744cb22f89df88ed14d12baf51318619489",
+      "baseRef": "main"
+    },
     {
       "id": 4899983550,
       "number": 32,
