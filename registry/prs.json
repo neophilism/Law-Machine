@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T13:49:54Z",
+  "observedAt": "2026-10-17T13:56:19Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -925,7 +925,8 @@
         "heading": "LM 046 Durable import and compilation runner"
       },
       "contributingPrs": [
-        49
+        49,
+        50
       ]
     },
     {
@@ -1205,6 +1206,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4900644265,
+      "number": 50,
+      "title": "LM-046: PostgreSQL atomic job leases and fencing",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/50",
+      "createdAt": "2026-10-17T13:56:19Z",
+      "updatedAt": "2026-10-17T13:56:19Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": false,
+      "headSha": "c1deca5f1f82d5078fe2804e4455fdfbdeaa89b6",
+      "baseRef": "lm-046-lease-state-machine"
+    },
     {
       "id": 4900598852,
       "number": 49,
