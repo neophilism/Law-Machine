@@ -23,7 +23,7 @@ export type StartedOidcLogin={
 };
 export interface PendingOidcLoginStore {
  /** Must remove matching state exactly once, atomically, across all worker processes. */
- consume(stateDigest:string):Promise<PendingOidcLogin|null>;
+ consume(stateDigest:string,browserDigest:string):Promise<PendingOidcLogin|null>;
 }
 export type CompletedOidcCallback={
  readonly code:string; readonly codeVerifier:string;
@@ -107,9 +107,9 @@ export async function consumeOidcCallback(args:{
      received.searchParams.getAll('iss').length>1)return null;
   const browser=callbackCookie(request);
   if(!browser)return null;
-  // Atomic consume comes before validating provider response: an attacker cannot
-  // replay a valid state after an error, wrong browser, or failed token exchange.
-  const pending=await store.consume(sha(state[0]!));
+  // Atomic consume requires the matching browser binding, so a stolen state
+  // cannot consume and deny another browser's valid login transaction.
+  const pending=await store.consume(sha(state[0]!),sha(browser));
   if(!pending || !sameDigest(pending.browserDigest,sha(browser)) ||
      !sameDigest(pending.stateDigest,sha(state[0]!)) ||
      pending.issuer!==expectedIssuer || pending.redirectUri!==expectedRedirectUri ||
@@ -134,8 +134,9 @@ export async function consumeOidcCallback(args:{
 export class FixturePendingOidcStore implements PendingOidcLoginStore{
  private readonly pending=new Map<string,PendingOidcLogin>();
  add(value:PendingOidcLogin):void {this.pending.set(value.stateDigest,value);}
- async consume(digest:string):Promise<PendingOidcLogin|null>{
+ async consume(digest:string,browserDigest:string):Promise<PendingOidcLogin|null>{
   const existing=this.pending.get(digest)??null;
+  if(!existing || !sameDigest(existing.browserDigest,browserDigest))return null;
   this.pending.delete(digest);
   return existing;
  }
