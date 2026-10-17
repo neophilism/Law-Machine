@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T13:37:04Z",
+  "observedAt": "2026-10-17T13:40:24Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -881,7 +881,8 @@
       },
       "contributingPrs": [
         42,
-        43
+        43,
+        46
       ]
     },
     {
@@ -1199,6 +1200,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4900526674,
+      "number": 46,
+      "title": "LM-044: Encrypted tenant-scoped local source quarantine",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/46",
+      "createdAt": "2026-10-17T13:40:24Z",
+      "updatedAt": "2026-10-17T13:40:24Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": false,
+      "headSha": "3fcbe64c45463fb9033978b7affd5cdb31fa769f",
+      "baseRef": "lm-043-oidc-pkce-callback"
+    },
     {
       "id": 4900502515,
       "number": 45,
