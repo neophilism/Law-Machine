@@ -85,7 +85,7 @@ export function verifyOidcIdToken(
       typeof key.n!=='string' || typeof key.e!=='string' ||
       !B64.test(key.n) || !B64.test(key.e) ||
       'd' in key || 'p' in key || 'q' in key) return null;
-    const publicKey=createPublicKey({key: key as JsonWebKey,format:'jwk'});
+    const publicKey=createPublicKey({key: {kty:'RSA',n:key.n,e:key.e},format:'jwk'});
     if(publicKey.asymmetricKeyType!=='rsa' ||
       (publicKey.asymmetricKeyDetails?.modulusLength??0)<2048) return null;
     if(!verify('RSA-SHA256',Buffer.from(headerPart+'.'+payloadPart),
