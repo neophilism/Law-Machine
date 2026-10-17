@@ -101,7 +101,7 @@ export function diffSourceVersions(before:NormalizedDocument,after:NormalizedDoc
     !Array.isArray(artifact.sourceRefs)||artifact.sourceRefs.length>100||
     !Array.isArray(artifact.dependsOn)||artifact.dependsOn.length>100||
     !artifact.dependsOn.every(id)||new Set(artifact.dependsOn).size!==artifact.dependsOn.length||
-    !artifact.sourceRefs.every(r=>r&&r.versionId===before.versionId&&
+    !artifact.sourceRefs.every((r:DerivedArtifact['sourceRefs'][number])=>r&&r.versionId===before.versionId&&
       r.sourceDigest===before.sourceDigest&&oldMap.has(r.provisionId))){
     err('INVALID_DERIVATIVE',path);continue;
   }
