@@ -9,3 +9,4 @@ export * from './citations.ts';
 export * from './baselines.ts';
 export * from './official-excerpts.ts';
 export * from './amendments.ts';
+export * from './version-diff.ts';
