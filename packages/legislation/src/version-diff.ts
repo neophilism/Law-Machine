@@ -112,6 +112,11 @@ export function diffSourceVersions(before:NormalizedDocument,after:NormalizedDoc
  if(diagnostics.length)return unresolved();
  const stale=new Map<string,SourceInvalidation>();
  const queue:string[]=[];
+ const dependents=new Map<string,string[]>();
+ for(const artifact of artifacts.values())for(const dep of artifact.dependsOn){
+  const children=dependents.get(dep)??[];
+  children.push(artifact.id);dependents.set(dep,children);
+ }
  for(const artifact of artifacts.values()){
   if(artifact.sourceRefs.some(r=>changedOld.has(r.provisionId))){
    stale.set(artifact.id,{id:artifact.id,kind:artifact.kind,reason:'PINNED_SOURCE_CHANGED'});
@@ -122,10 +127,11 @@ export function diffSourceVersions(before:NormalizedDocument,after:NormalizedDoc
  // quote the modified statute, because its explanatory parent changed.
  for(let i=0;i<queue.length;i++){
   const parent=queue[i]!;
-  for(const artifact of artifacts.values()){
-   if(!stale.has(artifact.id)&&artifact.dependsOn.includes(parent)){
-    stale.set(artifact.id,{id:artifact.id,kind:artifact.kind,reason:'DEPENDENCY_STALE'});
-    queue.push(artifact.id);
+  for(const child of dependents.get(parent)??[]){
+   if(!stale.has(child)){
+    const artifact=artifacts.get(child)!;
+    stale.set(child,{id:child,kind:artifact.kind,reason:'DEPENDENCY_STALE'});
+    queue.push(child);
    }
   }
  }
