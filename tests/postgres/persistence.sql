@@ -103,7 +103,7 @@ SELECT lm_create_document(
 );
 SELECT set_config('app.organization_id','11111111-1111-4111-8111-111111111111',false);
 SELECT set_config('app.actor_id','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',false);
-DO $ BEGIN
+DO $$ BEGIN
  BEGIN
   INSERT INTO lm_sources(org_id,id,document_id,byte_digest,bytes_count,quarantine_state,storage_key)
    VALUES('11111111-1111-4111-8111-111111111111',
@@ -120,7 +120,7 @@ DO $ BEGIN
   RAISE EXCEPTION 'EXPECTED_RELEASE_CROSS_ORG_FK';
  EXCEPTION WHEN foreign_key_violation THEN NULL;
  END;
-END $;
+END $$;
 
 RESET ROLE;
 DROP TRIGGER lm_ci_audit_failure ON lm_audit;
