@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T13:45:01Z",
+  "observedAt": "2026-10-17T13:47:02Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -883,7 +883,8 @@
       "contributingPrs": [
         42,
         43,
-        46
+        46,
+        48
       ]
     },
     {
@@ -1201,6 +1202,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4900577580,
+      "number": 48,
+      "title": "LM-044: Reject reserved DNS addresses in source fetch preflight",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/48",
+      "createdAt": "2026-10-17T13:47:02Z",
+      "updatedAt": "2026-10-17T13:47:02Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": false,
+      "headSha": "941a9cc39e7167df63a7c0be3bc0e6c19e5cc34f",
+      "baseRef": "lm-043-revoked-editor-db-guard"
+    },
     {
       "id": 4900561521,
       "number": 47,
