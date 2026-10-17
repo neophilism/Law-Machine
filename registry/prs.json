@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T13:03:12Z",
+  "observedAt": "2026-10-17T13:07:22Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -623,7 +623,10 @@
       "source": {
         "path": "docs/source/ORIGINAL_SPECIFICATION.md",
         "heading": "LM 031 Public shell catalog and first scene"
-      }
+      },
+      "contributingPrs": [
+        40
+      ]
     },
     {
       "id": "LM-032",
@@ -1190,17 +1193,31 @@
   ],
   "pullRequests": [
     {
-      "id": 4900274534,
-      "number": 39,
-      "title": "LM-043: Revocable author session and membership persistence",
+      "id": 4900296188,
+      "number": 40,
+      "title": "LM-031: Explicitly unverified scenario planning preview",
       "state": "open",
-      "url": "https://github.com/neophilism/Law-Machine/pull/39",
-      "createdAt": "2026-10-17T13:03:12Z",
-      "updatedAt": "2026-10-17T13:03:12Z",
+      "url": "https://github.com/neophilism/Law-Machine/pull/40",
+      "createdAt": "2026-10-17T13:06:22Z",
+      "updatedAt": "2026-10-17T13:06:22Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": true,
-      "headSha": "d530bc15691341863dc394c671e537f130127a6b",
+      "headSha": "64c83ed35563b9442233ef28cb28f9a0a9600fd0",
+      "baseRef": "main"
+    },
+    {
+      "id": 4900274534,
+      "number": 39,
+      "title": "LM-043: Revocable author session and membership persistence",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/39",
+      "createdAt": "2026-10-17T13:03:12Z",
+      "updatedAt": "2026-10-17T13:07:22Z",
+      "closedAt": "2026-10-17T13:07:22Z",
+      "mergedAt": "2026-10-17T13:07:22Z",
+      "draft": false,
+      "headSha": "7ba8d90c07f99f0e2e89c42f570da3f851fa2e11",
       "baseRef": "main"
     },
     {
