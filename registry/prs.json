@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T01:14:09Z",
+  "observedAt": "2026-10-17T01:18:07Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -206,7 +206,9 @@
       "id": "LM-011",
       "title": "PDF extraction and correction workflow",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        14
+      ],
       "dependsOn": [
         "LM-009"
       ],
@@ -1144,6 +1146,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4896135382,
+      "number": 14,
+      "title": "LM-011: Bounded PDF extraction and correction workflow",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/14",
+      "createdAt": "2026-10-17T01:16:52Z",
+      "updatedAt": "2026-10-17T01:18:07Z",
+      "closedAt": "2026-10-17T01:18:06Z",
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "aa494f2c1e3eb5f5163a99f07120cb26cce9bf0b",
+      "baseRef": "main"
+    },
     {
       "id": 4896117355,
       "number": 13,
