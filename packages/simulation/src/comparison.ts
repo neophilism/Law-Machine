@@ -152,22 +152,24 @@ export async function compareFrameworks(
   const hypotheticalEnactment = proposal.status !== 'enacted';
   if (hypotheticalEnactment && !scenario.assumeProposalEnactment)
     throw Error('COMPARISON_ENACTMENT_ASSUMPTION_REQUIRED');
-  const facts = canonicalJSON({facts: scenario.facts, implementation: scenario.implementation});
+  // Pin the caller's JSON snapshot before the first asynchronous digest operation.
+  const pinned = snapshot(scenario);
+  const facts = canonicalJSON({facts: pinned.facts, implementation: pinned.implementation});
   if (facts.length > 200000) throw Error('COMPARISON_INPUT_LIMIT');
   const sharedInputDigest = await canonicalDigest({
-    scenario: scenario.id, asOf: scenario.asOf, jurisdiction: scenario.jurisdiction,
-    agency: scenario.agency, seed: scenario.seed, facts: scenario.facts, implementation: scenario.implementation
+    scenario: pinned.id, asOf: pinned.asOf, jurisdiction: pinned.jurisdiction,
+    agency: pinned.agency, seed: pinned.seed, facts: pinned.facts, implementation: pinned.implementation
   });
   const sharedDescriptor: ReplayDescriptor = {
     engineVersion: baseline.engineVersion,
     calendarVersion: baseline.calendarVersion,
-    modelDigest: sharedInputDigest, scenarioId: scenario.id,
-    seed: scenario.seed,
-    facts: { facts: scenario.facts, implementation: scenario.implementation }
+    modelDigest: sharedInputDigest, scenarioId: pinned.id,
+    seed: pinned.seed,
+    facts: { facts: pinned.facts, implementation: pinned.implementation }
   };
   const replayFacts = {
-    asOf: scenario.asOf, jurisdiction: scenario.jurisdiction, agency: scenario.agency,
-    facts: scenario.facts, implementation: scenario.implementation
+    asOf: pinned.asOf, jurisdiction: pinned.jurisdiction, agency: pinned.agency,
+    facts: pinned.facts, implementation: pinned.implementation
   };
   function context(framework: ComparisonFramework): Promise<ComparisonContext> {
     const descriptor: ReplayDescriptor = {
