@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T13:40:24Z",
+  "observedAt": "2026-10-17T13:45:01Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -857,7 +857,8 @@
         39,
         41,
         44,
-        45
+        45,
+        47
       ]
     },
     {
@@ -1200,6 +1201,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4900561521,
+      "number": 47,
+      "title": "LM-043: PostgreSQL revocation guard for editorial writes",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/47",
+      "createdAt": "2026-10-17T13:45:01Z",
+      "updatedAt": "2026-10-17T13:45:01Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": false,
+      "headSha": "eac3f05bde144b7cc6e54bdf34d59268c6d363bc",
+      "baseRef": "lm-044-encrypted-local-quarantine"
+    },
     {
       "id": 4900526674,
       "number": 46,
