@@ -1,6 +1,6 @@
-import {createCipheriv,createDecipheriv,randomBytes,timingSafeEqual} from 'node:crypto';
+import {createCipheriv,createDecipheriv,createHash,randomBytes,timingSafeEqual} from 'node:crypto';
 import {constants} from 'node:fs';
-import {lstat,link,mkdir,open,readFile,realpath,unlink,writeFile} from 'node:fs/promises';
+import {lstat,link,mkdir,open,realpath,unlink,writeFile} from 'node:fs/promises';
 import {isAbsolute,join,resolve} from 'node:path';
 import {inspectQuarantineCandidate,MAX_INTAKE_BYTES,type IntakeRequest,type QuarantineCandidate} from '../../../packages/legislation/src/source-intake.ts';
 
@@ -90,7 +90,7 @@ export class LocalEncryptedQuarantineVault {
  }
  /** Bytes are for trusted private review only; never expose through a public URL. */
  async get(scope:PrivateScope,digest:string):Promise<Uint8Array|null>{
-  const org=verifyScope(scope,scope.organizationId,'read');
+  const org=verifyScope(scope,scope?.organizationId??'','read');
   if(!SHA.test(digest))throw Error('QUARANTINE_DIGEST_INVALID');
   const directory=await this.directory(org),target=join(directory,digest+'.lmq');
   let file;
@@ -110,7 +110,6 @@ export class LocalEncryptedQuarantineVault {
   }finally{await file.close();}
   const bytes=this.decrypt(org,digest,data);
   // Prevent a storage-key/object swap even if ciphertext was copied across paths.
-  const {createHash}=await import('node:crypto');
   if(createHash('sha256').update(bytes).digest('hex')!==digest)
    throw Error('QUARANTINE_CONTENT_DIGEST_MISMATCH');
   return bytes;
