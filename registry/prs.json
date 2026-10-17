@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T13:07:22Z",
+  "observedAt": "2026-10-17T13:13:44Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -854,7 +854,8 @@
       },
       "contributingPrs": [
         36,
-        39
+        39,
+        41
       ]
     },
     {
@@ -1193,17 +1194,31 @@
   ],
   "pullRequests": [
     {
-      "id": 4900296188,
-      "number": 40,
-      "title": "LM-031: Explicitly unverified scenario planning preview",
+      "id": 4900344395,
+      "number": 41,
+      "title": "LM-043: Secure opaque author session verification boundary",
       "state": "open",
-      "url": "https://github.com/neophilism/Law-Machine/pull/40",
-      "createdAt": "2026-10-17T13:06:22Z",
-      "updatedAt": "2026-10-17T13:06:22Z",
+      "url": "https://github.com/neophilism/Law-Machine/pull/41",
+      "createdAt": "2026-10-17T13:13:44Z",
+      "updatedAt": "2026-10-17T13:13:44Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": true,
-      "headSha": "64c83ed35563b9442233ef28cb28f9a0a9600fd0",
+      "headSha": "b6d38c9edb444fb9c4c3089ff831022d6708e265",
+      "baseRef": "main"
+    },
+    {
+      "id": 4900296188,
+      "number": 40,
+      "title": "LM-031: Explicitly unverified scenario planning preview",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/40",
+      "createdAt": "2026-10-17T13:06:22Z",
+      "updatedAt": "2026-10-17T13:13:21Z",
+      "closedAt": "2026-10-17T13:13:20Z",
+      "mergedAt": "2026-10-17T13:13:20Z",
+      "draft": false,
+      "headSha": "40a0f3cb925264f597a5ded294fc12459be0de02",
       "baseRef": "main"
     },
     {
