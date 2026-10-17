@@ -15,7 +15,7 @@ describe('LM-018 electronic-filing first pack source gates',()=>{
  it('requires all unique IDs from approved specification',()=>{
   const missing=inventory();missing.scenarios.pop();
   expect(inspectFirstPack(missing).diagnostics).toContain('PACK_INVALID');
-  const duplicate=inventory();duplicate.scenarios[1].id=duplicate.scenarios[0].id;
+  const duplicate=inventory();duplicate.scenarios[1]!.id=duplicate.scenarios[0]!.id;
   expect(inspectFirstPack(duplicate).diagnostics).toContain('SCENARIO_INVALID:1');
   expect(inspectFirstPack(duplicate).diagnostics).toContain('SCENARIO_SET_INCOMPLETE');
  });
@@ -24,8 +24,20 @@ describe('LM-018 electronic-filing first pack source gates',()=>{
   a.status='candidate';a.sourceStatus='verified';a.baselineStatus='verified';
   expect(inspectFirstPack(a).readyForPublication).toBe(false);
   expect(inspectFirstPack(a).diagnostics).toContain('SCENARIOS_NOT_SOURCE_READY');
-  a.scenarios[0].hypothetical=false;
+  a.scenarios[0]!.hypothetical=false;
   expect(inspectFirstPack(a).diagnostics).toContain('SCENARIO_INVALID:0');
+ });
+ it('denies forged all-verified metadata and rejects malformed array entries without throwing',()=>{
+  const f=inventory() as ReturnType<typeof inventory> & {sourceInventory?:unknown[]};
+  f.status='candidate';f.sourceStatus='verified';f.baselineStatus='verified';
+  f.scenarios.forEach(s=>{const item=s as typeof s & {classification:string;verifiedLaw:boolean;baselineSnapshot:string|null};item.classification='verified-model';item.verifiedLaw=true;item.sourceRefs=['fabricated'];item.baselineSnapshot='invented';});
+  f.sourceInventory=[{id:'fabricated',availability:'verified',digest:'a'.repeat(64),retrievedAt:'2026-10-17'}, {id:'also-fabricated',availability:'verified',digest:'b'.repeat(64),retrievedAt:'2026-10-17'}];
+  const verdict=inspectFirstPack(f);
+  expect(verdict.readyForPublication).toBe(false);
+  expect(verdict.diagnostics).toContain('TRUSTED_SOURCE_VERIFICATION_REQUIRED');
+  const bad=inventory();(bad.scenarios as unknown[])[0]=null;
+  expect(()=>inspectFirstPack(bad)).not.toThrow();
+  expect(inspectFirstPack(bad).readyForExecution).toBe(false);
  });
  it('keeps source disclosures visible for wrong agency, missing amount, outage and protected material',()=>{
   const pack=inventory();
