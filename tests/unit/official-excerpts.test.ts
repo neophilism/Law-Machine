@@ -14,7 +14,7 @@ describe('LM-014 pinned federal source excerpt inventory',()=>{
    expect(f.baseline.sources.map(s=>s.digest)).toEqual(f.sources.map(s=>s.excerptSha256));
  });
  it('fails closed when a letter of curated source text changes',async()=>{
-   const f=fixture();f.sources[0]!.excerpt+=' tampered';
+   const f=fixture();f.sources[0]!.excerpt=String(f.sources[0]!.excerpt)+' tampered';
    const r=await verifyOfficialExcerptSnapshots(f.sources);
    expect(r.excerptIntegrityValid).toBe(false);
    expect(r.diagnostics.map(x=>x.code)).toContain('EXCERPT_DIGEST_MISMATCH');
