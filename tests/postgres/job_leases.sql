@@ -62,15 +62,15 @@ BEGIN
  THEN RAISE EXCEPTION 'DUPLICATE_COMPLETION';END IF;
 END $$;
 DO $$
-DECLARE id uuid := '66666666-6666-4666-8666-666666666666';f bigint;
+DECLARE job_id uuid := '66666666-6666-4666-8666-666666666666';f bigint;
 BEGIN
  PERFORM lm_enqueue_job('11111111-1111-4111-8111-111111111111',
-  id,'cccccccc-cccc-4ccc-8ccc-cccccccccccc','model-compile','ci-key-b',1);
+  job_id,'cccccccc-cccc-4ccc-8ccc-cccccccccccc','model-compile','ci-key-b',1);
  SELECT leased_fence INTO f FROM lm_claim_job(
    '11111111-1111-4111-8111-111111111111','worker-c',1);
  IF f IS NULL THEN RAISE EXCEPTION 'SECOND_JOB_NOT_CLAIMED';END IF;
  UPDATE lm_jobs SET lease_until=clock_timestamp()-interval '1 second'
- WHERE org_id='11111111-1111-4111-8111-111111111111' AND id=id;
+ WHERE org_id='11111111-1111-4111-8111-111111111111' AND id=job_id;
  IF lm_reap_exhausted_jobs('11111111-1111-4111-8111-111111111111')<>1
  THEN RAISE EXCEPTION 'EXPIRED_DEAD_LETTER_MISSING';END IF;
 END $$;
