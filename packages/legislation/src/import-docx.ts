@@ -90,6 +90,8 @@ async function inflate(entry:ZipEntry):Promise<Uint8Array>{
   return bytes;
 }
 function unescapeXML(value:string):string{
+  // Validate references on the ORIGINAL string before decoding '&amp;' into '&'.
+  if(/&(?!(?:amp|lt|gt|quot|apos|#(?:x[0-9a-fA-F]+|[0-9]+));)/.test(value))throw Error('DOCX_XML_ENTITY');
   return value.replace(/&([^;]{1,32});/g,(_all,entity:string)=>{
     const named:Record<string,string>={amp:'&',lt:'<',gt:'>',quot:'"',apos:"'"};
     if(Object.hasOwn(named,entity))return named[entity]!;
@@ -99,7 +101,7 @@ function unescapeXML(value:string):string{
       if(code>0 && code<=0x10ffff && !(code>=0xd800&&code<=0xdfff) && (code>=32 || code===9||code===10||code===13))return String.fromCodePoint(code);
     }
     throw Error('DOCX_XML_ENTITY');
-  }).replace(/&(?!(?:[^;]{1,32});)/g,()=>{throw Error('DOCX_XML_ENTITY');});
+  });
 }
 function parseWordXML(xml:string):{text:string;numbering:Numbering[];diagnostics:ImportDiagnostic[]}{
   if(xml.length>MAX_XML || /<!DOCTYPE|<!ENTITY|<w:altChunk\b|<w:object\b|<o:OLEObject\b/i.test(xml))throw Error('DOCX_ACTIVE_CONTENT');
