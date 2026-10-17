@@ -26,6 +26,13 @@ export type EditorialAuditEntry = {
 };
 const UUID = /^[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$/i;
 const SHA = /^[a-f0-9]{64}$/;
+function freezeJSON<T>(input: T): T {
+  if (input && typeof input === 'object') {
+    for (const child of Object.values(input)) freezeJSON(child);
+    Object.freeze(input);
+  }
+  return input;
+}
 export function validateEditorialWrite(
   scope: AuthenticatedEditorialScope, documentId: string,
   payload: unknown, digest: string
@@ -51,9 +58,9 @@ export class FixtureEditorialStore {
     if (this.documents.has(key)) throw Error('EDITORIAL_ALREADY_EXISTS');
     const record: EditorialRecord = {
       orgId: scope.orgId, documentId, revision: 1,
-      payload: Object.freeze(JSON.parse(bytes) as Record<string, unknown>), contentDigest: digest
+      payload: freezeJSON(JSON.parse(bytes) as Record<string, unknown>), contentDigest: digest
     };
-    this.documents.set(key, record);
+    this.documents.set(key, Object.freeze(record));
     this.history.push({orgId:scope.orgId,documentId,revision:1,actorId:scope.actorId,action:'created'});
     return record;
   }
@@ -66,10 +73,10 @@ export class FixtureEditorialStore {
         expectedRevision !== previous.revision) throw Error('LM_STALE_REVISION');
     const record: EditorialRecord = {
       orgId:scope.orgId,documentId,revision:previous.revision+1,
-      payload:Object.freeze(JSON.parse(bytes) as Record<string,unknown>),contentDigest:digest
+      payload:freezeJSON(JSON.parse(bytes) as Record<string,unknown>),contentDigest:digest
     };
     // Metadata write and audit are synchronous and all-or-nothing in fixture mode.
-    this.documents.set(key,record);
+    this.documents.set(key,Object.freeze(record));
     this.history.push({orgId:scope.orgId,documentId,revision:record.revision,
       actorId:scope.actorId,action:'revised'});
     return record;
@@ -125,11 +132,11 @@ export class PostgresEditorialStore {
     }
   }
   async create(scope: AuthenticatedEditorialScope, documentId: string, payload: unknown, digest: string): Promise<number> {
-    validateEditorialWrite(scope,documentId,payload,digest);
+    const canonical = validateEditorialWrite(scope,documentId,payload,digest);
     return this.scoped(scope,async client=>{
       const out = await client.query<{revision:string|number}>(
         'SELECT lm_create_document($1,$2,$3,$4::jsonb,$5) AS revision',
-        [scope.orgId,documentId,scope.actorId,JSON.stringify(payload),digest]
+        [scope.orgId,documentId,scope.actorId,canonical,digest]
       );
       const revision=Number(out.rows[0]?.revision);
       if (revision!==1) throw Error('EDITORIAL_UNEXPECTED_RESULT');
@@ -144,7 +151,7 @@ export class PostgresEditorialStore {
     return this.scoped(scope,async client=>{
       const out=await client.query<{revision:string|number}>(
         'SELECT lm_update_document($1,$2,$3,$4,$5::jsonb,$6) AS revision',
-        [scope.orgId,documentId,scope.actorId,expectedRevision,JSON.stringify(payload),digest]
+        [scope.orgId,documentId,scope.actorId,expectedRevision,canonical,digest]
       );
       const revision=Number(out.rows[0]?.revision);
       if (revision!==expectedRevision+1) throw Error('EDITORIAL_UNEXPECTED_RESULT');
