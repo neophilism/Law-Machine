@@ -1,4 +1,4 @@
-import {authorizeAuthorAction,DisabledAuthorIdentityAdapter} from '../../../lib/author-auth.ts';
+import {authorizeAuthorAction,DisabledAuthorIdentityAdapter} from '../../../../lib/author-auth.ts';
 
 // LM-043 author API surface remains fail-closed until maintained OIDC provider,
 // rotating secure sessions and trusted organization authorization are integrated.
