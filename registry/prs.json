@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-16T22:34:46Z",
+  "observedAt": "2026-10-17T01:08:46Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -167,7 +167,9 @@
       "id": "LM-009",
       "title": "Text Markdown and DOCX ingestion",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        12
+      ],
       "dependsOn": [
         "LM-003",
         "LM-008"
@@ -1140,6 +1142,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4895084638,
+      "number": 12,
+      "title": "LM-009: Source-preserving text and Markdown ingestion",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/12",
+      "createdAt": "2026-10-16T22:39:40Z",
+      "updatedAt": "2026-10-17T01:08:46Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "3f1a4e3b17ae72908748f6483169225673be9af6",
+      "baseRef": "main"
+    },
     {
       "id": 4895048986,
       "number": 11,
