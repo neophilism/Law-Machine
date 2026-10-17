@@ -1,10 +1,10 @@
 import { sha256Hex } from '../../contracts/src/integrity.ts';
 /** LM-009 first slice: bounded text and Markdown import with immutable original bytes. */
-export type SourceFormat = 'text' | 'markdown';
+export type SourceFormat = 'text' | 'markdown' | 'docx';
 export type ImportDiagnostic = { readonly code: string; readonly line: number; readonly message: string };
 export type Numbering = { readonly line: number; readonly label: string; readonly text: string; readonly depth: number };
 export type ImportedSource = { readonly format: SourceFormat; readonly name: string; readonly sourceDigest: string; readonly originalBytes: Uint8Array; readonly extractedText: string; readonly numbering: readonly Numbering[]; readonly diagnostics: readonly ImportDiagnostic[] };
-export async function importText(bytes: Uint8Array, options: { format: SourceFormat; name: string }): Promise<ImportedSource> {
+export async function importText(bytes: Uint8Array, options: { format: Exclude<SourceFormat, 'docx'>; name: string }): Promise<ImportedSource> {
   if (!(bytes instanceof Uint8Array) || bytes.byteLength > 2_000_000) throw Error('SOURCE_SIZE_LIMIT');
   if (options.format !== 'text' && options.format !== 'markdown') throw Error('UNSUPPORTED_SOURCE_FORMAT');
   if (typeof options.name !== 'string' || !options.name || options.name.length > 200 || /[\\/\x00-\x1f]/.test(options.name)) throw Error('INVALID_SOURCE_NAME');
