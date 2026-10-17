@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T13:33:32Z",
+  "observedAt": "2026-10-17T13:52:32Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -856,7 +856,8 @@
         36,
         39,
         41,
-        44
+        44,
+        45
       ]
     },
     {
@@ -1199,17 +1200,31 @@
   ],
   "pullRequests": [
     {
-      "id": 4900477427,
-      "number": 44,
-      "title": "LM-043: Strict OIDC signature and nonce verification",
+      "id": 4900502515,
+      "number": 45,
+      "title": "LM-043: Replay-safe OIDC PKCE callback state",
       "state": "open",
-      "url": "https://github.com/neophilism/Law-Machine/pull/44",
-      "createdAt": "2026-10-17T13:33:32Z",
-      "updatedAt": "2026-10-17T13:33:32Z",
+      "url": "https://github.com/neophilism/Law-Machine/pull/45",
+      "createdAt": "2026-10-17T13:37:04Z",
+      "updatedAt": "2026-10-17T13:52:32Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": false,
-      "headSha": "19c9c190a0816bee6e378835a11a6393a48104a4",
+      "headSha": "61530404b5a9c314fb860ecbfdf1ce8942c9d90f",
+      "baseRef": "main"
+    },
+    {
+      "id": 4900477427,
+      "number": 44,
+      "title": "LM-043: Strict OIDC signature and nonce verification",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/44",
+      "createdAt": "2026-10-17T13:33:32Z",
+      "updatedAt": "2026-10-17T13:52:21Z",
+      "closedAt": "2026-10-17T13:52:21Z",
+      "mergedAt": "2026-10-17T13:52:21Z",
+      "draft": false,
+      "headSha": "69b663dba082592d0154b32ef94c49c3f5ffc6ba",
       "baseRef": "main"
     },
     {
