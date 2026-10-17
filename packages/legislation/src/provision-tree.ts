@@ -84,21 +84,59 @@ export function normalizeSource(versionId:string,input:ImportedSource|Legislativ
       diagnostics.push({code:'DUPLICATE_SECTION_LABEL',path:'$.provisions['+i+'].citation'});
     if(!p.text.trim())diagnostics.push({code:'EMPTY_PROVISION',path:'$.provisions['+i+'].text'});
   }
+  // Parent cycles are possible in a malformed external provision tree: fail publication later.
+  for(const p of provisions){
+    const chain=new Set<string>();let cursor:string|null=p.id;
+    while(cursor!==null&&byId.has(cursor)){
+      if(chain.has(cursor)){
+        diagnostics.push({code:'PARENT_CYCLE',path:'$.provisions['+provisions.indexOf(p)+'].parentId'});
+        break;
+      }
+      chain.add(cursor);cursor=byId.get(cursor)!.parentId;
+    }
+  }
   return {versionId,format,sourceDigest:input.sourceDigest,sourceName:input.name,provisions,diagnostics};
 }
 /** Persistence exports a deterministic JSON record only. Original raw bytes stay separate/private. */
+function assertShape(input:unknown):asserts input is NormalizedDocument {
+  if(!input||typeof input!=='object'||Array.isArray(input))throw Error('STORED_SOURCE_INVALID');
+  const source=input as Record<string,unknown>;
+  if(typeof source.versionId!=='string'||!versionPattern.test(source.versionId)||
+    typeof source.sourceDigest!=='string'||!hex.test(source.sourceDigest)||
+    typeof source.sourceName!=='string'||source.sourceName.length>200||
+    !['text','markdown','docx','xml-uslm','xml-house-bill-dtd','pdf'].includes(String(source.format))||
+    !Array.isArray(source.provisions)||source.provisions.length>10000||
+    !Array.isArray(source.diagnostics)||source.diagnostics.length>1000)throw Error('STORED_SOURCE_INVALID');
+  for(const value of source.provisions){
+    if(!value||typeof value!=='object'||Array.isArray(value))throw Error('STORED_SOURCE_INVALID');
+    const p=value as Record<string,unknown>,span=p.span as Record<string,unknown>|null;
+    if(typeof p.id!=='string'||!versionPattern.test(p.id)||p.versionId!==source.versionId||
+      p.sourceDigest!==source.sourceDigest||
+      !(p.parentId===null||(typeof p.parentId==='string'&&versionPattern.test(p.parentId)))||
+      !(p.citation===null||(typeof p.citation==='string'&&p.citation.length<=512))||
+      typeof p.text!=='string'||p.text.length>100000||
+      !['extracted-unverified','unresolved','unsupported'].includes(String(p.status))||
+      !span||typeof span!=='object'||!['line','utf16-offset','page'].includes(String(span.kind))||
+      !Number.isSafeInteger(span.start)||!Number.isSafeInteger(span.end)||
+      typeof span.start!=='number'||typeof span.end!=='number'||span.start<0||span.end<span.start||
+      !Array.isArray(p.proposedDefinitions)||p.proposedDefinitions.length>30||
+      !Array.isArray(p.proposedCrossRefs)||p.proposedCrossRefs.length>30||
+      !p.proposedDefinitions.every(v=>typeof v==='string'&&v.length<=200)||
+      !p.proposedCrossRefs.every(v=>typeof v==='string'&&v.length<=200))throw Error('STORED_SOURCE_INVALID');
+  }
+  for(const v of source.diagnostics)if(!v||typeof v!=='object'||typeof v.code!=='string'||typeof v.path!=='string'||
+    v.code.length>100||v.path.length>256)throw Error('STORED_SOURCE_INVALID');
+}
 export function serializeSource(document:NormalizedDocument):string{
+  assertShape(document);
   return canonicalJSON(document);
 }
 export function parseStoredSource(json:string):NormalizedDocument{
   if(typeof json!=='string'||json.length>6_000_000)throw Error('STORED_SOURCE_LIMIT');
   let data:unknown;
   try{data=JSON.parse(json);}catch{throw Error('STORED_SOURCE_INVALID');}
-  if(!data||typeof data!=='object'||Array.isArray(data))throw Error('STORED_SOURCE_INVALID');
-  const record=data as Record<string,unknown>;
-  if(!versionPattern.test(String(record.versionId))||typeof record.sourceDigest!=='string'||!hex.test(record.sourceDigest)||
-     !Array.isArray(record.provisions)||record.provisions.length>10000)throw Error('STORED_SOURCE_INVALID');
-  return JSON.parse(canonicalJSON(record)) as NormalizedDocument;
+  assertShape(data);
+  return JSON.parse(canonicalJSON(data)) as NormalizedDocument;
 }
 /** A new pinned version cannot overwrite another publication or prior citation. */
 export class VersionedSourceStore {
@@ -118,7 +156,7 @@ export class VersionedSourceStore {
 /** Public explorer export is explicitly authorized; no private source bytes or paths. */
 export function publishExplorer(source:NormalizedDocument,authorized:boolean){
   if(authorized!==true)throw Error('PUBLICATION_NOT_AUTHORIZED');
-  if(source.diagnostics.some(d=>['MISSING_PARENT','DUPLICATE_PROVISION_ID','DUPLICATE_SECTION_LABEL'].includes(d.code)))
+  if(source.diagnostics.some(d=>['MISSING_PARENT','PARENT_CYCLE','DUPLICATE_PROVISION_ID','DUPLICATE_SECTION_LABEL'].includes(d.code)))
     throw Error('SOURCE_STRUCTURE_INVALID');
   return {versionId:source.versionId,sourceDigest:source.sourceDigest,format:source.format,
     provisions:source.provisions.map(p=>({id:p.id,parentId:p.parentId,citation:p.citation,text:p.text,span:p.span,status:p.status}))};
