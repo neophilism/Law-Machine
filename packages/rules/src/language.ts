@@ -137,7 +137,8 @@ export function evaluateRuleGuard(rule:RuleSpec,facts:Readonly<Record<string,unk
    return c.op==='gte'?a>=b:a<=b;
   }
   if(c.op==='not'){const v=evaluate(c.arg,depth+1);return v==='unknown'?'unknown':!v;}
-  const outcomes=c.terms.map(t=>evaluate(t,depth+1));
+  if(c.op!=='and' && c.op!=='or')throw Error('RULE_EVALUATION_INVALID');
+  const outcomes=c.terms.map((t:Condition)=>evaluate(t,depth+1));
   if(c.op==='and')return outcomes.includes(false)?false:outcomes.includes('unknown')?'unknown':true;
   return outcomes.includes(true)?true:outcomes.includes('unknown')?'unknown':false;
  };
