@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T13:19:37Z",
+  "observedAt": "2026-10-17T13:23:13Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -878,7 +878,8 @@
         "heading": "LM 044 Secure source storage and import endpoints"
       },
       "contributingPrs": [
-        42
+        42,
+        43
       ]
     },
     {
@@ -1197,17 +1198,31 @@
   ],
   "pullRequests": [
     {
-      "id": 4900387839,
-      "number": 42,
-      "title": "LM-044: Fail-closed source quarantine and official URL preflight",
+      "id": 4900410683,
+      "number": 43,
+      "title": "LM-044: Quarantine-to-private-editorial extraction bridge",
       "state": "open",
-      "url": "https://github.com/neophilism/Law-Machine/pull/42",
-      "createdAt": "2026-10-17T13:19:37Z",
-      "updatedAt": "2026-10-17T13:19:37Z",
+      "url": "https://github.com/neophilism/Law-Machine/pull/43",
+      "createdAt": "2026-10-17T13:23:13Z",
+      "updatedAt": "2026-10-17T13:23:13Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": true,
-      "headSha": "9c4481d6ab3e723a6b62af1df1db3913f3ad159a",
+      "headSha": "eb646a9969625c3d9300b30c781595a7254da05f",
+      "baseRef": "main"
+    },
+    {
+      "id": 4900387839,
+      "number": 42,
+      "title": "LM-044: Fail-closed source quarantine and official URL preflight",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/42",
+      "createdAt": "2026-10-17T13:19:37Z",
+      "updatedAt": "2026-10-17T13:23:03Z",
+      "closedAt": "2026-10-17T13:23:03Z",
+      "mergedAt": "2026-10-17T13:23:03Z",
+      "draft": false,
+      "headSha": "fbd2ef928565794d4f0b714b5b9e2adb0d90bde4",
       "baseRef": "main"
     },
     {
