@@ -145,7 +145,7 @@ export class PostgresEditorialStore {
   }
   async update(scope: AuthenticatedEditorialScope, documentId: string, expectedRevision: number,
     payload: unknown, digest: string): Promise<number> {
-    validateEditorialWrite(scope,documentId,payload,digest);
+    const canonical = validateEditorialWrite(scope,documentId,payload,digest);
     if (!Number.isSafeInteger(expectedRevision) || expectedRevision < 1)
       throw Error('EDITORIAL_REVISION_INVALID');
     return this.scoped(scope,async client=>{
