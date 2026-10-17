@@ -89,3 +89,24 @@ footer { margin-top: 4rem; font-size: .85rem; line-height: 1.6; }
 .source-inspector__header { display: flex; align-items: center; justify-content: space-between; gap: .7rem; border-bottom: 1px solid var(--lm-border); padding: .7rem 1rem; flex-wrap: wrap; }
 .source-inspector__content { padding: .75rem 1rem; }
 .source-inspector__content p { margin: 0; }
+
+/* LM-031: static, unverified source-planning preview (no authoritative claims). */
+.planning-shell { max-width: 74rem; }
+.planning-shell h1 { max-width: 15ch; font-family: Georgia,'Times New Roman',serif; }
+.planning-shell section { max-width: none; }
+.planning-shell h2 { font: 700 clamp(1.45rem,3vw,2.35rem)/1.2 Georgia,serif; }
+.planning-shell h3 { font: 700 1.15rem/1.35 Georgia,serif; margin-bottom: .4rem; }
+.planning-warning { margin-top: 2rem; padding: 1rem 1.25rem; border-left: .4rem solid #843b17; background: #fff0e2; color: #512b14; line-height: 1.6; }
+.planning-warning p { margin-bottom: 0; }
+.planning-list { display: grid; list-style: decimal inside; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; padding: 0; }
+.planning-list>li { border: 1px solid #8a9e95; border-radius: .55rem; background: #fffaf0; padding: 1.25rem; }
+.planning-list>li::marker { font-size: .8rem; font-weight: 700; }
+.planning-list h3 { display: inline; }
+.planning-list p { font-size: .9rem; }
+.planning-type { font-weight: 700; }
+.planning-checkpoints { padding-left: 1.5rem; line-height: 2; }
+.planning-detail section ul { line-height: 2; }
+@media (max-width: 680px) {
+ .planning-list { grid-template-columns: 1fr; }
+ .planning-list>li { padding: 1rem; }
+}
