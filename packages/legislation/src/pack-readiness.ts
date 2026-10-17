@@ -61,7 +61,7 @@ export function inspectFirstPack(candidate:unknown):PackReadiness{
      !validStringList(s.sourceRefs,0,100)||
      !Array.isArray(s.assumptions)||s.assumptions.length>100||
      !Array.isArray(s.unresolved)||s.unresolved.length>100||
-     !s.unresolved.every(x=>typeof x==='string'&&x.length>0&&x.length<1000))
+     !s.unresolved.every((x:unknown)=>typeof x==='string'&&x.length>0&&x.length<1000))
    fail('SCENARIO_INVALID:'+n);
   if(s?.id)seen.add(s.id);
   if(s?.sourceRefs?.length)sourceAnchored++;
@@ -74,14 +74,16 @@ export function inspectFirstPack(candidate:unknown):PackReadiness{
     pack.sourceInventory.some(s=>!s||!id(s.id)||!['missing','verified'].includes(s.availability)||
       !(s.digest===null||typeof s.digest==='string'&&/^[a-f0-9]{64}$/.test(s.digest))))
   fail('SOURCE_INVENTORY_INVALID');
- if(pack.sourceInventory?.some(s=>s.availability!=='verified'||!s.digest||!s.retrievedAt))fail('SOURCE_BYTES_OR_RETRIEVAL_NOT_VERIFIED');
+ if(Array.isArray(pack.sourceInventory)&&pack.sourceInventory.some(s=>!s||s.availability!=='verified'||!s.digest||!s.retrievedAt))fail('SOURCE_BYTES_OR_RETRIEVAL_NOT_VERIFIED');
  if(pack.sourceStatus!=='verified'||pack.baselineStatus!=='verified')
   fail('PINNED_SOURCES_NOT_VERIFIED');
- if(pack.scenarios.some(s=>s.classification==='planned-only'||s.verifiedLaw!==true||
-      !s.sourceRefs.length||!s.baselineSnapshot))
+ if(pack.scenarios.some(s=>!s||s.classification==='planned-only'||s.verifiedLaw!==true||
+      !Array.isArray(s.sourceRefs)||!s.sourceRefs.length||!s.baselineSnapshot))
   fail('SCENARIOS_NOT_SOURCE_READY');
  if(pack.status!=='candidate')fail('PUBLICATION_DISABLED');
- const ready=errors.length===0&&modelReady===14;
- return {readyForExecution:ready,readyForPublication:ready,
+ // This editorial inventory is untrusted metadata, not proof of original source bytes.
+ // Even forged all-verified flags can never activate publication/execution.
+ fail('TRUSTED_SOURCE_VERIFICATION_REQUIRED');
+ return {readyForExecution:false,readyForPublication:false,
   coverage:{total,sourceAnchored,modelReady},diagnostics:errors};
 }
