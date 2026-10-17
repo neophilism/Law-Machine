@@ -121,7 +121,7 @@ export function validateEvidenceGraph(
       if(!rec||rec.kind!=='interpretation')add('EVIDENCE_CONFLICT_UNKNOWN_ALTERNATIVE',path);
     }
     if(conflict.chosenId!==undefined){
-      if(!conflict.alternatives.includes(conflict.chosenId)||!dispositionValid(conflict.disposition)||
+      if(!identifier(conflict.chosenId)||!conflict.alternatives.includes(conflict.chosenId)||!dispositionValid(conflict.disposition)||
         (conflict.disposition as ReviewDisposition).status!=='accepted')
         add('EVIDENCE_CONFLICT_UNREVIEWED_SELECTION',path);
     }
