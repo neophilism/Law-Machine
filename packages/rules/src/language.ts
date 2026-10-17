@@ -27,7 +27,6 @@ const object=(v:unknown):v is Record<string,unknown>=>v!==null&&typeof v==='obje
 const keys=(v:Record<string,unknown>,allow:readonly string[])=>Object.keys(v).every(k=>allow.includes(k));
 const modal=new Set(['obligation','permission','prohibition','right','power']);
 const operations=new Set(['route','record','create-obligation','schedule']);
-const truth=(x:unknown):x is Truth=>x===true||x===false||x==='unknown';
 
 export function parseRuleLanguage(
  text:string, factTypes:Readonly<Record<string,FactType>>, capabilities:readonly string[]
