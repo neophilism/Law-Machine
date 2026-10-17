@@ -6,4 +6,6 @@ export * from './official-metadata.ts';
 export * from './import-pdf.ts';
 export * from './provision-tree.ts';
 export * from './citations.ts';
+export * from './baselines.ts';
+export * from './official-excerpts.ts';
 export * from './amendments.ts';

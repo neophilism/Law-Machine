@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T01:30:22Z",
+  "observedAt": "2026-10-17T02:28:24Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -266,7 +266,9 @@
       "id": "LM-014",
       "title": "Baseline snapshots and temporal applicability",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        19
+      ],
       "dependsOn": [
         "LM-012",
         "LM-007"
@@ -1153,17 +1155,31 @@
   ],
   "pullRequests": [
     {
+      "id": 4896448617,
+      "number": 19,
+      "title": "LM-014: Dated legal baselines and temporal applicability",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/19",
+      "createdAt": "2026-10-17T02:13:04Z",
+      "updatedAt": "2026-10-17T02:28:24Z",
+      "closedAt": "2026-10-17T02:28:24Z",
+      "mergedAt": "2026-10-17T02:28:24Z",
+      "draft": false,
+      "headSha": "a794c83822447a7d0fbe7d46b45636c0577e662d",
+      "baseRef": "main"
+    },
+    {
       "id": 4896213875,
       "number": 18,
       "title": "LM-015: Typed amendments and safe consolidated projections",
       "state": "open",
       "url": "https://github.com/neophilism/Law-Machine/pull/18",
       "createdAt": "2026-10-17T01:30:22Z",
-      "updatedAt": "2026-10-17T01:30:22Z",
+      "updatedAt": "2026-10-17T01:30:32Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": true,
-      "headSha": "654dbf1787cdc864c0d54d1d7008523472616fd5",
+      "headSha": "02af3a068b18450c554bc5c615859b6909260714",
       "baseRef": "main"
     },
     {
