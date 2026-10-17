@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T02:28:24Z",
+  "observedAt": "2026-10-17T02:33:29Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -306,7 +306,9 @@
       "id": "LM-016",
       "title": "Version diff and dependency invalidation",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        21
+      ],
       "dependsOn": [
         "LM-015"
       ],
@@ -1154,6 +1156,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4896561601,
+      "number": 21,
+      "title": "LM-016: Versioned source diff and downstream invalidation",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/21",
+      "createdAt": "2026-10-17T02:33:29Z",
+      "updatedAt": "2026-10-17T02:33:29Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "5ece9653e84df78d9222ab6cf54de750b44f5f33",
+      "baseRef": "main"
+    },
     {
       "id": 4896448617,
       "number": 19,
