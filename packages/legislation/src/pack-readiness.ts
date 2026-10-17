@@ -74,6 +74,7 @@ export function inspectFirstPack(candidate:unknown):PackReadiness{
     pack.sourceInventory.some(s=>!s||!id(s.id)||!['missing','verified'].includes(s.availability)||
       !(s.digest===null||typeof s.digest==='string'&&/^[a-f0-9]{64}$/.test(s.digest))))
   fail('SOURCE_INVENTORY_INVALID');
+ if(pack.sourceInventory?.some(s=>s.availability!=='verified'||!s.digest||!s.retrievedAt))fail('SOURCE_BYTES_OR_RETRIEVAL_NOT_VERIFIED');
  if(pack.sourceStatus!=='verified'||pack.baselineStatus!=='verified')
   fail('PINNED_SOURCES_NOT_VERIFIED');
  if(pack.scenarios.some(s=>s.classification==='planned-only'||s.verifiedLaw!==true||
