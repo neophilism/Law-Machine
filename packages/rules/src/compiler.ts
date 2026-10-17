@@ -94,7 +94,7 @@ export function compileRuleModel(text:string,env:CompileEnvironment):Compilation
   const path='$.precedence['+i+']';
   if(!edge||!id(edge.ruleId)||!ruleById.has(edge.ruleId)||after.has(edge.ruleId)||
     !Array.isArray(edge.after)||edge.after.length>100||
-    !edge.after.every(id)||!distinct(edge.after)||edge.after.some(v=>!ruleById.has(v))){
+    !edge.after.every(id)||!distinct(edge.after)||edge.after.some((v:string)=>!ruleById.has(v))){
    error('COMPILE_PRECEDENCE_INVALID',path);continue;
   }
   after.set(edge.ruleId,[...edge.after].sort());
