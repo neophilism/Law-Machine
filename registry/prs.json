@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T12:38:36Z",
+  "observedAt": "2026-10-17T12:47:35Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -358,7 +358,10 @@
       "source": {
         "path": "docs/source/ORIGINAL_SPECIFICATION.md",
         "heading": "LM 018 Electronic filing source and content pack"
-      }
+      },
+      "contributingPrs": [
+        37
+      ]
     },
     {
       "id": "LM-019",
@@ -1182,6 +1185,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4900172567,
+      "number": 37,
+      "title": "LM-018: Fourteen electronic-filing scenarios and source-readiness gates",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/37",
+      "createdAt": "2026-10-17T12:47:35Z",
+      "updatedAt": "2026-10-17T12:47:35Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "c34e1d8e9124ec2adfc7163ad05e213e956dd525",
+      "baseRef": "main"
+    },
     {
       "id": 4900093589,
       "number": 35,
