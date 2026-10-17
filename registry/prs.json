@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T02:34:51Z",
+  "observedAt": "2026-10-17T02:40:13Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -364,7 +364,9 @@
       "id": "LM-019",
       "title": "Rule language parser and validator",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        22
+      ],
       "dependsOn": [
         "LM-003",
         "LM-008",
@@ -1159,17 +1161,31 @@
   ],
   "pullRequests": [
     {
-      "id": 4896561601,
-      "number": 21,
-      "title": "LM-016: Versioned source diff and downstream invalidation",
+      "id": 4896581702,
+      "number": 22,
+      "title": "LM-019: Typed bounded rule language and explicit unknown semantics",
       "state": "open",
-      "url": "https://github.com/neophilism/Law-Machine/pull/21",
-      "createdAt": "2026-10-17T02:33:29Z",
-      "updatedAt": "2026-10-17T02:33:40Z",
+      "url": "https://github.com/neophilism/Law-Machine/pull/22",
+      "createdAt": "2026-10-17T02:37:26Z",
+      "updatedAt": "2026-10-17T02:40:13Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": true,
-      "headSha": "ec446cfbacb2a6a87bb021f0bf7984cd273e1096",
+      "headSha": "f36cf3c228cad7891f2eaefed534a1b0e22f510e",
+      "baseRef": "main"
+    },
+    {
+      "id": 4896561601,
+      "number": 21,
+      "title": "LM-016: Versioned source diff and downstream invalidation",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/21",
+      "createdAt": "2026-10-17T02:33:29Z",
+      "updatedAt": "2026-10-17T02:39:49Z",
+      "closedAt": "2026-10-17T02:39:49Z",
+      "mergedAt": "2026-10-17T02:39:49Z",
+      "draft": false,
+      "headSha": "05483384a23ef64ff96f2910b7d023b42e3cfa69",
       "baseRef": "main"
     },
     {
