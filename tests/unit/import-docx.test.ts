@@ -80,6 +80,6 @@ describe('LM-009 DOCX bounds, fidelity and security',()=>{
     await expect(importDocx(fixture(),{name:'../a.docx'})).rejects.toThrow('INVALID_SOURCE_NAME');
     await expect(importDocx(zip([{name:'word/other.xml',body:'ok'}]),{name:'x.docx'})).rejects.toThrow('DOCX_DOCUMENT_MISSING');
     await expect(importDocx(new Uint8Array(6_000_001),{name:'x.docx'})).rejects.toThrow('DOCX_ARCHIVE_SIZE');
-    await expect(importDocx(zip([{name:'word/document.xml',body:'<w:document><w:p></w:document>'}]),{name:'x.docx'})).rejects.toThrow('DOCX_XML_INVALID');
+    await expect(importDocx(zip([{name:'word/document.xml',body:'<w:document><w:body><w:p></w:document>'}]),{name:'x.docx'})).rejects.toThrow('DOCX_XML_INVALID');
   });
 });
