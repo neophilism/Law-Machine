@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T12:24:27Z",
+  "observedAt": "2026-10-17T12:35:35Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -566,7 +566,9 @@
       "id": "LM-029",
       "title": "Worker execution and responsiveness controls",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        34
+      ],
       "dependsOn": [
         "LM-026",
         "LM-028"
@@ -1178,6 +1180,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4900088407,
+      "number": 34,
+      "title": "LM-029: Bounded worker execution, cancellation and safe fallback",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/34",
+      "createdAt": "2026-10-17T12:35:35Z",
+      "updatedAt": "2026-10-17T12:35:35Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "d45c687e31117b98ae671b572043e95f8ce6364f",
+      "baseRef": "main"
+    },
     {
       "id": 4900020208,
       "number": 33,
