@@ -9,7 +9,7 @@ export function processQueue(items:readonly WorkItem[],config:ServiceConfig,unti
  if(!Array.isArray(items)||items.length>10000||!tick(untilTick)||!config||!tick(config.workers)||config.workers>1000||
  !tick(config.unitsPerTick)||config.unitsPerTick>100000||!['assumption','empirical'].includes(config.sourceKind)||
  typeof config.sourceId!=='string'||!config.sourceId||config.sourceId.length>128)throw Error('QUEUE_INPUT_INVALID');
- if(!interventions||typeof interventions!=='object'||!Array.isArray(interventions.outageTicks??[])||!(interventions.outageTicks??[]).every(tick)||!Array.isArray(interventions.failOnceItems??[])||!(interventions.failOnceItems??[]).every(x=>typeof x==='string')||!tick(interventions.retryDelay??1)||((interventions.retryDelay??1)<1))throw Error('INTERVENTION_INVALID');
+ if(!interventions||typeof interventions!=='object'||!Array.isArray(interventions.outageTicks??[])||!(interventions.outageTicks??[]).every(tick)||(interventions.outageTicks??[]).length>10000||!Array.isArray(interventions.failOnceItems??[])||!(interventions.failOnceItems??[]).every(x=>typeof x==='string')||(interventions.failOnceItems??[]).length>10000||!tick(interventions.retryDelay??1)||((interventions.retryDelay??1)<1))throw Error('INTERVENTION_INVALID');
  const outages=new Set(interventions.outageTicks??[]);
  const failuresOnce=new Set(interventions.failOnceItems??[]);
  const failed=new Set<string>();
@@ -38,5 +38,5 @@ export function processQueue(items:readonly WorkItem[],config:ServiceConfig,unti
   }
   remaining=next;
  }
- return {records,remaining,consumedUnits:consumed,capacityUnits:capacity*(untilTick+1-outages.size),failures};
+ return {records,remaining,consumedUnits:consumed,capacityUnits:capacity*(untilTick+1-[...outages].filter(t=>t<=untilTick).length),failures};
 }
