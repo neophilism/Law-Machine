@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T12:02:29Z",
+  "observedAt": "2026-10-17T12:18:23Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -526,7 +526,9 @@
       "id": "LM-027",
       "title": "Before and after comparison engine",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        32
+      ],
       "dependsOn": [
         "LM-024",
         "LM-026"
@@ -1174,6 +1176,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4899983550,
+      "number": 32,
+      "title": "LM-027: Pinned before-and-after legal framework comparison",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/32",
+      "createdAt": "2026-10-17T12:18:23Z",
+      "updatedAt": "2026-10-17T12:18:23Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "bf28325628bac8491ef65b76690ebf6fae2e6a62",
+      "baseRef": "main"
+    },
     {
       "id": 4899883078,
       "number": 31,
