@@ -5,3 +5,4 @@ export * from './branches.ts';
 export * from './queues.ts';
 export * from './replay.ts';
 export * from './comparison.ts';
+export * from './explanations.ts';
