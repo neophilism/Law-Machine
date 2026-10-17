@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T03:10:26Z",
+  "observedAt": "2026-10-17T03:14:29Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -446,7 +446,9 @@
       "id": "LM-023",
       "title": "Duties rights permissions and breach",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        26
+      ],
       "dependsOn": [
         "LM-021",
         "LM-022"
@@ -1166,6 +1168,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4896789419,
+      "number": 26,
+      "title": "LM-023: Source-linked duties, breach, permissions and remedies",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/26",
+      "createdAt": "2026-10-17T03:14:29Z",
+      "updatedAt": "2026-10-17T03:14:29Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "c789657ca1202976a63aaeb55e0b3a6e82985001",
+      "baseRef": "main"
+    },
     {
       "id": 4896765427,
       "number": 25,
