@@ -35,11 +35,11 @@ describe('LM-029 bounded worker protocol',()=>{
     });
   });
   it('never lets old worker completions overwrite a newer generation',async()=>{
-    const listeners:Partial<Record<'message'|'error'|'messageerror',Function>>={};
+    const listeners:Partial<Record<'message'|'error'|'messageerror',(event: unknown) => void>>={};
     const port={
       postMessage:vi.fn((_r:FixtureWorkerRequest)=>undefined),
       terminate:vi.fn(),
-      addEventListener:vi.fn((type:'message'|'error'|'messageerror',fn:Function)=>{listeners[type]=fn;})
+      addEventListener:vi.fn((type:'message'|'error'|'messageerror',fn:(event: unknown) => void)=>{listeners[type]=fn;})
     } as unknown as WorkerPort;
     const client=new FixtureWorkerClient(()=>port);
     const first=client.run('old',events(2));
@@ -59,8 +59,8 @@ describe('LM-029 bounded worker protocol',()=>{
     const client=new FixtureWorkerClient(()=>{
       const port={
         postMessage:vi.fn(),terminate:vi.fn(),
-        addEventListener:vi.fn((type:string,cb:Function)=>{
-          if(type==='error') (port as {crash?:Function}).crash=cb;
+        addEventListener:vi.fn((type:string,cb:(event: unknown) => void)=>{
+          if(type==='error') (port as {crash?:(event: unknown) => void}).crash=cb;
           if(type==='message')listeners.push(cb as (event:{data:FixtureWorkerResponse})=>void);
         })
       } as unknown as WorkerPort;
