@@ -37,7 +37,7 @@ const hex=(v:unknown):v is string=>typeof v==='string'&&/^[a-f0-9]{64}$/.test(v)
 const distinct=(items:readonly string[])=>new Set(items).size===items.length;
 function deepFreeze<T>(input:T):Readonly<T>{
  if(input&&typeof input==='object'){
-  for(const key of Object.keys(input))deepFreeze((input as Record<string,unknown>)[key]);
+  for(const key of Object.keys(input))deepFreeze((input as unknown as Record<string,unknown>)[key]);
   Object.freeze(input);
  }
  return input;
