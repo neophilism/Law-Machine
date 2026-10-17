@@ -4,3 +4,4 @@ export * from './import-docx.ts';
 export * from './import-xml.ts';
 export * from './official-metadata.ts';
 export * from './import-pdf.ts';
+export * from './provision-tree.ts';
