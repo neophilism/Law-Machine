@@ -55,5 +55,6 @@ export class DeterministicScheduler {
  resume(onEvent?:(event:TraceEvent,scheduler:DeterministicScheduler)=>void):SchedulerSnapshot{return this.run(onEvent);}
  cancel():SchedulerSnapshot{this.status='stopped';this.queue=[];return this.snapshot();}
  snapshot():SchedulerSnapshot{return Object.freeze({status:this.status,trace:Object.freeze([...this.trace]),pending:Object.freeze(this.queue.map(x=>Object.freeze({...x,sourceRefs:Object.freeze([...x.sourceRefs])}))),diagnostic:this.diagnostic});}
- private isStopped():boolean{return this.status==='stopped';}\n private stop(code:SchedulerDiagnostic['code'],eventId:string|null){this.status='stopped';this.diagnostic={code,eventId};this.queue=[];}
+ private isStopped():boolean{return this.status==='stopped';}
+ private stop(code:SchedulerDiagnostic['code'],eventId:string|null){this.status='stopped';this.diagnostic={code,eventId};this.queue=[];}
 }
