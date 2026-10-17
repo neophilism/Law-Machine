@@ -51,6 +51,8 @@ describe('LM-028 provenance and causal inspection',()=>{
    .toThrow('EXPLANATION_EVENT_INVALID');
   expect(()=>buildExplanationGraph([{...base,sourceRefs:[{...ref,sourceDigest:'b'.repeat(64)}]}],rules,sources,[]))
    .toThrow('EXPLANATION_SOURCE_NOT_RULE_SUPPORTED');
+  expect(()=>buildExplanationGraph([{...base,sourceRefs:[null as never]}],rules,sources,[]))
+   .toThrow('EXPLANATION_ANCHOR_INVALID');
  });
  it('rejects dangling and circular causal records',()=>{
   expect(()=>buildExplanationGraph([{...base,parentIds:['missing']}],rules,sources,[]))
@@ -63,7 +65,7 @@ describe('LM-028 provenance and causal inspection',()=>{
  it('resolves evidence records by declared classification and refuses invented references',()=>{
   const id='assumption-1';
   const evidence=[{id,classification:'assumption' as const,description:'Toy clerk delay',sourceRefs:[ref]}];
-  const enriched={...base,evidenceIds:[id]};
+  const enriched={...base,evidenceIds:[],predicates:[{factId:'delay',result:true as const,evidenceId:id}]};
   expect(buildExplanationGraph([enriched],rules,sources,evidence).views[0]?.evidence[0]?.classification)
    .toBe('assumption');
   expect(()=>buildExplanationGraph([{...base,evidenceIds:['absent']}],rules,sources,evidence))
