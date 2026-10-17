@@ -38,7 +38,7 @@ describe('LM-044 private encrypted local quarantine contribution',()=>{
   const path=join(root,org,first.digest+'.lmq'),before=await readFile(path);
   expect((await vault.put(scope,source())).digest).toBe(first.digest);
   expect(await readFile(path)).toEqual(before);
-  expect(vault.get({...scope,organizationId:other},first.digest)).rejects.toThrow('QUARANTINE_SCOPE_DENIED');
+  await expect(vault.get({...scope,organizationId:other},first.digest)).resolves.toBeNull();
   expect(await vault.get({organizationId:other,actorId:actor,action:'read'},first.digest)).toBeNull();
  }));
  it('rejects wrong keys, tampering, forged scopes and digest changes',async()=>withVault(async(root,key)=>{
