@@ -1,43 +1,32 @@
-# Implementation handoff
+# Implementation handoff — 2026-10-17 checkpoint
 
-The owner selected `neophilism/Law-Machine` and directed development beginning with the foundation on 2026-10-16. All 60 units from the original specification are adopted. The active registry is `registry/prs.json`. Read live GitHub state before continuing; this document is not a live progress counter.
+The authoritative source of unit scope and dependencies is [registry/prs.json](../registry/prs.json) and [docs/DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md). This dated checkpoint is NOT a live GitHub status feed. Inspect actual branch, pull request, current-head checks and merge state before work.
 
-## Foundation delivered
+## Completed through this checkpoint
 
-LM-001 preserves the complete source document, defines architecture decisions and package boundaries, imports all 60 units without reducing scope, tests both consumer parsers and registers the owner's execution/security policy. It includes minimal credential-free CI needed to check its own work. No application runtime, database, cloud resource, legislative pack or public deployment is claimed.
+**LM-001 through LM-029 are merged except LM-018**: the actual sequential merged units are LM-001–LM-017 and LM-019–LM-029, plus LM-042. This totals **29 of 60 units**, not 29 consecutive units. The 29th merged milestone was LM-042 PR #35 (PostgreSQL persistence) after three required CI jobs passed.
 
-## Workspace checkpoint and next unit
+- LM-001–008: architecture/registry, workspace, schemas, canonical bytes/hash, accessible design, headless SDK, coverage capability declarations, fictional test oracle.
+- LM-009–017: document imports, source adapters, citations, baseline/temporal and amendatory projections, invalidation, assumptions/evidence.
+- LM-019–029: rule language/compiler, deterministic scheduler, actor state, deadlines, obligations/remedies, queues, replay/run identity, framework comparison, explanations and real browser worker with safe cancellation.
+- LM-042: PostgreSQL migrations for scoped editorial records, immutable revision/audit history, source/release/job metadata, forced RLS, optimistic revision conflicts, real ephemeral PostgreSQL tests and fixture-mode adapter. No production DB has been provisioned or migrated.
 
-LM-001 is merged as PR #1. The implemented workspace is PR #4, `lm-002-workspace`; inspect its current GitHub CI/merge status. PR #3 was observed to contain only an in-progress evidence note for the same unit; preserve that branch and reconcile its actual latest contents before treating it as an implementation follow-up. No unseen work is assumed complete.
+Verify [LM-026 PR #31](https://github.com/neophilism/Law-Machine/pull/31), [LM-027 PR #32](https://github.com/neophilism/Law-Machine/pull/32), [LM-028 PR #33](https://github.com/neophilism/Law-Machine/pull/33), [LM-029 PR #34](https://github.com/neophilism/Law-Machine/pull/34) and [LM-042 PR #35](https://github.com/neophilism/Law-Machine/pull/35).
 
-PR #4 includes strict TypeScript, seven domain packages, a Next.js shell, import boundary checks, source-pattern scanning, dependency auditing, production build and browser/axe tests. Local checks and browser execution pass; the initial complete GitHub workflow passed. Exact current-head checks govern merging.
+## In-progress units not accepted
 
-The next implementation is LM-003 (domain schemas/identity), with LM-005 (design primitives) also dependency-ready after LM-002. All changes are saved through small PRs because the owner requested frequent repository checkpoints and continuation toward at least 15 of 60 units.
+- **LM-043 author identity**, draft [PR #36](https://github.com/neophilism/Law-Machine/pull/36), contains server-only permission checks, fresh membership/role scope tests, CSRF/reauth tests and a deliberately disabled author preview route. Complete managed identity-provider integration, real revocable sessions, role persistence and authenticated author-route E2E verification before considering acceptance.
+- **LM-018 first electronic-filing content pack**, draft [PR #37](https://github.com/neophilism/Law-Machine/pull/37), contains the 14 approved scenarios as a nonpublishable planning inventory and fail-closed source readiness checks. The authentic complete bill text and official dated baseline source bytes are NOT present; do not reconstruct legislation or publish this pack. Its research links are candidates, not independently pinned baseline snapshots.
+- LM-030's full first-pack simulation needs LM-018, so cannot be accepted while LM-018 lacks verified sources. LM-043 is a prerequisite for LM-044–046 authoring/upload work.
 
-## LM-002 acceptance retained for reference
+## Next development actions
 
-After LM-001's actual PR is merged, implement the pnpm workspace and TypeScript application scaffold described in the plan. Pin mutually compatible maintained dependencies after checking their current documentation. Commit the lockfile; provide a clean-checkout local development command requiring no credentials.
+Finish source-authenticated LM-018 and retained golden scenarios once the complete bill text and dated official baseline versions are supplied, and finish LM-043 using a maintained managed identity provider (candidate: Neon's managed authentication), with immutable source/version and cross-organization authorization checks. Keep public preview and toy-law worker usable without paid credentials. Other backend work may be prepared separately but cannot be merged as complete until its actual dependency gates pass.
 
-Create `apps/web`, `apps/jobs` and the seven domain packages in ADR-0002. Add meaningful lint, type, test and build checks. Enforce prohibited imports (including browser-to-database and pure simulation-to-React) with negative fixtures. Add secret/dependency checks and fix actionable findings. Build a minimal explicit development shell; do not invent a functional simulator before LM-019 onward.
+## Verification / merge
 
-Then LM-003 and LM-005 become dependency-ready. Respect the full dependency graph; the plan's range dependencies for LM-041 and LM-060 are expanded explicitly in the registry.
+Start from a clean checkout on Node 24.19.0, pnpm 11.25.0. Run pnpm install --frozen-lockfile, pnpm check, pnpm audit, pnpm build, then pnpm exec playwright install --with-deps chromium and pnpm test:browser. The current CI includes foundation, workspace and postgres jobs; require all applicable checks at exact PR head. A passing docs-only check cannot certify an unimplemented feature. Use docs/GITHUB_MERGE_PREFLIGHT.md and expected-head SHA merges; fix real failures before merging.
 
-## Session procedure
+The public service remains a development experience; it does not receive actual legal filings, issue government receipts, calculate authoritative personal deadlines, or assert the proposal is enacted. Ask Bill is a separate character/conversation project consuming the headless SDK in the future; do not conflate repositories or companies.
 
-1. Inspect `AGENTS.md`, the selected unit, dependencies, git status and actual open/merged PRs.
-2. Claim work by branch/PR without overwriting another agent's work. Start from the current default branch.
-3. Implement all layers in the selected scope, tests, failure handling, documentation and rollback.
-4. Run `npm run check` and applicable additional checks. Record exact commands and honest results in `docs/evidence/LM-XXX.md`; repair failures.
-5. Open a PR with an exact leading work ID. Record its real number in `prs`; refresh observations from the actual API. Never fabricate a merge.
-6. Inspect completed required checks at the current head and run the merge preflight with expected SHA. Merge when authorized and verified. Confirm the resulting GitHub state.
-7. Continue ready work. If an optional provider is unavailable, preserve fixture/manual paths and document only the affected feature limitation.
-
-## Source availability and integration limits
-
-The original technical specification is archived under `docs/source/` with its SHA-256. It describes an electronic-filing draft but does not contain the complete bill text. When LM-018 begins, retrieve the actual supplied draft and exact baseline source snapshots. Do not reconstruct missing legislative language from the architecture's examples. Source acquisition does not block the foundation or toy-law fixtures.
-
-The two pinned consumer parsers import this registry with the same IDs and denominator. Their implementations differ; details are in ADR-0001 and `registry/CONTRACT_SOURCES.json`. This does not prove that either portfolio service has discovered, refreshed or deployed Law Machine. Verify live ingestion separately; do not change those repositories just to mirror state.
-
-## Evidence and rollback
-
-`docs/evidence/LM-001.md` records foundation verification. `security/e2eesa-status.json` intentionally keeps whole-product implementation/testing and independent review incomplete. Revert an offending foundation change through a checked PR; preserve the source archive and stable work IDs when correcting the plan. There are no migrations or deployed runtime services to roll back at LM-001.
+Security testing and AI review do not constitute independent human certification. No external human audit is required for safe continued software development; unresolved actual vulnerabilities remain blockers to their affected release.
