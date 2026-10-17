@@ -100,7 +100,7 @@ export function buildExplanationGraph(
   const byRule = new Map<string, ExplanationRule>();
   const bySource = new Map<string, ExplanationSource>();
   const byEvidence = new Map<string, EvidenceRecord>();
-  for (const [i, s] of sources.entries()) {
+  for (const s of sources) {
     if (!s || !id(s.versionId) || !id(s.provisionId) ||
         !SHA.test(s.sourceDigest) || typeof s.citation !== 'string' ||
         !s.citation || s.citation.length > 400 || typeof s.text !== 'string' ||
