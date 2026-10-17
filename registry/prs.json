@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T13:33:32Z",
+  "observedAt": "2026-10-17T13:37:04Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -856,7 +856,8 @@
         36,
         39,
         41,
-        44
+        44,
+        45
       ]
     },
     {
@@ -1198,6 +1199,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4900502515,
+      "number": 45,
+      "title": "LM-043: Replay-safe OIDC PKCE callback state",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/45",
+      "createdAt": "2026-10-17T13:37:04Z",
+      "updatedAt": "2026-10-17T13:37:04Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": false,
+      "headSha": "3a9277b5d959edece1e2f05057b59c4cc773ab3a",
+      "baseRef": "lm-043-oidc-token-proof"
+    },
     {
       "id": 4900477427,
       "number": 44,
