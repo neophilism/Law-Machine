@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T02:37:26Z",
+  "observedAt": "2026-10-17T02:40:13Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -306,7 +306,9 @@
       "id": "LM-016",
       "title": "Version diff and dependency invalidation",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        21
+      ],
       "dependsOn": [
         "LM-015"
       ],
@@ -1165,25 +1167,39 @@
       "state": "open",
       "url": "https://github.com/neophilism/Law-Machine/pull/22",
       "createdAt": "2026-10-17T02:37:26Z",
-      "updatedAt": "2026-10-17T02:37:26Z",
+      "updatedAt": "2026-10-17T02:40:13Z",
       "closedAt": null,
       "mergedAt": null,
       "draft": true,
-      "headSha": "568e13f17cceb7c3d02b373aae2b713cecda3502",
+      "headSha": "f36cf3c228cad7891f2eaefed534a1b0e22f510e",
+      "baseRef": "main"
+    },
+    {
+      "id": 4896561601,
+      "number": 21,
+      "title": "LM-016: Versioned source diff and downstream invalidation",
+      "state": "closed",
+      "url": "https://github.com/neophilism/Law-Machine/pull/21",
+      "createdAt": "2026-10-17T02:33:29Z",
+      "updatedAt": "2026-10-17T02:39:49Z",
+      "closedAt": "2026-10-17T02:39:49Z",
+      "mergedAt": "2026-10-17T02:39:49Z",
+      "draft": false,
+      "headSha": "05483384a23ef64ff96f2910b7d023b42e3cfa69",
       "baseRef": "main"
     },
     {
       "id": 4896549186,
       "number": 20,
       "title": "LM-017: Classified legal evidence, assumptions and interpretation conflicts",
-      "state": "open",
+      "state": "closed",
       "url": "https://github.com/neophilism/Law-Machine/pull/20",
       "createdAt": "2026-10-17T02:31:24Z",
-      "updatedAt": "2026-10-17T02:31:24Z",
-      "closedAt": null,
-      "mergedAt": null,
-      "draft": true,
-      "headSha": "4d630b400fb589653b08830075353ec07f6d4c0e",
+      "updatedAt": "2026-10-17T02:34:51Z",
+      "closedAt": "2026-10-17T02:34:50Z",
+      "mergedAt": "2026-10-17T02:34:50Z",
+      "draft": false,
+      "headSha": "59a773fae89f0d25c925e0b4bf06a76a763c830d",
       "baseRef": "main"
     },
     {
