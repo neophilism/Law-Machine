@@ -1,0 +1,60 @@
+{
+  "notice": "Curated excerpt snapshots for bounded regression tests only. These are not the complete original government files, cannot authenticate the publisher, do not establish complete current law, and must not be used to calculate a person's legal deadlines.",
+  "sources": [
+    {
+      "kind": "curated-official-excerpt",
+      "id": "ecfr-28-14-2-b1-20261015",
+      "sourceUrl": "https://www.ecfr.gov/current/title-28/chapter-I/part-14/section-14.2",
+      "citation": "28 CFR 14.2(b)(1)",
+      "publisher": "Office of the Federal Register",
+      "editionAsOf": "2026-10-15",
+      "jurisdiction": "US-federal",
+      "agency": "federal-general",
+      "excerpt": "A claim shall be presented to the Federal agency whose activities gave rise to the claim.",
+      "excerptSha256": "92572317d6ec71beca37de1fc7750e1a3cf903fd3a8d56f50f5f7acaf712f0a3",
+      "fullOriginalBytesAttached": false
+    },
+    {
+      "kind": "curated-official-excerpt",
+      "id": "usc-28-2675-a-20260924",
+      "sourceUrl": "https://uscode.house.gov/view.xhtml?req=%28title%3A28+section%3A2675+edition%3Aprelim%29",
+      "citation": "28 USC 2675(a)",
+      "publisher": "Office of the Law Revision Counsel",
+      "editionAsOf": "2026-09-24",
+      "jurisdiction": "US-federal",
+      "agency": "federal-general",
+      "excerpt": "The failure of an agency to make final disposition of a claim within six months after it is filed",
+      "excerptSha256": "62feb827bd19597c5717e4521bfe07c0a8689f20704f56096aa698607639cea6",
+      "fullOriginalBytesAttached": false
+    }
+  ],
+  "baseline": {
+    "id": "ftca-narrow-excerpt-baseline-20261015",
+    "asOf": "2026-10-15",
+    "jurisdiction": "US-federal",
+    "agency": "federal-general",
+    "sources": [
+      {
+        "sourceId": "ecfr-28-14-2-b1-20261015",
+        "versionId": "eCFR-2026-10-15-title28-section14.2",
+        "digest": "92572317d6ec71beca37de1fc7750e1a3cf903fd3a8d56f50f5f7acaf712f0a3",
+        "jurisdiction": "US-federal",
+        "agency": "federal-general",
+        "asOf": "2026-10-15"
+      },
+      {
+        "sourceId": "usc-28-2675-a-20260924",
+        "versionId": "USC-prelim-2026-09-24-title28-section2675",
+        "digest": "62feb827bd19597c5717e4521bfe07c0a8689f20704f56096aa698607639cea6",
+        "jurisdiction": "US-federal",
+        "agency": "federal-general",
+        "asOf": "2026-09-24"
+      }
+    ],
+    "gaps": [
+      "Only cited excerpts are attached; complete official source files and authenticity evidence remain unavailable",
+      "Full proposed electronic-filing bill text/version is not attached",
+      "Agency-specific regulations, controlling interpretations, electronic channel authorization and historical applicability are not resolved"
+    ]
+  }
+}
