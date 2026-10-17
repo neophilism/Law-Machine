@@ -2,7 +2,7 @@ import {describe,it,expect} from 'vitest';
 import {readFileSync} from 'node:fs';
 import {inspectFirstPack} from '../../packages/legislation/src/pack-readiness.ts';
 const source=readFileSync(new URL('../../content/packs/electronic-filing/scenario-inventory.json',import.meta.url),'utf8');
-const inventory=()=>JSON.parse(source) as Record<string,any>;
+const inventory=()=>JSON.parse(source) as {status:string;sourceStatus:string;baselineStatus:string;scenarios:Array<{id:string;hypothetical:boolean;sourceRefs:string[];unresolved:string[]}>};
 describe('LM-018 electronic-filing first pack source gates',()=>{
  it('retains all 14 scenario names without inventing legal sources or executable outcomes',()=>{
   const report=inspectFirstPack(inventory());
