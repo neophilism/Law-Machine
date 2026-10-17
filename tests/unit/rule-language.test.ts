@@ -41,13 +41,13 @@ describe('LM-019 allowlisted rule language',()=>{
   expect(codes(x)).toContain('RULE_RECORD_INVALID');
  });
  it('rejects unsafe arbitrary code, injected object fields and missing legal provenance',()=>{
-  const x=valid();(x.rules[0]! as Record<string,unknown>).script='process.exit()';
+  const x=valid();(x.rules[0]! as unknown as Record<string,unknown>).script='process.exit()';
   expect(codes(x)).toContain('RULE_RECORD_INVALID');
   const y=valid();y.rules[0]!.sourceRefs=[];
   expect(codes(y)).toContain('RULE_RECORD_INVALID');
   const z=valid();z.rules[0]!.sourceRefs=[{...anchor,versionId:'other'}];
   expect(codes(z)).toContain('RULE_SOURCE_INVALID');
-  const w=valid();(w as Record<string,unknown>).eval='true';
+  const w=valid();(w as unknown as Record<string,unknown>).eval='true';
   expect(codes(w)).toContain('RULE_SCHEMA_UNSUPPORTED');
  });
  it('rejects unsupported schema versions, non-JSON and deep expression bombs',()=>{
