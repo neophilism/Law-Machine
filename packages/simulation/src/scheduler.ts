@@ -43,17 +43,17 @@ export class DeterministicScheduler {
  }
  run(onEvent?:(event:TraceEvent,scheduler:DeterministicScheduler)=>void):SchedulerSnapshot{
   if(this.status==='completed'||this.status==='stopped')return this.snapshot();
-  while(this.queue.length&&this.status!=='stopped'){
+  while(this.queue.length&&!this.isStopped()){
    const e=this.step();
    if(!e)break;
    onEvent?.(e,this);
   }
-  if(this.status!=='stopped')this.status='completed';
+  if(!this.isStopped())this.status='completed';
   return this.snapshot();
  }
  pause():SchedulerSnapshot{if(this.status==='ready')this.status='paused';return this.snapshot();}
  resume(onEvent?:(event:TraceEvent,scheduler:DeterministicScheduler)=>void):SchedulerSnapshot{return this.run(onEvent);}
  cancel():SchedulerSnapshot{this.status='stopped';this.queue=[];return this.snapshot();}
  snapshot():SchedulerSnapshot{return Object.freeze({status:this.status,trace:Object.freeze([...this.trace]),pending:Object.freeze(this.queue.map(x=>Object.freeze({...x,sourceRefs:Object.freeze([...x.sourceRefs])}))),diagnostic:this.diagnostic});}
- private stop(code:SchedulerDiagnostic['code'],eventId:string|null){this.status='stopped';this.diagnostic={code,eventId};this.queue=[];}
+ private isStopped():boolean{return this.status==='stopped';}\n private stop(code:SchedulerDiagnostic['code'],eventId:string|null){this.status='stopped';this.diagnostic={code,eventId};this.queue=[];}
 }
