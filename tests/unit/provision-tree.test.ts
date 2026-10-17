@@ -55,6 +55,23 @@ describe('LM-012 stable provision tree and persistence',()=>{
     expect(JSON.stringify(released)).not.toContain('originalBytes');
     expect(JSON.stringify(released)).not.toContain('private.pdf');
   });
+  it('detects source-parent cycles without altering original version identity',async()=>{
+    const xml='<bill xmlns="http://xml.house.gov/schemas/uslm/1.0"><main><section id="s1"><num>1</num><subsection id="s1a"><num>(a)</num><content>Clause</content></subsection></section></main></bill>';
+    const parsed=await importLegislativeXML(enc.encode(xml),{name:'toy.xml'});
+    const corrupt={...parsed,provisions:parsed.provisions.map(p=>p.id==='s1'?{...p,parentId:'s1a'}:p)};
+    const doc=normalizeSource('toy-v1',corrupt);
+    expect(doc.diagnostics.map(d=>d.code)).toContain('PARENT_CYCLE');
+    expect(()=>publishExplorer(doc,true)).toThrow('SOURCE_STRUCTURE_INVALID');
+  });
+  it('rejects untrusted serialized provisions with invalid types and cross-version identity',async()=>{
+    const doc=normalizeSource('toy-v1',await importText(enc.encode(source),{format:'text',name:'toy.txt'}));
+    const corrupted=JSON.parse(serializeSource(doc)) as {provisions:{versionId:string;text:string}[]};
+    corrupted.provisions[0]!.versionId='other-version';
+    expect(()=>parseStoredSource(JSON.stringify(corrupted))).toThrow('STORED_SOURCE_INVALID');
+    corrupted.provisions[0]!.versionId='toy-v1';
+    corrupted.provisions[0]!.text='A'.repeat(100001);
+    expect(()=>parseStoredSource(JSON.stringify(corrupted))).toThrow('STORED_SOURCE_INVALID');
+  });
   it('rejects malformed persistence before exposing a source',()=>{
     expect(()=>parseStoredSource('{"bad":true}')).toThrow('STORED_SOURCE_INVALID');
     expect(()=>parseStoredSource('{broken')).toThrow('STORED_SOURCE_INVALID');
