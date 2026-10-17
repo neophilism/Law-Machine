@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T03:17:47Z",
+  "observedAt": "2026-10-17T03:24:08Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -485,7 +485,9 @@
       "id": "LM-025",
       "title": "Operational queues resources and compliance behavior",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        30
+      ],
       "dependsOn": [
         "LM-021",
         "LM-023"
@@ -1170,6 +1172,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4896840510,
+      "number": 30,
+      "title": "LM-025: Capacity, outage and retry models for operational queues",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/30",
+      "createdAt": "2026-10-17T03:24:08Z",
+      "updatedAt": "2026-10-17T03:24:08Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "3e7752738f0e03e4040c1c2ba6596542f6df1ce6",
+      "baseRef": "main"
+    },
     {
       "id": 4896806724,
       "number": 28,
