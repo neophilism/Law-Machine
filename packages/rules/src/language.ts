@@ -121,9 +121,10 @@ export function evaluateRuleGuard(rule:RuleSpec,facts:Readonly<Record<string,unk
  {readonly when:Truth;readonly exception:Truth;readonly applicable:Truth}{
  if(!facts||typeof facts!=='object')throw Error('FACTS_INVALID');
  let nodes=0;
+ const missing=Symbol('missing-fact');
  const val=(s:Scalar):unknown=>{
   if(s.op==='literal')return s.value;
-  return Object.hasOwn(facts,s.key)?facts[s.key]:'unknown';
+  return Object.hasOwn(facts,s.key)?facts[s.key]:missing;
  };
  const evaluate=(c:Condition,depth:number):Truth=>{
   if(++nodes>1024||depth>20)throw Error('RULE_EVALUATION_LIMIT');
@@ -131,7 +132,7 @@ export function evaluateRuleGuard(rule:RuleSpec,facts:Readonly<Record<string,unk
   if(c.op==='truth'){const v=val(c.value);return typeof v==='boolean'?v:'unknown';}
   if(c.op==='eq'||c.op==='gte'||c.op==='lte'){
    const a=val(c.left),b=val(c.right);
-   if(a===undefined||b===undefined||a==='unknown'||b==='unknown'||typeof a!==typeof b)return 'unknown';
+   if(a===missing||b===missing||a===undefined||b===undefined||typeof a!==typeof b)return 'unknown';
    if(c.op==='eq')return a===b;
    if(typeof a!=='number'||typeof b!=='number'||!Number.isFinite(a)||!Number.isFinite(b))return 'unknown';
    return c.op==='gte'?a>=b:a<=b;
