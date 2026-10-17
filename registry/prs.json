@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T02:40:13Z",
+  "observedAt": "2026-10-17T02:45:40Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -422,7 +422,9 @@
       "id": "LM-022",
       "title": "Calendar and deadline engine",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        24
+      ],
       "dependsOn": [
         "LM-019",
         "LM-014"
@@ -1160,6 +1162,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4896628021,
+      "number": 24,
+      "title": "LM-022: Versioned calendars and source-linked deadline conventions",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/24",
+      "createdAt": "2026-10-17T02:45:40Z",
+      "updatedAt": "2026-10-17T02:45:40Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "d17f1117513722c790d20f37e8612ce9abcece1f",
+      "baseRef": "main"
+    },
     {
       "id": 4896581702,
       "number": 22,
