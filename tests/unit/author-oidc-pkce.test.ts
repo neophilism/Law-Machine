@@ -41,12 +41,13 @@ describe('LM-043 OIDC callback PKCE and one-time browser binding',()=>{
   expect(await consumeOidcCallback({request:x.request(),store:x.store,
    expectedRedirectUri:config.redirectUri,expectedIssuer:config.issuer,nowMs:now+3000})).toBeNull();
  });
- it('refuses stolen state without bound browser cookie and consumes it',async()=>{
+ it('refuses stolen state without bound browser cookie without consuming it',async()=>{
   const x=prepared();
-  expect(await consumeOidcCallback({request:x.request(x.url.toString(),'__Host-lm_oidc=wrong'),
+  const forged=beginOidcLogin(config,now).setCookie.split(';')[0]!;
+  expect(await consumeOidcCallback({request:x.request(x.url.toString(),forged),
    store:x.store,expectedRedirectUri:config.redirectUri,expectedIssuer:config.issuer,nowMs:now})).toBeNull();
   expect(await consumeOidcCallback({request:x.request(),store:x.store,
-   expectedRedirectUri:config.redirectUri,expectedIssuer:config.issuer,nowMs:now})).toBeNull();
+   expectedRedirectUri:config.redirectUri,expectedIssuer:config.issuer,nowMs:now})).not.toBeNull();
  });
  it('rejects duplicate parameters, cross-origin callback, issuer substitution and expiry',async()=>{
   for(const failure of ['duplicate','origin','issuer','expired','error']){
