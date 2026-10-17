@@ -1,5 +1,5 @@
 import {describe,it,expect} from 'vitest';
-import {FixtureEditorialStore,PostgresEditorialStore,type AuthenticatedEditorialScope}
+import {FixtureEditorialStore,PostgresEditorialStore,type AuthenticatedEditorialScope,type PgConnectionPool}
   from '../../apps/jobs/src/editorial-store.ts';
 const org='11111111-1111-4111-8111-111111111111';
 const second='22222222-2222-4222-8222-222222222222';
@@ -34,11 +34,11 @@ describe('LM-042 tenant-scoped editorial fixture',()=>{
   const sql:string[]=[];
   let released=0;
   let reject=false;
-  const pool={connect:async()=>({
-   query:async (query:string)=>{
+  const pool: PgConnectionPool={connect:async()=>({
+   query:async <Row = Record<string,unknown>>(query:string)=>{
     sql.push(query);
     if(reject&&query.includes('lm_update_document'))throw Error('LM_STALE_REVISION');
-    return {rows:[{revision:query.includes('lm_create_document')?1:2}]};
+    return {rows:[{revision:query.includes('lm_create_document')?1:2} as unknown as Row]};
    },
    release:()=>{released++;}
   })};
