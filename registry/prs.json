@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T01:25:42Z",
+  "observedAt": "2026-10-17T02:13:04Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -266,7 +266,9 @@
       "id": "LM-014",
       "title": "Baseline snapshots and temporal applicability",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        19
+      ],
       "dependsOn": [
         "LM-012",
         "LM-007"
@@ -1150,6 +1152,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4896448617,
+      "number": 19,
+      "title": "LM-014: Dated legal baselines and temporal applicability",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/19",
+      "createdAt": "2026-10-17T02:13:04Z",
+      "updatedAt": "2026-10-17T02:13:04Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "5ec1fcbe87774ce600139dae8f03f7ad84787dd3",
+      "baseRef": "main"
+    },
     {
       "id": 4896189147,
       "number": 16,
