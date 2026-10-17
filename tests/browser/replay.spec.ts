@@ -14,8 +14,6 @@ test('Node and browser execute same RNG source and seeded replay vector',async({
  await page.goto('/');
  const actual=await page.evaluate(script=>{
    const tag=document.createElement('script');
-   tag.textContent=script+'\nwindow.__lmReplayVector=Array.from({length:16},()=>new ReplayStream(42,"routing").nextUint32());';
-   // Reinitialize once: the vector uses the same algorithm on a persistent browser instance.
    tag.textContent=script+'\nconst stream=new ReplayStream(42,"routing"); window.__lmReplayVector=Array.from({length:16},()=>stream.nextUint32());';
    document.head.append(tag);tag.remove();
    return (window as Window&{__lmReplayVector?:number[]}).__lmReplayVector;
