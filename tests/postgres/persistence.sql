@@ -93,6 +93,35 @@ DO $$ BEGIN
  END;
 END $$;
 
+-- A tenant-owned source or release cannot point at a document from another org.
+SELECT set_config('app.actor_id','bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb',false);
+SELECT lm_create_document(
+ '22222222-2222-4222-8222-222222222222',
+ 'dddddddd-dddd-4ddd-8ddd-dddddddddddd',
+ 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb',
+ '{"title":"second organization fictional source"}'::jsonb,repeat('d',64)
+);
+SELECT set_config('app.organization_id','11111111-1111-4111-8111-111111111111',false);
+SELECT set_config('app.actor_id','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',false);
+DO $ BEGIN
+ BEGIN
+  INSERT INTO lm_sources(org_id,id,document_id,byte_digest,bytes_count,quarantine_state,storage_key)
+   VALUES('11111111-1111-4111-8111-111111111111',
+   'eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee',
+   'dddddddd-dddd-4ddd-8ddd-dddddddddddd',repeat('f',64),20,'pending','private/toy');
+  RAISE EXCEPTION 'EXPECTED_SOURCE_CROSS_ORG_FK';
+ EXCEPTION WHEN foreign_key_violation THEN NULL;
+ END;
+ BEGIN
+  INSERT INTO lm_releases(org_id,id,document_id,revision,manifest_digest,status)
+   VALUES('11111111-1111-4111-8111-111111111111',
+   'ffffffff-ffff-4fff-8fff-ffffffffffff',
+   'dddddddd-dddd-4ddd-8ddd-dddddddddddd',1,repeat('f',64),'staged');
+  RAISE EXCEPTION 'EXPECTED_RELEASE_CROSS_ORG_FK';
+ EXCEPTION WHEN foreign_key_violation THEN NULL;
+ END;
+END $;
+
 RESET ROLE;
 DROP TRIGGER lm_ci_audit_failure ON lm_audit;
 DROP FUNCTION lm_ci_reject_audit();
@@ -106,7 +135,7 @@ DO $$ BEGIN
 END $$;
 ROLLBACK;
 DO $$ BEGIN
- IF (SELECT count(*) FROM lm_revisions) <> 2 THEN
+ IF (SELECT count(*) FROM lm_revisions) <> 3 THEN
   RAISE EXCEPTION 'TRANSACTIONAL_RECOVERY_DID_NOT_RESTORE';
  END IF;
 END $$;
