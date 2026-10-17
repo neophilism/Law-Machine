@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T03:24:08Z",
+  "observedAt": "2026-10-17T12:02:29Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -505,7 +505,9 @@
       "id": "LM-026",
       "title": "Random streams replay and browser parity",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        31
+      ],
       "dependsOn": [
         "LM-021",
         "LM-022",
@@ -1172,6 +1174,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4899883078,
+      "number": 31,
+      "title": "LM-026: Deterministic random streams and replay identity",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/31",
+      "createdAt": "2026-10-17T12:01:55Z",
+      "updatedAt": "2026-10-17T12:02:29Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "939fbdba3fa04e1e71a7bff2e3b1516ad4a7e008",
+      "baseRef": "main"
+    },
     {
       "id": 4896840510,
       "number": 30,
