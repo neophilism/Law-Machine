@@ -62,6 +62,7 @@ export async function loadOfficialMetadata(
       retrievedAt:mode==='live'?new Date().toISOString():null,mode,data:copy}));
   };
   if(fixture)return snapshot(fixture,'fixture');
+  if(typeof window!=='undefined')throw Error('METADATA_SERVER_ONLY');
   if(!options.apiKey)throw Error('METADATA_CREDENTIAL_NOT_CONFIGURED');
   if(!/^[A-Za-z0-9_-]{8,128}$/.test(options.apiKey))throw Error('METADATA_INVALID_CREDENTIAL');
   const timeout=options.timeoutMs??5000;
