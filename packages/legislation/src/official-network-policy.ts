@@ -59,7 +59,7 @@ export function preflightOfficialDnsAddresses(
  // Choose deterministic first address; future HTTPS connector MUST use THIS IP.
  return Object.freeze({
   url,hostname,pinnedIpv4:answers[0] as string,
-  maximumBodyBytes:15000000,redirectPolicy:'reject' as const,
+  maximumBodyBytes:15000000 as const,redirectPolicy:'reject' as const,
   networkVerified:false as const
  });
 }
