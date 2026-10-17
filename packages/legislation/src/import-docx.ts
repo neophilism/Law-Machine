@@ -105,6 +105,7 @@ function unescapeXML(value:string):string{
 }
 function parseWordXML(xml:string):{text:string;numbering:Numbering[];diagnostics:ImportDiagnostic[]}{
   if(xml.length>MAX_XML || /<!DOCTYPE|<!ENTITY|<w:altChunk\b|<w:object\b|<o:OLEObject\b/i.test(xml))throw Error('DOCX_ACTIVE_CONTENT');
+  if(!/<w:document(?:\\s|>)/.test(xml) || !/<w:body(?:\\s|>)/.test(xml))throw Error('DOCX_DOCUMENT_INVALID');
   const lines:string[]=[];
   const numbering:Numbering[]=[];
   const diagnostics:ImportDiagnostic[]=[];
