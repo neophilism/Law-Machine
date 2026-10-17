@@ -36,14 +36,14 @@ describe('LM-044 private encrypted local quarantine contribution',()=>{
   const path=join(root,org,first.digest+'.lmq'),before=await readFile(path);
   expect((await vault.put(scope,source())).digest).toBe(first.digest);
   expect(await readFile(path)).toEqual(before);
-  expect(await vault.get({...scope,organizationId:other},first.digest)).rejects.toThrow('QUARANTINE_SCOPE_DENIED');
+  expect(vault.get({...scope,organizationId:other},first.digest)).rejects.toThrow('QUARANTINE_SCOPE_DENIED');
   expect(await vault.get({organizationId:other,actorId:actor,action:'read'},first.digest)).toBeNull();
  }));
  it('rejects wrong keys, tampering, forged scopes and digest changes',async()=>withVault(async(root,key)=>{
   const vault=new LocalEncryptedQuarantineVault(root,key),r=await vault.put(scope,source());
   const path=join(root,org,r.digest+'.lmq');
   await expect(new LocalEncryptedQuarantineVault(root,randomBytes(32)).get(scope,r.digest)).rejects.toThrow('QUARANTINE_AUTH_TAG_INVALID');
-  const bytes=await readFile(path);bytes[bytes.length-1]!^=1;
+  const bytes=await readFile(path);bytes[bytes.length-1]=(bytes[bytes.length-1]??0)^1;
   await writeFile(path,bytes);
   await expect(vault.get(scope,r.digest)).rejects.toThrow('QUARANTINE_AUTH_TAG_INVALID');
   await expect(vault.put({...scope,organizationId:other},source())).rejects.toThrow('QUARANTINE_SCOPE_DENIED');
