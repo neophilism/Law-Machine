@@ -145,3 +145,13 @@ BEGIN
  GET DIAGNOSTICS changed=ROW_COUNT;
  RETURN changed;
 END; $$;
+
+-- Never inherit PostgreSQL's default PUBLIC EXECUTE on worker transitions.
+REVOKE ALL ON FUNCTION lm_assert_job_scope(uuid),
+ lm_enqueue_job(uuid,uuid,uuid,text,text,integer),
+ lm_claim_job(uuid,text,integer),
+ lm_job_heartbeat(uuid,uuid,text,bigint,integer),
+ lm_job_checkpoint(uuid,uuid,text,bigint,jsonb),
+ lm_complete_job(uuid,uuid,text,bigint,text),
+ lm_fail_job(uuid,uuid,text,bigint,text,boolean),
+ lm_cancel_job(uuid,uuid),lm_reap_exhausted_jobs(uuid) FROM PUBLIC;
