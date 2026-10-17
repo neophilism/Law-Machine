@@ -4,7 +4,7 @@
   "roadmapVersion": 1,
   "planVerified": true,
   "plannedPrCount": 60,
-  "observedAt": "2026-10-17T01:18:07Z",
+  "observedAt": "2026-10-17T01:21:53Z",
   "approval": {
     "basis": "Owner directed implementation of the supplied Law Machine plan in neophilism/Law-Machine on 2026-10-16.",
     "source": "docs/source/ORIGINAL_SPECIFICATION.md"
@@ -225,7 +225,9 @@
       "id": "LM-012",
       "title": "Canonical provision tree and version persistence format",
       "origin": "original",
-      "prs": [],
+      "prs": [
+        15
+      ],
       "dependsOn": [
         "LM-009",
         "LM-010",
@@ -1146,6 +1148,20 @@
     }
   ],
   "pullRequests": [
+    {
+      "id": 4896166662,
+      "number": 15,
+      "title": "LM-012: Versioned canonical provision tree and source explorer",
+      "state": "open",
+      "url": "https://github.com/neophilism/Law-Machine/pull/15",
+      "createdAt": "2026-10-17T01:21:53Z",
+      "updatedAt": "2026-10-17T01:21:53Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "draft": true,
+      "headSha": "44add2b683cfcd21861cbd270360aacac239c8fc",
+      "baseRef": "main"
+    },
     {
       "id": 4896135382,
       "number": 14,
