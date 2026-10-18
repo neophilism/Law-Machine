@@ -52,6 +52,16 @@ describe('LM-043 author-access foundation',()=>{
   expect(await authorizeAuthorAction({request:request(),organizationId:org,action:'view',adapter:a,now}))
     .toEqual({authorized:false,code:'SESSION_EXPIRED'});
  });
+ it('rejects session reauthentication timestamps outside session bounds',async()=>{
+  const a=new FixtureAuthorIdentityAdapter();
+  a.memberships.set('user-1|'+org,membership);
+  a.session={...session,lastReauthenticatedAt:session.issuedAt-1};
+  expect(await authorizeAuthorAction({request:request(),organizationId:org,action:'publish',adapter:a,now}))
+    .toEqual({authorized:false,code:'SESSION_INVALID'});
+  a.session={...session,expiresAt:now+1,lastReauthenticatedAt:now+2};
+  expect(await authorizeAuthorAction({request:request(),organizationId:org,action:'publish',adapter:a,now}))
+    .toEqual({authorized:false,code:'SESSION_INVALID'});
+ });
  it('validates Origin and CSRF tokens on unsafe methods',async()=>{
   const a=new FixtureAuthorIdentityAdapter();a.session=session;
   a.memberships.set('user-1|'+org,membership);

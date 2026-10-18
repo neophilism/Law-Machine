@@ -67,7 +67,10 @@ export async function authorizeAuthorAction(input:{
      !ID.test(session.subject)||!ID.test(session.sessionId)||
      !validTime(session.issuedAt)||!validTime(session.expiresAt)||
      !validTime(session.lastReauthenticatedAt)||session.issuedAt>now+30000||
-     session.lastReauthenticatedAt>now+30000||session.expiresAt<=session.issuedAt||
+     session.lastReauthenticatedAt>now+30000||
+     session.lastReauthenticatedAt<session.issuedAt||
+     session.lastReauthenticatedAt>session.expiresAt||
+     session.expiresAt<=session.issuedAt||
      typeof session.csrfToken!=='string'||session.csrfToken.length<32||
      session.csrfToken.length>256)return deny('SESSION_INVALID');
   if(session.expiresAt<=now || now-session.issuedAt>24*60*60*1000)return deny('SESSION_EXPIRED');
