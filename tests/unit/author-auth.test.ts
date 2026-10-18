@@ -45,7 +45,7 @@ describe('LM-043 author-access foundation',()=>{
  it('requires reauthentication freshness for publishing and valid session expiration',async()=>{
   const a=new FixtureAuthorIdentityAdapter();
   a.memberships.set('user-1|'+org,membership);
-  a.session={...session,lastReauthenticatedAt:now-16*60_000};
+  a.session={...session,issuedAt:now-20*60_000,lastReauthenticatedAt:now-16*60_000};
   expect(await authorizeAuthorAction({request:request(),organizationId:org,action:'publish',adapter:a,now}))
     .toEqual({authorized:false,code:'REAUTH_REQUIRED'});
   a.session={...session,expiresAt:now-1};
