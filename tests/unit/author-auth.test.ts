@@ -72,4 +72,13 @@ describe('LM-043 author-access foundation',()=>{
   expect((await authorizeAuthorAction({request:request('POST'),organizationId:org,action:'edit',adapter:a,now})).authorized)
     .toBe(true);
  });
+ it('rejects malformed Origin headers including paths and credentials',async()=>{
+  const a=new FixtureAuthorIdentityAdapter();a.session=session;
+  a.memberships.set('user-1|'+org,membership);
+  for(const origin of ['https://example.test/path','https://user:pass@example.test','https://example.test?x=1']){
+   expect(await authorizeAuthorAction({request:request('POST',origin),organizationId:org,action:'edit',adapter:a,now}))
+    .toEqual({authorized:false,code:'CSRF_INVALID'});
+  }
+ });
+
 });

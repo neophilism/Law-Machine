@@ -88,7 +88,12 @@ export async function authorizeAuthorAction(input:{
   if(action==='publish' && now-session.lastReauthenticatedAt>15*60*1000)return deny('REAUTH_REQUIRED');
   if(!['GET','HEAD','OPTIONS'].includes(request.method)){
     let origin:string|null=null;
-    try{origin=new URL(request.headers.get('origin')??'').origin;}catch{return deny('CSRF_INVALID');}
+    try{
+      const suppliedOrigin=request.headers.get('origin')??'';
+      const parsedOrigin=new URL(suppliedOrigin);
+      if(suppliedOrigin!==parsedOrigin.origin) return deny('CSRF_INVALID');
+      origin=parsedOrigin.origin;
+    }catch{return deny('CSRF_INVALID');}
     if(origin!==new URL(request.url).origin ||
        request.headers.get('x-law-machine-csrf')!==session.csrfToken)
       return deny('CSRF_INVALID');
