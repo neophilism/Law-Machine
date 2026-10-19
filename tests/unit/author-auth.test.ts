@@ -45,12 +45,22 @@ describe('LM-043 author-access foundation',()=>{
  it('requires reauthentication freshness for publishing and valid session expiration',async()=>{
   const a=new FixtureAuthorIdentityAdapter();
   a.memberships.set('user-1|'+org,membership);
-  a.session={...session,lastReauthenticatedAt:now-16*60_000};
+  a.session={...session,issuedAt:now-20*60_000,lastReauthenticatedAt:now-16*60_000};
   expect(await authorizeAuthorAction({request:request(),organizationId:org,action:'publish',adapter:a,now}))
     .toEqual({authorized:false,code:'REAUTH_REQUIRED'});
   a.session={...session,expiresAt:now-1};
   expect(await authorizeAuthorAction({request:request(),organizationId:org,action:'view',adapter:a,now}))
     .toEqual({authorized:false,code:'SESSION_EXPIRED'});
+ });
+ it('rejects session reauthentication timestamps outside session bounds',async()=>{
+  const a=new FixtureAuthorIdentityAdapter();
+  a.memberships.set('user-1|'+org,membership);
+  a.session={...session,lastReauthenticatedAt:session.issuedAt-1};
+  expect(await authorizeAuthorAction({request:request(),organizationId:org,action:'publish',adapter:a,now}))
+    .toEqual({authorized:false,code:'SESSION_INVALID'});
+  a.session={...session,expiresAt:now+1,lastReauthenticatedAt:now+2};
+  expect(await authorizeAuthorAction({request:request(),organizationId:org,action:'publish',adapter:a,now}))
+    .toEqual({authorized:false,code:'SESSION_INVALID'});
  });
  it('validates Origin and CSRF tokens on unsafe methods',async()=>{
   const a=new FixtureAuthorIdentityAdapter();a.session=session;
@@ -62,4 +72,13 @@ describe('LM-043 author-access foundation',()=>{
   expect((await authorizeAuthorAction({request:request('POST'),organizationId:org,action:'edit',adapter:a,now})).authorized)
     .toBe(true);
  });
+ it('rejects malformed Origin headers including paths and credentials',async()=>{
+  const a=new FixtureAuthorIdentityAdapter();a.session=session;
+  a.memberships.set('user-1|'+org,membership);
+  for(const origin of ['https://example.test/path','https://user:pass@example.test','https://example.test?x=1']){
+   expect(await authorizeAuthorAction({request:request('POST',origin),organizationId:org,action:'edit',adapter:a,now}))
+    .toEqual({authorized:false,code:'CSRF_INVALID'});
+  }
+ });
+
 });
