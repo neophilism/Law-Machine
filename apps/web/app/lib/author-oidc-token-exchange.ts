@@ -34,7 +34,8 @@ export async function exchangeOidcCode(input:{
   if(!parsed||typeof parsed!=='object'||Array.isArray(parsed))return null;
   const data=parsed as Record<string,unknown>;
   if(data.token_type!==undefined&&data.token_type!=='Bearer')return null;
-  if(typeof data.id_token!=='string'||data.id_token.length<100||data.id_token.length>14000)return null;
+  if(typeof data.id_token!=='string'||data.id_token.length<100||data.id_token.length>14000||
+     !/^[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+$/.test(data.id_token))return null;
   return data.id_token;
  }catch{return null;}
 }
