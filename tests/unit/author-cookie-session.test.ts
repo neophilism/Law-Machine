@@ -89,4 +89,12 @@ describe('LM-043 opaque cookies and fresh database authorization',()=>{
   };
   expect(await new StoredCookieAuthorIdentityAdapter(mismatched,()=>now).verifySession(x.request())).toBeNull();
  });
+ it('rejects malformed same-host Origin through persisted cookie auth',async()=>{
+  const x=newContext();
+  for(const origin of ['https://law.test/path','https://user:pass@law.test','https://law.test?x=1']){
+   expect(await authorizeAuthorAction({request:x.request('POST',x.raw,origin),organizationId:org,action:'edit',adapter:x.adapter,now}))
+    .toEqual({authorized:false,code:'CSRF_INVALID'});
+  }
+ });
+
 });

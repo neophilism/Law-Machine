@@ -19,3 +19,26 @@ Cookie existence alone is **not** authentication. Anonymous users, replayed or e
 ## Status
 
 Prepared helpers and synthetic tests are in `apps/web/app/lib/author-cookie-session.ts` and `tests/unit/author-cookie-session.test.ts`. They do not connect to Neon Auth, create an author account, store a live token or alter production environment variables. The roadmap records this work as contributing evidence, not completed LM-043. No independent audit is claimed.
+
+
+## November 1 persistent-session and logout preparation
+
+Added `PostgresAuthorSessionStore` with parameterized, uncached session and
+organization-scoped membership reads, strict row validation, and durable revocation
+bound to both session and actor. The trusted database port must set organization
+scope transaction-locally on the same connection; no database role is provisioned.
+Added an unmounted logout handler requiring POST, exact Origin and authenticated
+CSRF. It clears cookies only after durable revocation succeeds and returns 503
+without clearing cookies when persistence is unavailable. Revoked members can log out.
+
+Twenty-seven cases pass in the portable Node assertion harness across exchange,
+pending-state, JWKS, session-store and logout helpers. This includes wrong-org,
+revoked membership/session and cross-origin/replayed logout denial. These are
+synthetic SQL ports, not a PostgreSQL integration test or official Vitest run.
+The current remote workspace failure remains undiagnosed; no passing claim is made.
+
+Remaining implementation: maintained-provider integration, authenticated enrollment,
+scoped database/protector wiring, durable issuance and rotation (including reviewed
+IdP auth_time versus local issuance constraints), mounted callback/logout routes,
+reauthentication, provider outage/recovery and multi-organization end-to-end tests.
+Public author routes remain disabled and PR 57 remains draft.
