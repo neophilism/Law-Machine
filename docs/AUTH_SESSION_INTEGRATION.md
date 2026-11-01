@@ -31,7 +31,7 @@ Added an unmounted logout handler requiring POST, exact Origin and authenticated
 CSRF. It clears cookies only after durable revocation succeeds and returns 503
 without clearing cookies when persistence is unavailable. Revoked members can log out.
 
-Twenty-five cases pass in the portable Node assertion harness across exchange,
+Twenty-seven cases pass in the portable Node assertion harness across exchange,
 pending-state, JWKS, session-store and logout helpers. This includes wrong-org,
 revoked membership/session and cross-origin/replayed logout denial. These are
 synthetic SQL ports, not a PostgreSQL integration test or official Vitest run.

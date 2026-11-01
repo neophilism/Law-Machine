@@ -13,7 +13,7 @@ function fixture(){
  const handler=createAuthorLogoutHandler(store,'https://app.example.test',()=>now);
  const request=(origin='https://app.example.test',csrfValue=csrf,method='POST')=>new Request('https://app.example.test/logout',{method,
   headers:{origin,'x-law-machine-csrf':csrfValue,cookie:cookies.sessionSetCookie.split(';')[0]+'; '+cookies.csrfSetCookie.split(';')[0]}});
- return {handler,request,calls:()=>calls,fail:()=>{fail=true;}};
+ return {handler,request,calls:()=>calls,store,fail:()=>{fail=true;}};
 }
 describe('LM-043 prepared logout handler',()=>{
  it('revokes the authenticated session before clearing both host cookies',async()=>{
@@ -31,6 +31,18 @@ describe('LM-043 prepared logout handler',()=>{
    expect(response.headers.getSetCookie().length).toBe(0);
   }
   expect(f.calls()).toBe(0);
+ });
+ it('denies anonymous and substituted request URLs before revocation',async()=>{
+  const f=fixture();
+  expect((await f.handler(new Request('https://app.example.test/logout',{method:'POST',headers:{origin:'https://app.example.test'}}))).status).toBe(401);
+  const request=f.request();
+  expect((await f.handler(new Request('https://other.example.test/logout',{method:'POST',headers:request.headers}))).status).toBe(403);
+  expect(f.calls()).toBe(0);
+ });
+ it('fails closed when durable revocation throws',async()=>{
+  const f=fixture();f.store.revokeSession=async()=>{throw Error('database unavailable');};
+  const response=await f.handler(f.request());expect(response.status).toBe(503);
+  expect(response.headers.getSetCookie().length).toBe(0);
  });
  it('reports failed persistence without claiming or presenting completed logout',async()=>{
   const f=fixture();f.fail();const response=await f.handler(f.request());
