@@ -28,4 +28,33 @@ describe('LM-043 OIDC authorization-code exchange preflight',()=>{
    expect(await exchangeOidcCode({callback,tokenEndpoint:endpoint,clientId:'law-machine',fetcher:fetcher as typeof fetch})).toBeNull();
   }
  });
+ it('bounds both headers and body waits even when transports ignore abort',async()=>{
+  let cancelled=false;
+  const pendingBody=new ReadableStream<Uint8Array>({pull(){return new Promise(()=>{});},cancel(){cancelled=true;}});
+  for(const fetcher of [()=>new Promise<Response>(()=>{}),async()=>new Response(pendingBody,{headers:{'content-type':'application/json'}})]){
+   expect(await exchangeOidcCode({callback,tokenEndpoint:'https://login.example.test/token',clientId:'law-machine',timeoutMs:20,fetcher:fetcher as typeof fetch})).toBeNull();
+  }
+  expect(cancelled).toBe(true);
+ });
+ it('rejects redirected or substituted token responses',async()=>{
+  for(const [property,value] of [['redirected',true],['url','https://other.example.test/token']] as const){
+   const response=respond({id_token:token});
+   Object.defineProperty(response,property,{value});
+   expect(await exchangeOidcCode({callback,tokenEndpoint:'https://login.example.test/token',clientId:'law-machine',fetcher:async()=>response})).toBeNull();
+  }
+ });
+ it('bounds actual bytes and cancels a lying chunked response',async()=>{
+  let cancelled=false;
+  const stream=new ReadableStream<Uint8Array>({pull(controller){controller.enqueue(new Uint8Array(8192));},cancel(){cancelled=true;}});
+  expect(await exchangeOidcCode({callback,tokenEndpoint:'https://login.example.test/token',clientId:'law-machine',fetcher:async()=>new Response(stream,{headers:{'content-type':'application/json','content-length':'1'}})})).toBeNull();
+  expect(cancelled).toBe(true);
+ });
+ it('rejects malformed length, invalid UTF8 and deceptive JSON media types',async()=>{
+  for(const response of [new Response(JSON.stringify({id_token:token}),{headers:{'content-type':'application/json','content-length':'NaN'}}),
+   new Response(JSON.stringify({id_token:token}),{headers:{'content-type':'application/json-unsafe'}}),
+   new Response(new Uint8Array([0xff]),{headers:{'content-type':'application/json'}})]){
+   expect(await exchangeOidcCode({callback,tokenEndpoint:'https://login.example.test/token',clientId:'law-machine',fetcher:async()=>response})).toBeNull();
+  }
+ });
 });
+
